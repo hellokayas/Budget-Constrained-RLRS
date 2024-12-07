@@ -1,0 +1,1727 @@
+/data/scp6004/netflix.py:510: FutureWarning: You are using `torch.load` with `weights_only=False` (the current default value), which uses the default pickle module implicitly. It is possible to construct malicious pickle data which will execute arbitrary code during unpickling (See https://github.com/pytorch/pytorch/blob/main/SECURITY.md#untrusted-models for more details). In a future release, the default value for `weights_only` will be flipped to `True`. This limits the functions that could be executed during unpickling. Arbitrary objects will no longer be allowed to be loaded via this mode unless they are explicitly allowlisted by the user via `torch.serialization.add_safe_globals`. We recommend you start setting `weights_only=True` for any use case where you don't have full control of the loaded file. Please open an issue on GitHub for any issues related to this experimental feature.
+  model.load_state_dict(torch.load(CONFIG.saved_model_name))
+8000
+torch.Size([32, 30, 1])
+torch.Size([32, 30, 12])
+torch.Size([32, 30])
+Training...
+8000
+Epoch 1/5, Step 50/1000, Loss: 6.468267968147993
+Epoch 1/5, Step 100/1000, Loss: 6.476913337782025
+Epoch 1/5, Step 150/1000, Loss: 6.466200961867968
+Epoch 1/5, Step 200/1000, Loss: 6.446617404744029
+Epoch 1/5, Step 250/1000, Loss: 6.4347081783115865
+Epoch 1/5 completed.
+8000
+Epoch 2/5, Step 50/1000, Loss: 6.30504152789712
+Epoch 2/5, Step 100/1000, Loss: 6.350375981405377
+Epoch 2/5, Step 150/1000, Loss: 6.323031885872284
+Epoch 2/5, Step 200/1000, Loss: 6.327699254713952
+Epoch 2/5, Step 250/1000, Loss: 6.372509508013725
+Epoch 2/5 completed.
+8000
+Epoch 3/5, Step 50/1000, Loss: 6.243516472131014
+Epoch 3/5, Step 100/1000, Loss: 6.304722125083208
+Epoch 3/5, Step 150/1000, Loss: 6.2871642494698365
+Epoch 3/5, Step 200/1000, Loss: 6.350123901553452
+Epoch 3/5, Step 250/1000, Loss: 6.36720613309741
+Epoch 3/5 completed.
+8000
+Epoch 4/5, Step 50/1000, Loss: 6.358904609978199
+Epoch 4/5, Step 100/1000, Loss: 6.326499046832323
+Epoch 4/5, Step 150/1000, Loss: 6.346593495855728
+Epoch 4/5, Step 200/1000, Loss: 6.404722466394305
+Epoch 4/5, Step 250/1000, Loss: 6.367025038540364
+Epoch 4/5 completed.
+8000
+Epoch 5/5, Step 50/1000, Loss: 6.342348751872778
+Epoch 5/5, Step 100/1000, Loss: 6.319327473416925
+Epoch 5/5, Step 150/1000, Loss: 6.355284651915232
+Epoch 5/5, Step 200/1000, Loss: 6.360103074982763
+Epoch 5/5, Step 250/1000, Loss: 6.372020363360644
+Epoch 5/5 completed.
+1000
+Validation Loss: 6.493331442773342
+Job done! Time taken: 0.56 minutes.
+Predicting...
+8000
+(8000, 30)
+Job done! Time taken: 0.08 minutes.
+142998
+142998
+(142998,)
+[8.04585457e-01 1.95153147e-01 9.42816769e-06 1.03673565e-05
+ 8.91901527e-06]
+[1.4908628e-05 8.1052158e-06 6.6682942e-06 6.6683006e-06 6.6682906e-06]
+150
+generating simulated data 
+behavior_policy play_rate, avg_impressions: (0.13333333333333333, 2.0933332)
+avg impressions, 2.0933332
+[02:06:56] ======== Monitor (0): HostSketchContainer ========
+[02:06:56] AllReduce: 0.000264s, 1 calls @ 264us
+
+[02:06:56] MakeCuts: 0.000328s, 1 calls @ 328us
+
+[02:06:56] DEBUG: /workspace/src/gbm/gbtree.cc:130: Using tree method: 0
+[02:06:56] ======== Monitor (0): Learner ========
+[02:06:56] Configure: 0.000485s, 1 calls @ 485us
+
+[02:06:56] EvalOneIter: 9e-06s, 1 calls @ 9us
+
+[02:06:56] GetGradient: 1.8e-05s, 1 calls @ 18us
+
+[02:06:56] PredictRaw: 3e-06s, 1 calls @ 3us
+
+[02:06:56] UpdateOneIter: 0.001662s, 1 calls @ 1662us
+
+[02:06:56] ======== Monitor (0): GBTree ========
+[02:06:56] BoostNewTrees: 0.000986s, 1 calls @ 986us
+
+[02:06:56] CommitModel: 2e-06s, 1 calls @ 2us
+
+[02:06:56] ======== Monitor (0): HistUpdater ========
+[02:06:56] BuildHistogram: 0.000418s, 5 calls @ 418us
+
+[02:06:56] EvaluateSplits: 0.000261s, 6 calls @ 261us
+
+[02:06:56] InitData: 2.5e-05s, 1 calls @ 25us
+
+[02:06:56] InitRoot: 0.000108s, 1 calls @ 108us
+
+[02:06:56] LeafPartition: 0s, 1 calls @ 0us
+
+[02:06:56] UpdatePosition: 0.000119s, 6 calls @ 119us
+
+[02:06:56] UpdatePredictionCache: 1e-05s, 1 calls @ 10us
+
+[02:06:56] UpdateTree: 0.000934s, 1 calls @ 934us
+
+[02:06:56] DEBUG: /workspace/src/gbm/gbtree.cc:130: Using tree method: 0
+generating user slates from qlearning policy...
+qlearning_model auc 1.0
+qlearning_policy play_rate, avg_impressions: (0.26, 4.78)
+{'budget : 100.0, discount_factor : 0.2,\n        num_users : 150, num_docs : 142998,\n        slate_size : 30, epsilon : 0.1, seed : 0': [(0.26, 4.78)]}
+generating simulated data 
+behavior_policy play_rate, avg_impressions: (0.13333333333333333, 2.0933332)
+avg impressions, 2.0933332
+[02:09:39] ======== Monitor (0): HostSketchContainer ========
+[02:09:39] AllReduce: 0.000266s, 1 calls @ 266us
+
+[02:09:39] MakeCuts: 0.000342s, 1 calls @ 342us
+
+[02:09:39] DEBUG: /workspace/src/gbm/gbtree.cc:130: Using tree method: 0
+[02:09:39] ======== Monitor (0): Learner ========
+[02:09:39] Configure: 0.000607s, 1 calls @ 607us
+
+[02:09:39] EvalOneIter: 1.4e-05s, 1 calls @ 14us
+
+[02:09:39] GetGradient: 2.5e-05s, 1 calls @ 25us
+
+[02:09:39] PredictRaw: 3e-06s, 1 calls @ 3us
+
+[02:09:39] UpdateOneIter: 0.002337s, 1 calls @ 2337us
+
+[02:09:39] ======== Monitor (0): GBTree ========
+[02:09:39] BoostNewTrees: 0.001598s, 1 calls @ 1598us
+
+[02:09:39] CommitModel: 1e-06s, 1 calls @ 1us
+
+[02:09:39] ======== Monitor (0): HistUpdater ========
+[02:09:39] BuildHistogram: 0.000965s, 5 calls @ 965us
+
+[02:09:39] EvaluateSplits: 0.000247s, 6 calls @ 247us
+
+[02:09:39] InitData: 2.7e-05s, 1 calls @ 27us
+
+[02:09:39] InitRoot: 0.000109s, 1 calls @ 109us
+
+[02:09:39] LeafPartition: 0s, 1 calls @ 0us
+
+[02:09:39] UpdatePosition: 0.000177s, 6 calls @ 177us
+
+[02:09:39] UpdatePredictionCache: 1.3e-05s, 1 calls @ 13us
+
+[02:09:39] UpdateTree: 0.001549s, 1 calls @ 1549us
+
+[02:09:39] DEBUG: /workspace/src/gbm/gbtree.cc:130: Using tree method: 0
+generating user slates from qlearning policy...
+qlearning_model auc 1.0
+qlearning_policy play_rate, avg_impressions: (0.38, 9.126667)
+{'budget : 100.0, discount_factor : 0.2,\n        num_users : 150, num_docs : 142998,\n        slate_size : 30, epsilon : 0.1, seed : 0': [(0.26, 4.78)], 'budget : 100.0, discount_factor : 0.4,\n        num_users : 150, num_docs : 142998,\n        slate_size : 30, epsilon : 0.1, seed : 0': [(0.38, 9.126667)]}
+generating simulated data 
+behavior_policy play_rate, avg_impressions: (0.13333333333333333, 2.0933332)
+avg impressions, 2.0933332
+[02:12:20] ======== Monitor (0): HostSketchContainer ========
+[02:12:20] AllReduce: 0.000526s, 1 calls @ 526us
+
+[02:12:20] MakeCuts: 0.000666s, 1 calls @ 666us
+
+[02:12:20] DEBUG: /workspace/src/gbm/gbtree.cc:130: Using tree method: 0
+[02:12:20] ======== Monitor (0): Learner ========
+[02:12:20] Configure: 0.000933s, 1 calls @ 933us
+
+[02:12:20] EvalOneIter: 3.3e-05s, 1 calls @ 33us
+
+[02:12:20] GetGradient: 2.1e-05s, 1 calls @ 21us
+
+[02:12:20] PredictRaw: 4e-06s, 1 calls @ 4us
+
+[02:12:20] UpdateOneIter: 0.005681s, 1 calls @ 5681us
+
+[02:12:20] ======== Monitor (0): GBTree ========
+[02:12:20] BoostNewTrees: 0.004537s, 1 calls @ 4537us
+
+[02:12:20] CommitModel: 2e-06s, 1 calls @ 2us
+
+[02:12:20] ======== Monitor (0): HistUpdater ========
+[02:12:20] BuildHistogram: 0.003646s, 5 calls @ 3646us
+
+[02:12:20] EvaluateSplits: 0.000346s, 6 calls @ 346us
+
+[02:12:20] InitData: 4.2e-05s, 1 calls @ 42us
+
+[02:12:20] InitRoot: 0.000143s, 1 calls @ 143us
+
+[02:12:20] LeafPartition: 0s, 1 calls @ 0us
+
+[02:12:20] UpdatePosition: 0.000212s, 6 calls @ 212us
+
+[02:12:20] UpdatePredictionCache: 1.8e-05s, 1 calls @ 18us
+
+[02:12:20] UpdateTree: 0.004428s, 1 calls @ 4428us
+
+[02:12:20] DEBUG: /workspace/src/gbm/gbtree.cc:130: Using tree method: 0
+generating user slates from qlearning policy...
+qlearning_model auc 1.0
+qlearning_policy play_rate, avg_impressions: (0.56, 8.606667)
+{'budget : 100.0, discount_factor : 0.2,\n        num_users : 150, num_docs : 142998,\n        slate_size : 30, epsilon : 0.1, seed : 0': [(0.26, 4.78)], 'budget : 100.0, discount_factor : 0.4,\n        num_users : 150, num_docs : 142998,\n        slate_size : 30, epsilon : 0.1, seed : 0': [(0.38, 9.126667)], 'budget : 100.0, discount_factor : 0.6,\n        num_users : 150, num_docs : 142998,\n        slate_size : 30, epsilon : 0.1, seed : 0': [(0.56, 8.606667)]}
+generating simulated data 
+behavior_policy play_rate, avg_impressions: (0.13333333333333333, 2.0933332)
+avg impressions, 2.0933332
+[02:15:01] ======== Monitor (0): HostSketchContainer ========
+[02:15:01] AllReduce: 0.000216s, 1 calls @ 216us
+
+[02:15:01] MakeCuts: 0.00033s, 1 calls @ 330us
+
+[02:15:01] DEBUG: /workspace/src/gbm/gbtree.cc:130: Using tree method: 0
+[02:15:01] ======== Monitor (0): Learner ========
+[02:15:01] Configure: 0.000492s, 1 calls @ 492us
+
+[02:15:01] EvalOneIter: 1.2e-05s, 1 calls @ 12us
+
+[02:15:01] GetGradient: 1.7e-05s, 1 calls @ 17us
+
+[02:15:01] PredictRaw: 2e-06s, 1 calls @ 2us
+
+[02:15:01] UpdateOneIter: 0.001854s, 1 calls @ 1854us
+
+[02:15:01] ======== Monitor (0): GBTree ========
+[02:15:01] BoostNewTrees: 0.001256s, 1 calls @ 1256us
+
+[02:15:01] CommitModel: 1e-06s, 1 calls @ 1us
+
+[02:15:01] ======== Monitor (0): HistUpdater ========
+[02:15:01] BuildHistogram: 0.000631s, 5 calls @ 631us
+
+[02:15:01] EvaluateSplits: 0.000267s, 6 calls @ 267us
+
+[02:15:01] InitData: 3.5e-05s, 1 calls @ 35us
+
+[02:15:01] InitRoot: 9.9e-05s, 1 calls @ 99us
+
+[02:15:01] LeafPartition: 0s, 1 calls @ 0us
+
+[02:15:01] UpdatePosition: 0.000161s, 6 calls @ 161us
+
+[02:15:01] UpdatePredictionCache: 1.1e-05s, 1 calls @ 11us
+
+[02:15:01] UpdateTree: 0.001197s, 1 calls @ 1197us
+
+[02:15:01] DEBUG: /workspace/src/gbm/gbtree.cc:130: Using tree method: 0
+generating user slates from qlearning policy...
+qlearning_model auc 1.0
+qlearning_policy play_rate, avg_impressions: (0.6266666666666667, 12.626667)
+{'budget : 100.0, discount_factor : 0.2,\n        num_users : 150, num_docs : 142998,\n        slate_size : 30, epsilon : 0.1, seed : 0': [(0.26, 4.78)], 'budget : 100.0, discount_factor : 0.4,\n        num_users : 150, num_docs : 142998,\n        slate_size : 30, epsilon : 0.1, seed : 0': [(0.38, 9.126667)], 'budget : 100.0, discount_factor : 0.6,\n        num_users : 150, num_docs : 142998,\n        slate_size : 30, epsilon : 0.1, seed : 0': [(0.56, 8.606667)], 'budget : 100.0, discount_factor : 0.8,\n        num_users : 150, num_docs : 142998,\n        slate_size : 30, epsilon : 0.1, seed : 0': [(0.6266666666666667, 12.626667)]}
+generating simulated data 
+behavior_policy play_rate, avg_impressions: (0.13333333333333333, 2.0933332)
+avg impressions, 2.0933332
+[02:17:44] ======== Monitor (0): HostSketchContainer ========
+[02:17:44] AllReduce: 0.000532s, 1 calls @ 532us
+
+[02:17:44] MakeCuts: 0.00069s, 1 calls @ 690us
+
+[02:17:44] DEBUG: /workspace/src/gbm/gbtree.cc:130: Using tree method: 0
+[02:17:44] ======== Monitor (0): Learner ========
+[02:17:44] Configure: 0.000919s, 1 calls @ 919us
+
+[02:17:44] EvalOneIter: 1.4e-05s, 1 calls @ 14us
+
+[02:17:44] GetGradient: 1.8e-05s, 1 calls @ 18us
+
+[02:17:44] PredictRaw: 3e-06s, 1 calls @ 3us
+
+[02:17:44] UpdateOneIter: 0.004876s, 1 calls @ 4876us
+
+[02:17:44] ======== Monitor (0): GBTree ========
+[02:17:44] BoostNewTrees: 0.003809s, 1 calls @ 3809us
+
+[02:17:44] CommitModel: 1e-06s, 1 calls @ 1us
+
+[02:17:44] ======== Monitor (0): HistUpdater ========
+[02:17:44] BuildHistogram: 0.003112s, 5 calls @ 3112us
+
+[02:17:44] EvaluateSplits: 0.000289s, 6 calls @ 289us
+
+[02:17:44] InitData: 2e-05s, 1 calls @ 20us
+
+[02:17:44] InitRoot: 0.000121s, 1 calls @ 121us
+
+[02:17:44] LeafPartition: 0s, 1 calls @ 0us
+
+[02:17:44] UpdatePosition: 0.000154s, 6 calls @ 154us
+
+[02:17:44] UpdatePredictionCache: 1.2e-05s, 1 calls @ 12us
+
+[02:17:44] UpdateTree: 0.00373s, 1 calls @ 3730us
+
+[02:17:44] DEBUG: /workspace/src/gbm/gbtree.cc:130: Using tree method: 0
+generating user slates from qlearning policy...
+qlearning_model auc 1.0
+qlearning_policy play_rate, avg_impressions: (0.49333333333333335, 9.06)
+{'budget : 100.0, discount_factor : 0.2,\n        num_users : 150, num_docs : 142998,\n        slate_size : 30, epsilon : 0.1, seed : 0': [(0.26, 4.78)], 'budget : 100.0, discount_factor : 0.4,\n        num_users : 150, num_docs : 142998,\n        slate_size : 30, epsilon : 0.1, seed : 0': [(0.38, 9.126667)], 'budget : 100.0, discount_factor : 0.6,\n        num_users : 150, num_docs : 142998,\n        slate_size : 30, epsilon : 0.1, seed : 0': [(0.56, 8.606667)], 'budget : 100.0, discount_factor : 0.8,\n        num_users : 150, num_docs : 142998,\n        slate_size : 30, epsilon : 0.1, seed : 0': [(0.6266666666666667, 12.626667)], 'budget : 100.0, discount_factor : 1.0,\n        num_users : 150, num_docs : 142998,\n        slate_size : 30, epsilon : 0.1, seed : 0': [(0.49333333333333335, 9.06)]}
+generating simulated data 
+behavior_policy play_rate, avg_impressions: (0.16666666666666666, 3.2933333)
+avg impressions, 3.2933333
+[02:20:26] ======== Monitor (0): HostSketchContainer ========
+[02:20:26] AllReduce: 0.000446s, 1 calls @ 446us
+
+[02:20:26] MakeCuts: 0.000567s, 1 calls @ 567us
+
+[02:20:26] DEBUG: /workspace/src/gbm/gbtree.cc:130: Using tree method: 0
+[02:20:26] ======== Monitor (0): Learner ========
+[02:20:26] Configure: 0.001164s, 1 calls @ 1164us
+
+[02:20:26] EvalOneIter: 5.9e-05s, 1 calls @ 59us
+
+[02:20:26] GetGradient: 2.5e-05s, 1 calls @ 25us
+
+[02:20:26] PredictRaw: 3e-06s, 1 calls @ 3us
+
+[02:20:26] UpdateOneIter: 0.003133s, 1 calls @ 3133us
+
+[02:20:26] ======== Monitor (0): GBTree ========
+[02:20:26] BoostNewTrees: 0.001809s, 1 calls @ 1809us
+
+[02:20:26] CommitModel: 1e-06s, 1 calls @ 1us
+
+[02:20:26] ======== Monitor (0): HistUpdater ========
+[02:20:26] BuildHistogram: 0.001022s, 5 calls @ 1022us
+
+[02:20:26] EvaluateSplits: 0.000371s, 6 calls @ 371us
+
+[02:20:26] InitData: 5.3e-05s, 1 calls @ 53us
+
+[02:20:26] InitRoot: 0.000136s, 1 calls @ 136us
+
+[02:20:26] LeafPartition: 0s, 1 calls @ 0us
+
+[02:20:26] UpdatePosition: 0.000141s, 6 calls @ 141us
+
+[02:20:26] UpdatePredictionCache: 1.3e-05s, 1 calls @ 13us
+
+[02:20:26] UpdateTree: 0.001745s, 1 calls @ 1745us
+
+[02:20:26] DEBUG: /workspace/src/gbm/gbtree.cc:130: Using tree method: 0
+generating user slates from qlearning policy...
+qlearning_model auc 0.92
+qlearning_policy play_rate, avg_impressions: (0.7466666666666667, 25.626667)
+{'budget : 100.0, discount_factor : 0.2,\n        num_users : 150, num_docs : 142998,\n        slate_size : 30, epsilon : 0.1, seed : 0': [(0.26, 4.78)], 'budget : 100.0, discount_factor : 0.4,\n        num_users : 150, num_docs : 142998,\n        slate_size : 30, epsilon : 0.1, seed : 0': [(0.38, 9.126667)], 'budget : 100.0, discount_factor : 0.6,\n        num_users : 150, num_docs : 142998,\n        slate_size : 30, epsilon : 0.1, seed : 0': [(0.56, 8.606667)], 'budget : 100.0, discount_factor : 0.8,\n        num_users : 150, num_docs : 142998,\n        slate_size : 30, epsilon : 0.1, seed : 0': [(0.6266666666666667, 12.626667)], 'budget : 100.0, discount_factor : 1.0,\n        num_users : 150, num_docs : 142998,\n        slate_size : 30, epsilon : 0.1, seed : 0': [(0.49333333333333335, 9.06)], 'budget : 150.0, discount_factor : 0.2,\n        num_users : 150, num_docs : 142998,\n        slate_size : 30, epsilon : 0.1, seed : 0': [(0.7466666666666667, 25.626667)]}
+generating simulated data 
+behavior_policy play_rate, avg_impressions: (0.16666666666666666, 3.2933333)
+avg impressions, 3.2933333
+[02:23:24] ======== Monitor (0): HostSketchContainer ========
+[02:23:24] AllReduce: 0.000567s, 1 calls @ 567us
+
+[02:23:24] MakeCuts: 0.000682s, 1 calls @ 682us
+
+[02:23:24] DEBUG: /workspace/src/gbm/gbtree.cc:130: Using tree method: 0
+[02:23:24] ======== Monitor (0): Learner ========
+[02:23:24] Configure: 0.000586s, 1 calls @ 586us
+
+[02:23:24] EvalOneIter: 1.3e-05s, 1 calls @ 13us
+
+[02:23:24] GetGradient: 1.8e-05s, 1 calls @ 18us
+
+[02:23:24] PredictRaw: 2e-06s, 1 calls @ 2us
+
+[02:23:24] UpdateOneIter: 0.002124s, 1 calls @ 2124us
+
+[02:23:24] ======== Monitor (0): GBTree ========
+[02:23:24] BoostNewTrees: 0.001401s, 1 calls @ 1401us
+
+[02:23:24] CommitModel: 1e-06s, 1 calls @ 1us
+
+[02:23:24] ======== Monitor (0): HistUpdater ========
+[02:23:24] BuildHistogram: 0.000653s, 5 calls @ 653us
+
+[02:23:24] EvaluateSplits: 0.000262s, 6 calls @ 262us
+
+[02:23:24] InitData: 5.9e-05s, 1 calls @ 59us
+
+[02:23:24] InitRoot: 0.00021s, 1 calls @ 210us
+
+[02:23:24] LeafPartition: 0s, 1 calls @ 0us
+
+[02:23:24] UpdatePosition: 0.000123s, 6 calls @ 123us
+
+[02:23:24] UpdatePredictionCache: 1.4e-05s, 1 calls @ 14us
+
+[02:23:24] UpdateTree: 0.001333s, 1 calls @ 1333us
+
+[02:23:24] DEBUG: /workspace/src/gbm/gbtree.cc:130: Using tree method: 0
+generating user slates from qlearning policy...
+qlearning_model auc 0.88
+qlearning_policy play_rate, avg_impressions: (0.7733333333333333, 26.413334)
+{'budget : 100.0, discount_factor : 0.2,\n        num_users : 150, num_docs : 142998,\n        slate_size : 30, epsilon : 0.1, seed : 0': [(0.26, 4.78)], 'budget : 100.0, discount_factor : 0.4,\n        num_users : 150, num_docs : 142998,\n        slate_size : 30, epsilon : 0.1, seed : 0': [(0.38, 9.126667)], 'budget : 100.0, discount_factor : 0.6,\n        num_users : 150, num_docs : 142998,\n        slate_size : 30, epsilon : 0.1, seed : 0': [(0.56, 8.606667)], 'budget : 100.0, discount_factor : 0.8,\n        num_users : 150, num_docs : 142998,\n        slate_size : 30, epsilon : 0.1, seed : 0': [(0.6266666666666667, 12.626667)], 'budget : 100.0, discount_factor : 1.0,\n        num_users : 150, num_docs : 142998,\n        slate_size : 30, epsilon : 0.1, seed : 0': [(0.49333333333333335, 9.06)], 'budget : 150.0, discount_factor : 0.2,\n        num_users : 150, num_docs : 142998,\n        slate_size : 30, epsilon : 0.1, seed : 0': [(0.7466666666666667, 25.626667)], 'budget : 150.0, discount_factor : 0.4,\n        num_users : 150, num_docs : 142998,\n        slate_size : 30, epsilon : 0.1, seed : 0': [(0.7733333333333333, 26.413334)]}
+generating simulated data 
+behavior_policy play_rate, avg_impressions: (0.16666666666666666, 3.2933333)
+avg impressions, 3.2933333
+[02:26:20] ======== Monitor (0): HostSketchContainer ========
+[02:26:20] AllReduce: 0.000629s, 1 calls @ 629us
+
+[02:26:20] MakeCuts: 0.000744s, 1 calls @ 744us
+
+[02:26:20] DEBUG: /workspace/src/gbm/gbtree.cc:130: Using tree method: 0
+[02:26:20] ======== Monitor (0): Learner ========
+[02:26:20] Configure: 0.000565s, 1 calls @ 565us
+
+[02:26:20] EvalOneIter: 1.3e-05s, 1 calls @ 13us
+
+[02:26:20] GetGradient: 2.3e-05s, 1 calls @ 23us
+
+[02:26:20] PredictRaw: 3e-06s, 1 calls @ 3us
+
+[02:26:20] UpdateOneIter: 0.00205s, 1 calls @ 2050us
+
+[02:26:20] ======== Monitor (0): GBTree ========
+[02:26:20] BoostNewTrees: 0.001352s, 1 calls @ 1352us
+
+[02:26:20] CommitModel: 1e-06s, 1 calls @ 1us
+
+[02:26:20] ======== Monitor (0): HistUpdater ========
+[02:26:20] BuildHistogram: 0.000602s, 5 calls @ 602us
+
+[02:26:20] EvaluateSplits: 0.000278s, 6 calls @ 278us
+
+[02:26:20] InitData: 2.2e-05s, 1 calls @ 22us
+
+[02:26:20] InitRoot: 0.000211s, 1 calls @ 211us
+
+[02:26:20] LeafPartition: 0s, 1 calls @ 0us
+
+[02:26:20] UpdatePosition: 0.000181s, 6 calls @ 181us
+
+[02:26:20] UpdatePredictionCache: 1.6e-05s, 1 calls @ 16us
+
+[02:26:20] UpdateTree: 0.001297s, 1 calls @ 1297us
+
+[02:26:20] DEBUG: /workspace/src/gbm/gbtree.cc:130: Using tree method: 0
+generating user slates from qlearning policy...
+qlearning_model auc 0.88
+qlearning_policy play_rate, avg_impressions: (0.8466666666666667, 29.766666)
+{'budget : 100.0, discount_factor : 0.2,\n        num_users : 150, num_docs : 142998,\n        slate_size : 30, epsilon : 0.1, seed : 0': [(0.26, 4.78)], 'budget : 100.0, discount_factor : 0.4,\n        num_users : 150, num_docs : 142998,\n        slate_size : 30, epsilon : 0.1, seed : 0': [(0.38, 9.126667)], 'budget : 100.0, discount_factor : 0.6,\n        num_users : 150, num_docs : 142998,\n        slate_size : 30, epsilon : 0.1, seed : 0': [(0.56, 8.606667)], 'budget : 100.0, discount_factor : 0.8,\n        num_users : 150, num_docs : 142998,\n        slate_size : 30, epsilon : 0.1, seed : 0': [(0.6266666666666667, 12.626667)], 'budget : 100.0, discount_factor : 1.0,\n        num_users : 150, num_docs : 142998,\n        slate_size : 30, epsilon : 0.1, seed : 0': [(0.49333333333333335, 9.06)], 'budget : 150.0, discount_factor : 0.2,\n        num_users : 150, num_docs : 142998,\n        slate_size : 30, epsilon : 0.1, seed : 0': [(0.7466666666666667, 25.626667)], 'budget : 150.0, discount_factor : 0.4,\n        num_users : 150, num_docs : 142998,\n        slate_size : 30, epsilon : 0.1, seed : 0': [(0.7733333333333333, 26.413334)], 'budget : 150.0, discount_factor : 0.6,\n        num_users : 150, num_docs : 142998,\n        slate_size : 30, epsilon : 0.1, seed : 0': [(0.8466666666666667, 29.766666)]}
+generating simulated data 
+behavior_policy play_rate, avg_impressions: (0.16666666666666666, 3.2933333)
+avg impressions, 3.2933333
+[02:29:15] ======== Monitor (0): HostSketchContainer ========
+[02:29:15] AllReduce: 0.000273s, 1 calls @ 273us
+
+[02:29:15] MakeCuts: 0.000393s, 1 calls @ 393us
+
+[02:29:15] DEBUG: /workspace/src/gbm/gbtree.cc:130: Using tree method: 0
+[02:29:15] ======== Monitor (0): Learner ========
+[02:29:15] Configure: 0.001244s, 1 calls @ 1244us
+
+[02:29:15] EvalOneIter: 5.7e-05s, 1 calls @ 57us
+
+[02:29:15] GetGradient: 2.3e-05s, 1 calls @ 23us
+
+[02:29:15] PredictRaw: 4e-06s, 1 calls @ 4us
+
+[02:29:15] UpdateOneIter: 0.003128s, 1 calls @ 3128us
+
+[02:29:15] ======== Monitor (0): GBTree ========
+[02:29:15] BoostNewTrees: 0.001694s, 1 calls @ 1694us
+
+[02:29:15] CommitModel: 1e-06s, 1 calls @ 1us
+
+[02:29:15] ======== Monitor (0): HistUpdater ========
+[02:29:15] BuildHistogram: 0.000946s, 5 calls @ 946us
+
+[02:29:15] EvaluateSplits: 0.000299s, 6 calls @ 299us
+
+[02:29:15] InitData: 2.9e-05s, 1 calls @ 29us
+
+[02:29:15] InitRoot: 0.000163s, 1 calls @ 163us
+
+[02:29:15] LeafPartition: 0s, 1 calls @ 0us
+
+[02:29:15] UpdatePosition: 0.00014s, 6 calls @ 140us
+
+[02:29:15] UpdatePredictionCache: 1.4e-05s, 1 calls @ 14us
+
+[02:29:15] UpdateTree: 0.001596s, 1 calls @ 1596us
+
+[02:29:15] DEBUG: /workspace/src/gbm/gbtree.cc:130: Using tree method: 0
+generating user slates from qlearning policy...
+qlearning_model auc 0.72
+qlearning_policy play_rate, avg_impressions: (0.7466666666666667, 26.993334)
+{'budget : 100.0, discount_factor : 0.2,\n        num_users : 150, num_docs : 142998,\n        slate_size : 30, epsilon : 0.1, seed : 0': [(0.26, 4.78)], 'budget : 100.0, discount_factor : 0.4,\n        num_users : 150, num_docs : 142998,\n        slate_size : 30, epsilon : 0.1, seed : 0': [(0.38, 9.126667)], 'budget : 100.0, discount_factor : 0.6,\n        num_users : 150, num_docs : 142998,\n        slate_size : 30, epsilon : 0.1, seed : 0': [(0.56, 8.606667)], 'budget : 100.0, discount_factor : 0.8,\n        num_users : 150, num_docs : 142998,\n        slate_size : 30, epsilon : 0.1, seed : 0': [(0.6266666666666667, 12.626667)], 'budget : 100.0, discount_factor : 1.0,\n        num_users : 150, num_docs : 142998,\n        slate_size : 30, epsilon : 0.1, seed : 0': [(0.49333333333333335, 9.06)], 'budget : 150.0, discount_factor : 0.2,\n        num_users : 150, num_docs : 142998,\n        slate_size : 30, epsilon : 0.1, seed : 0': [(0.7466666666666667, 25.626667)], 'budget : 150.0, discount_factor : 0.4,\n        num_users : 150, num_docs : 142998,\n        slate_size : 30, epsilon : 0.1, seed : 0': [(0.7733333333333333, 26.413334)], 'budget : 150.0, discount_factor : 0.6,\n        num_users : 150, num_docs : 142998,\n        slate_size : 30, epsilon : 0.1, seed : 0': [(0.8466666666666667, 29.766666)], 'budget : 150.0, discount_factor : 0.8,\n        num_users : 150, num_docs : 142998,\n        slate_size : 30, epsilon : 0.1, seed : 0': [(0.7466666666666667, 26.993334)]}
+generating simulated data 
+behavior_policy play_rate, avg_impressions: (0.16666666666666666, 3.2933333)
+avg impressions, 3.2933333
+[02:32:08] ======== Monitor (0): HostSketchContainer ========
+[02:32:08] AllReduce: 0.000674s, 1 calls @ 674us
+
+[02:32:08] MakeCuts: 0.000784s, 1 calls @ 784us
+
+[02:32:08] DEBUG: /workspace/src/gbm/gbtree.cc:130: Using tree method: 0
+[02:32:08] ======== Monitor (0): Learner ========
+[02:32:08] Configure: 0.0005s, 1 calls @ 500us
+
+[02:32:08] EvalOneIter: 1.2e-05s, 1 calls @ 12us
+
+[02:32:08] GetGradient: 1.8e-05s, 1 calls @ 18us
+
+[02:32:08] PredictRaw: 2e-06s, 1 calls @ 2us
+
+[02:32:08] UpdateOneIter: 0.001845s, 1 calls @ 1845us
+
+[02:32:08] ======== Monitor (0): GBTree ========
+[02:32:08] BoostNewTrees: 0.001239s, 1 calls @ 1239us
+
+[02:32:08] CommitModel: 1e-06s, 1 calls @ 1us
+
+[02:32:08] ======== Monitor (0): HistUpdater ========
+[02:32:08] BuildHistogram: 0.000577s, 5 calls @ 577us
+
+[02:32:08] EvaluateSplits: 0.000264s, 6 calls @ 264us
+
+[02:32:08] InitData: 2.8e-05s, 1 calls @ 28us
+
+[02:32:08] InitRoot: 0.000215s, 1 calls @ 215us
+
+[02:32:08] LeafPartition: 0s, 1 calls @ 0us
+
+[02:32:08] UpdatePosition: 0.000123s, 6 calls @ 123us
+
+[02:32:08] UpdatePredictionCache: 1.3e-05s, 1 calls @ 13us
+
+[02:32:08] UpdateTree: 0.001197s, 1 calls @ 1197us
+
+[02:32:08] DEBUG: /workspace/src/gbm/gbtree.cc:130: Using tree method: 0
+generating user slates from qlearning policy...
+qlearning_model auc 0.72
+qlearning_policy play_rate, avg_impressions: (0.7466666666666667, 27.48)
+{'budget : 100.0, discount_factor : 0.2,\n        num_users : 150, num_docs : 142998,\n        slate_size : 30, epsilon : 0.1, seed : 0': [(0.26, 4.78)], 'budget : 100.0, discount_factor : 0.4,\n        num_users : 150, num_docs : 142998,\n        slate_size : 30, epsilon : 0.1, seed : 0': [(0.38, 9.126667)], 'budget : 100.0, discount_factor : 0.6,\n        num_users : 150, num_docs : 142998,\n        slate_size : 30, epsilon : 0.1, seed : 0': [(0.56, 8.606667)], 'budget : 100.0, discount_factor : 0.8,\n        num_users : 150, num_docs : 142998,\n        slate_size : 30, epsilon : 0.1, seed : 0': [(0.6266666666666667, 12.626667)], 'budget : 100.0, discount_factor : 1.0,\n        num_users : 150, num_docs : 142998,\n        slate_size : 30, epsilon : 0.1, seed : 0': [(0.49333333333333335, 9.06)], 'budget : 150.0, discount_factor : 0.2,\n        num_users : 150, num_docs : 142998,\n        slate_size : 30, epsilon : 0.1, seed : 0': [(0.7466666666666667, 25.626667)], 'budget : 150.0, discount_factor : 0.4,\n        num_users : 150, num_docs : 142998,\n        slate_size : 30, epsilon : 0.1, seed : 0': [(0.7733333333333333, 26.413334)], 'budget : 150.0, discount_factor : 0.6,\n        num_users : 150, num_docs : 142998,\n        slate_size : 30, epsilon : 0.1, seed : 0': [(0.8466666666666667, 29.766666)], 'budget : 150.0, discount_factor : 0.8,\n        num_users : 150, num_docs : 142998,\n        slate_size : 30, epsilon : 0.1, seed : 0': [(0.7466666666666667, 26.993334)], 'budget : 150.0, discount_factor : 1.0,\n        num_users : 150, num_docs : 142998,\n        slate_size : 30, epsilon : 0.1, seed : 0': [(0.7466666666666667, 27.48)]}
+generating simulated data 
+behavior_policy play_rate, avg_impressions: (0.23333333333333334, 4.5666666)
+avg impressions, 4.5666666
+[02:35:08] ======== Monitor (0): HostSketchContainer ========
+[02:35:08] AllReduce: 0.000592s, 1 calls @ 592us
+
+[02:35:08] MakeCuts: 0.000771s, 1 calls @ 771us
+
+[02:35:08] DEBUG: /workspace/src/gbm/gbtree.cc:130: Using tree method: 0
+[02:35:08] ======== Monitor (0): Learner ========
+[02:35:08] Configure: 0.001222s, 1 calls @ 1222us
+
+[02:35:08] EvalOneIter: 5.3e-05s, 1 calls @ 53us
+
+[02:35:08] GetGradient: 2.4e-05s, 1 calls @ 24us
+
+[02:35:08] PredictRaw: 3e-06s, 1 calls @ 3us
+
+[02:35:08] UpdateOneIter: 0.002754s, 1 calls @ 2754us
+
+[02:35:08] ======== Monitor (0): GBTree ========
+[02:35:08] BoostNewTrees: 0.001315s, 1 calls @ 1315us
+
+[02:35:08] CommitModel: 1e-06s, 1 calls @ 1us
+
+[02:35:08] ======== Monitor (0): HistUpdater ========
+[02:35:08] BuildHistogram: 0.000557s, 5 calls @ 557us
+
+[02:35:08] EvaluateSplits: 0.000257s, 6 calls @ 257us
+
+[02:35:08] InitData: 2e-05s, 1 calls @ 20us
+
+[02:35:08] InitRoot: 0.000222s, 1 calls @ 222us
+
+[02:35:08] LeafPartition: 0s, 1 calls @ 0us
+
+[02:35:08] UpdatePosition: 0.000143s, 6 calls @ 143us
+
+[02:35:08] UpdatePredictionCache: 1.6e-05s, 1 calls @ 16us
+
+[02:35:08] UpdateTree: 0.001222s, 1 calls @ 1222us
+
+[02:35:08] DEBUG: /workspace/src/gbm/gbtree.cc:130: Using tree method: 0
+generating user slates from qlearning policy...
+qlearning_model auc 0.5714285714285714
+qlearning_policy play_rate, avg_impressions: (0.7533333333333333, 4.846667)
+{'budget : 100.0, discount_factor : 0.2,\n        num_users : 150, num_docs : 142998,\n        slate_size : 30, epsilon : 0.1, seed : 0': [(0.26, 4.78)], 'budget : 100.0, discount_factor : 0.4,\n        num_users : 150, num_docs : 142998,\n        slate_size : 30, epsilon : 0.1, seed : 0': [(0.38, 9.126667)], 'budget : 100.0, discount_factor : 0.6,\n        num_users : 150, num_docs : 142998,\n        slate_size : 30, epsilon : 0.1, seed : 0': [(0.56, 8.606667)], 'budget : 100.0, discount_factor : 0.8,\n        num_users : 150, num_docs : 142998,\n        slate_size : 30, epsilon : 0.1, seed : 0': [(0.6266666666666667, 12.626667)], 'budget : 100.0, discount_factor : 1.0,\n        num_users : 150, num_docs : 142998,\n        slate_size : 30, epsilon : 0.1, seed : 0': [(0.49333333333333335, 9.06)], 'budget : 150.0, discount_factor : 0.2,\n        num_users : 150, num_docs : 142998,\n        slate_size : 30, epsilon : 0.1, seed : 0': [(0.7466666666666667, 25.626667)], 'budget : 150.0, discount_factor : 0.4,\n        num_users : 150, num_docs : 142998,\n        slate_size : 30, epsilon : 0.1, seed : 0': [(0.7733333333333333, 26.413334)], 'budget : 150.0, discount_factor : 0.6,\n        num_users : 150, num_docs : 142998,\n        slate_size : 30, epsilon : 0.1, seed : 0': [(0.8466666666666667, 29.766666)], 'budget : 150.0, discount_factor : 0.8,\n        num_users : 150, num_docs : 142998,\n        slate_size : 30, epsilon : 0.1, seed : 0': [(0.7466666666666667, 26.993334)], 'budget : 150.0, discount_factor : 1.0,\n        num_users : 150, num_docs : 142998,\n        slate_size : 30, epsilon : 0.1, seed : 0': [(0.7466666666666667, 27.48)], 'budget : 200.0, discount_factor : 0.2,\n        num_users : 150, num_docs : 142998,\n        slate_size : 30, epsilon : 0.1, seed : 0': [(0.7533333333333333, 4.846667)]}
+generating simulated data 
+behavior_policy play_rate, avg_impressions: (0.23333333333333334, 4.5666666)
+avg impressions, 4.5666666
+[02:38:40] ======== Monitor (0): HostSketchContainer ========
+[02:38:40] AllReduce: 0.00079s, 1 calls @ 790us
+
+[02:38:40] MakeCuts: 0.000897s, 1 calls @ 897us
+
+[02:38:40] DEBUG: /workspace/src/gbm/gbtree.cc:130: Using tree method: 0
+[02:38:40] ======== Monitor (0): Learner ========
+[02:38:40] Configure: 0.00062s, 1 calls @ 620us
+
+[02:38:40] EvalOneIter: 1.4e-05s, 1 calls @ 14us
+
+[02:38:40] GetGradient: 2.8e-05s, 1 calls @ 28us
+
+[02:38:40] PredictRaw: 4e-06s, 1 calls @ 4us
+
+[02:38:40] UpdateOneIter: 0.002941s, 1 calls @ 2941us
+
+[02:38:40] ======== Monitor (0): GBTree ========
+[02:38:40] BoostNewTrees: 0.002164s, 1 calls @ 2164us
+
+[02:38:40] CommitModel: 1e-06s, 1 calls @ 1us
+
+[02:38:40] ======== Monitor (0): HistUpdater ========
+[02:38:40] BuildHistogram: 0.001421s, 5 calls @ 1421us
+
+[02:38:40] EvaluateSplits: 0.000278s, 6 calls @ 278us
+
+[02:38:40] InitData: 2.1e-05s, 1 calls @ 21us
+
+[02:38:40] InitRoot: 0.000233s, 1 calls @ 233us
+
+[02:38:40] LeafPartition: 0s, 1 calls @ 0us
+
+[02:38:40] UpdatePosition: 0.00015s, 6 calls @ 150us
+
+[02:38:40] UpdatePredictionCache: 1.5e-05s, 1 calls @ 15us
+
+[02:38:40] UpdateTree: 0.00211s, 1 calls @ 2110us
+
+[02:38:40] DEBUG: /workspace/src/gbm/gbtree.cc:130: Using tree method: 0
+generating user slates from qlearning policy...
+qlearning_model auc 0.5714285714285714
+qlearning_policy play_rate, avg_impressions: (0.7666666666666667, 6.0933332)
+{'budget : 100.0, discount_factor : 0.2,\n        num_users : 150, num_docs : 142998,\n        slate_size : 30, epsilon : 0.1, seed : 0': [(0.26, 4.78)], 'budget : 100.0, discount_factor : 0.4,\n        num_users : 150, num_docs : 142998,\n        slate_size : 30, epsilon : 0.1, seed : 0': [(0.38, 9.126667)], 'budget : 100.0, discount_factor : 0.6,\n        num_users : 150, num_docs : 142998,\n        slate_size : 30, epsilon : 0.1, seed : 0': [(0.56, 8.606667)], 'budget : 100.0, discount_factor : 0.8,\n        num_users : 150, num_docs : 142998,\n        slate_size : 30, epsilon : 0.1, seed : 0': [(0.6266666666666667, 12.626667)], 'budget : 100.0, discount_factor : 1.0,\n        num_users : 150, num_docs : 142998,\n        slate_size : 30, epsilon : 0.1, seed : 0': [(0.49333333333333335, 9.06)], 'budget : 150.0, discount_factor : 0.2,\n        num_users : 150, num_docs : 142998,\n        slate_size : 30, epsilon : 0.1, seed : 0': [(0.7466666666666667, 25.626667)], 'budget : 150.0, discount_factor : 0.4,\n        num_users : 150, num_docs : 142998,\n        slate_size : 30, epsilon : 0.1, seed : 0': [(0.7733333333333333, 26.413334)], 'budget : 150.0, discount_factor : 0.6,\n        num_users : 150, num_docs : 142998,\n        slate_size : 30, epsilon : 0.1, seed : 0': [(0.8466666666666667, 29.766666)], 'budget : 150.0, discount_factor : 0.8,\n        num_users : 150, num_docs : 142998,\n        slate_size : 30, epsilon : 0.1, seed : 0': [(0.7466666666666667, 26.993334)], 'budget : 150.0, discount_factor : 1.0,\n        num_users : 150, num_docs : 142998,\n        slate_size : 30, epsilon : 0.1, seed : 0': [(0.7466666666666667, 27.48)], 'budget : 200.0, discount_factor : 0.2,\n        num_users : 150, num_docs : 142998,\n        slate_size : 30, epsilon : 0.1, seed : 0': [(0.7533333333333333, 4.846667)], 'budget : 200.0, discount_factor : 0.4,\n        num_users : 150, num_docs : 142998,\n        slate_size : 30, epsilon : 0.1, seed : 0': [(0.7666666666666667, 6.0933332)]}
+generating simulated data 
+behavior_policy play_rate, avg_impressions: (0.23333333333333334, 4.5666666)
+avg impressions, 4.5666666
+[02:42:02] ======== Monitor (0): HostSketchContainer ========
+[02:42:02] AllReduce: 0.000451s, 1 calls @ 451us
+
+[02:42:02] MakeCuts: 0.000602s, 1 calls @ 602us
+
+[02:42:02] DEBUG: /workspace/src/gbm/gbtree.cc:130: Using tree method: 0
+[02:42:02] ======== Monitor (0): Learner ========
+[02:42:02] Configure: 0.000589s, 1 calls @ 589us
+
+[02:42:02] EvalOneIter: 1.3e-05s, 1 calls @ 13us
+
+[02:42:02] GetGradient: 2.6e-05s, 1 calls @ 26us
+
+[02:42:02] PredictRaw: 3e-06s, 1 calls @ 3us
+
+[02:42:02] UpdateOneIter: 0.001839s, 1 calls @ 1839us
+
+[02:42:02] ======== Monitor (0): GBTree ========
+[02:42:02] BoostNewTrees: 0.001109s, 1 calls @ 1109us
+
+[02:42:02] CommitModel: 1e-06s, 1 calls @ 1us
+
+[02:42:02] ======== Monitor (0): HistUpdater ========
+[02:42:02] BuildHistogram: 0.000498s, 5 calls @ 498us
+
+[02:42:02] EvaluateSplits: 0.000258s, 6 calls @ 258us
+
+[02:42:02] InitData: 1.8e-05s, 1 calls @ 18us
+
+[02:42:02] InitRoot: 0.000152s, 1 calls @ 152us
+
+[02:42:02] LeafPartition: 0s, 1 calls @ 0us
+
+[02:42:02] UpdatePosition: 0.000127s, 6 calls @ 127us
+
+[02:42:02] UpdatePredictionCache: 1.3e-05s, 1 calls @ 13us
+
+[02:42:02] UpdateTree: 0.001061s, 1 calls @ 1061us
+
+[02:42:02] DEBUG: /workspace/src/gbm/gbtree.cc:130: Using tree method: 0
+generating user slates from qlearning policy...
+qlearning_model auc 0.5714285714285714
+qlearning_policy play_rate, avg_impressions: (0.9466666666666667, 17.226667)
+{'budget : 100.0, discount_factor : 0.2,\n        num_users : 150, num_docs : 142998,\n        slate_size : 30, epsilon : 0.1, seed : 0': [(0.26, 4.78)], 'budget : 100.0, discount_factor : 0.4,\n        num_users : 150, num_docs : 142998,\n        slate_size : 30, epsilon : 0.1, seed : 0': [(0.38, 9.126667)], 'budget : 100.0, discount_factor : 0.6,\n        num_users : 150, num_docs : 142998,\n        slate_size : 30, epsilon : 0.1, seed : 0': [(0.56, 8.606667)], 'budget : 100.0, discount_factor : 0.8,\n        num_users : 150, num_docs : 142998,\n        slate_size : 30, epsilon : 0.1, seed : 0': [(0.6266666666666667, 12.626667)], 'budget : 100.0, discount_factor : 1.0,\n        num_users : 150, num_docs : 142998,\n        slate_size : 30, epsilon : 0.1, seed : 0': [(0.49333333333333335, 9.06)], 'budget : 150.0, discount_factor : 0.2,\n        num_users : 150, num_docs : 142998,\n        slate_size : 30, epsilon : 0.1, seed : 0': [(0.7466666666666667, 25.626667)], 'budget : 150.0, discount_factor : 0.4,\n        num_users : 150, num_docs : 142998,\n        slate_size : 30, epsilon : 0.1, seed : 0': [(0.7733333333333333, 26.413334)], 'budget : 150.0, discount_factor : 0.6,\n        num_users : 150, num_docs : 142998,\n        slate_size : 30, epsilon : 0.1, seed : 0': [(0.8466666666666667, 29.766666)], 'budget : 150.0, discount_factor : 0.8,\n        num_users : 150, num_docs : 142998,\n        slate_size : 30, epsilon : 0.1, seed : 0': [(0.7466666666666667, 26.993334)], 'budget : 150.0, discount_factor : 1.0,\n        num_users : 150, num_docs : 142998,\n        slate_size : 30, epsilon : 0.1, seed : 0': [(0.7466666666666667, 27.48)], 'budget : 200.0, discount_factor : 0.2,\n        num_users : 150, num_docs : 142998,\n        slate_size : 30, epsilon : 0.1, seed : 0': [(0.7533333333333333, 4.846667)], 'budget : 200.0, discount_factor : 0.4,\n        num_users : 150, num_docs : 142998,\n        slate_size : 30, epsilon : 0.1, seed : 0': [(0.7666666666666667, 6.0933332)], 'budget : 200.0, discount_factor : 0.6,\n        num_users : 150, num_docs : 142998,\n        slate_size : 30, epsilon : 0.1, seed : 0': [(0.9466666666666667, 17.226667)]}
+generating simulated data 
+behavior_policy play_rate, avg_impressions: (0.23333333333333334, 4.5666666)
+avg impressions, 4.5666666
+[02:45:24] ======== Monitor (0): HostSketchContainer ========
+[02:45:24] AllReduce: 0.000454s, 1 calls @ 454us
+
+[02:45:24] MakeCuts: 0.00051s, 1 calls @ 510us
+
+[02:45:24] DEBUG: /workspace/src/gbm/gbtree.cc:130: Using tree method: 0
+[02:45:24] ======== Monitor (0): Learner ========
+[02:45:24] Configure: 0.000934s, 1 calls @ 934us
+
+[02:45:24] EvalOneIter: 1.3e-05s, 1 calls @ 13us
+
+[02:45:24] GetGradient: 2.4e-05s, 1 calls @ 24us
+
+[02:45:24] PredictRaw: 3e-06s, 1 calls @ 3us
+
+[02:45:24] UpdateOneIter: 0.002072s, 1 calls @ 2072us
+
+[02:45:24] ======== Monitor (0): GBTree ========
+[02:45:24] BoostNewTrees: 0.000989s, 1 calls @ 989us
+
+[02:45:24] CommitModel: 1e-06s, 1 calls @ 1us
+
+[02:45:24] ======== Monitor (0): HistUpdater ========
+[02:45:24] BuildHistogram: 0.000298s, 5 calls @ 298us
+
+[02:45:24] EvaluateSplits: 0.000278s, 6 calls @ 278us
+
+[02:45:24] InitData: 1.7e-05s, 1 calls @ 17us
+
+[02:45:24] InitRoot: 0.000186s, 1 calls @ 186us
+
+[02:45:24] LeafPartition: 0s, 1 calls @ 0us
+
+[02:45:24] UpdatePosition: 0.000128s, 6 calls @ 128us
+
+[02:45:24] UpdatePredictionCache: 1.4e-05s, 1 calls @ 14us
+
+[02:45:24] UpdateTree: 0.0009s, 1 calls @ 900us
+
+[02:45:24] DEBUG: /workspace/src/gbm/gbtree.cc:130: Using tree method: 0
+generating user slates from qlearning policy...
+qlearning_model auc 0.5918367346938775
+qlearning_policy play_rate, avg_impressions: (0.9466666666666667, 11.406667)
+{'budget : 100.0, discount_factor : 0.2,\n        num_users : 150, num_docs : 142998,\n        slate_size : 30, epsilon : 0.1, seed : 0': [(0.26, 4.78)], 'budget : 100.0, discount_factor : 0.4,\n        num_users : 150, num_docs : 142998,\n        slate_size : 30, epsilon : 0.1, seed : 0': [(0.38, 9.126667)], 'budget : 100.0, discount_factor : 0.6,\n        num_users : 150, num_docs : 142998,\n        slate_size : 30, epsilon : 0.1, seed : 0': [(0.56, 8.606667)], 'budget : 100.0, discount_factor : 0.8,\n        num_users : 150, num_docs : 142998,\n        slate_size : 30, epsilon : 0.1, seed : 0': [(0.6266666666666667, 12.626667)], 'budget : 100.0, discount_factor : 1.0,\n        num_users : 150, num_docs : 142998,\n        slate_size : 30, epsilon : 0.1, seed : 0': [(0.49333333333333335, 9.06)], 'budget : 150.0, discount_factor : 0.2,\n        num_users : 150, num_docs : 142998,\n        slate_size : 30, epsilon : 0.1, seed : 0': [(0.7466666666666667, 25.626667)], 'budget : 150.0, discount_factor : 0.4,\n        num_users : 150, num_docs : 142998,\n        slate_size : 30, epsilon : 0.1, seed : 0': [(0.7733333333333333, 26.413334)], 'budget : 150.0, discount_factor : 0.6,\n        num_users : 150, num_docs : 142998,\n        slate_size : 30, epsilon : 0.1, seed : 0': [(0.8466666666666667, 29.766666)], 'budget : 150.0, discount_factor : 0.8,\n        num_users : 150, num_docs : 142998,\n        slate_size : 30, epsilon : 0.1, seed : 0': [(0.7466666666666667, 26.993334)], 'budget : 150.0, discount_factor : 1.0,\n        num_users : 150, num_docs : 142998,\n        slate_size : 30, epsilon : 0.1, seed : 0': [(0.7466666666666667, 27.48)], 'budget : 200.0, discount_factor : 0.2,\n        num_users : 150, num_docs : 142998,\n        slate_size : 30, epsilon : 0.1, seed : 0': [(0.7533333333333333, 4.846667)], 'budget : 200.0, discount_factor : 0.4,\n        num_users : 150, num_docs : 142998,\n        slate_size : 30, epsilon : 0.1, seed : 0': [(0.7666666666666667, 6.0933332)], 'budget : 200.0, discount_factor : 0.6,\n        num_users : 150, num_docs : 142998,\n        slate_size : 30, epsilon : 0.1, seed : 0': [(0.9466666666666667, 17.226667)], 'budget : 200.0, discount_factor : 0.8,\n        num_users : 150, num_docs : 142998,\n        slate_size : 30, epsilon : 0.1, seed : 0': [(0.9466666666666667, 11.406667)]}
+generating simulated data 
+behavior_policy play_rate, avg_impressions: (0.23333333333333334, 4.5666666)
+avg impressions, 4.5666666
+[02:48:50] ======== Monitor (0): HostSketchContainer ========
+[02:48:50] AllReduce: 0.000461s, 1 calls @ 461us
+
+[02:48:50] MakeCuts: 0.000548s, 1 calls @ 548us
+
+[02:48:50] DEBUG: /workspace/src/gbm/gbtree.cc:130: Using tree method: 0
+[02:48:50] ======== Monitor (0): Learner ========
+[02:48:50] Configure: 0.000953s, 1 calls @ 953us
+
+[02:48:50] EvalOneIter: 5.6e-05s, 1 calls @ 56us
+
+[02:48:50] GetGradient: 2.6e-05s, 1 calls @ 26us
+
+[02:48:50] PredictRaw: 4e-06s, 1 calls @ 4us
+
+[02:48:50] UpdateOneIter: 0.002277s, 1 calls @ 2277us
+
+[02:48:50] ======== Monitor (0): GBTree ========
+[02:48:50] BoostNewTrees: 0.00117s, 1 calls @ 1170us
+
+[02:48:50] CommitModel: 1e-06s, 1 calls @ 1us
+
+[02:48:50] ======== Monitor (0): HistUpdater ========
+[02:48:50] BuildHistogram: 0.000483s, 5 calls @ 483us
+
+[02:48:50] EvaluateSplits: 0.000243s, 6 calls @ 243us
+
+[02:48:50] InitData: 1.7e-05s, 1 calls @ 17us
+
+[02:48:50] InitRoot: 0.000185s, 1 calls @ 185us
+
+[02:48:50] LeafPartition: 0s, 1 calls @ 0us
+
+[02:48:50] UpdatePosition: 0.000192s, 6 calls @ 192us
+
+[02:48:50] UpdatePredictionCache: 1.5e-05s, 1 calls @ 15us
+
+[02:48:50] UpdateTree: 0.001122s, 1 calls @ 1122us
+
+[02:48:50] DEBUG: /workspace/src/gbm/gbtree.cc:130: Using tree method: 0
+generating user slates from qlearning policy...
+qlearning_model auc 0.6326530612244898
+qlearning_policy play_rate, avg_impressions: (0.94, 11.326667)
+{'budget : 100.0, discount_factor : 0.2,\n        num_users : 150, num_docs : 142998,\n        slate_size : 30, epsilon : 0.1, seed : 0': [(0.26, 4.78)], 'budget : 100.0, discount_factor : 0.4,\n        num_users : 150, num_docs : 142998,\n        slate_size : 30, epsilon : 0.1, seed : 0': [(0.38, 9.126667)], 'budget : 100.0, discount_factor : 0.6,\n        num_users : 150, num_docs : 142998,\n        slate_size : 30, epsilon : 0.1, seed : 0': [(0.56, 8.606667)], 'budget : 100.0, discount_factor : 0.8,\n        num_users : 150, num_docs : 142998,\n        slate_size : 30, epsilon : 0.1, seed : 0': [(0.6266666666666667, 12.626667)], 'budget : 100.0, discount_factor : 1.0,\n        num_users : 150, num_docs : 142998,\n        slate_size : 30, epsilon : 0.1, seed : 0': [(0.49333333333333335, 9.06)], 'budget : 150.0, discount_factor : 0.2,\n        num_users : 150, num_docs : 142998,\n        slate_size : 30, epsilon : 0.1, seed : 0': [(0.7466666666666667, 25.626667)], 'budget : 150.0, discount_factor : 0.4,\n        num_users : 150, num_docs : 142998,\n        slate_size : 30, epsilon : 0.1, seed : 0': [(0.7733333333333333, 26.413334)], 'budget : 150.0, discount_factor : 0.6,\n        num_users : 150, num_docs : 142998,\n        slate_size : 30, epsilon : 0.1, seed : 0': [(0.8466666666666667, 29.766666)], 'budget : 150.0, discount_factor : 0.8,\n        num_users : 150, num_docs : 142998,\n        slate_size : 30, epsilon : 0.1, seed : 0': [(0.7466666666666667, 26.993334)], 'budget : 150.0, discount_factor : 1.0,\n        num_users : 150, num_docs : 142998,\n        slate_size : 30, epsilon : 0.1, seed : 0': [(0.7466666666666667, 27.48)], 'budget : 200.0, discount_factor : 0.2,\n        num_users : 150, num_docs : 142998,\n        slate_size : 30, epsilon : 0.1, seed : 0': [(0.7533333333333333, 4.846667)], 'budget : 200.0, discount_factor : 0.4,\n        num_users : 150, num_docs : 142998,\n        slate_size : 30, epsilon : 0.1, seed : 0': [(0.7666666666666667, 6.0933332)], 'budget : 200.0, discount_factor : 0.6,\n        num_users : 150, num_docs : 142998,\n        slate_size : 30, epsilon : 0.1, seed : 0': [(0.9466666666666667, 17.226667)], 'budget : 200.0, discount_factor : 0.8,\n        num_users : 150, num_docs : 142998,\n        slate_size : 30, epsilon : 0.1, seed : 0': [(0.9466666666666667, 11.406667)], 'budget : 200.0, discount_factor : 1.0,\n        num_users : 150, num_docs : 142998,\n        slate_size : 30, epsilon : 0.1, seed : 0': [(0.94, 11.326667)]}
+generating simulated data 
+behavior_policy play_rate, avg_impressions: (0.28, 5.74)
+avg impressions, 5.74
+[02:52:16] ======== Monitor (0): HostSketchContainer ========
+[02:52:16] AllReduce: 0.00058s, 1 calls @ 580us
+
+[02:52:16] MakeCuts: 0.000692s, 1 calls @ 692us
+
+[02:52:16] DEBUG: /workspace/src/gbm/gbtree.cc:130: Using tree method: 0
+[02:52:16] ======== Monitor (0): Learner ========
+[02:52:16] Configure: 0.000592s, 1 calls @ 592us
+
+[02:52:16] EvalOneIter: 1.4e-05s, 1 calls @ 14us
+
+[02:52:16] GetGradient: 3e-05s, 1 calls @ 30us
+
+[02:52:16] PredictRaw: 3e-06s, 1 calls @ 3us
+
+[02:52:16] UpdateOneIter: 0.002709s, 1 calls @ 2709us
+
+[02:52:16] ======== Monitor (0): GBTree ========
+[02:52:16] BoostNewTrees: 0.001936s, 1 calls @ 1936us
+
+[02:52:16] CommitModel: 1e-06s, 1 calls @ 1us
+
+[02:52:16] ======== Monitor (0): HistUpdater ========
+[02:52:16] BuildHistogram: 0.001134s, 5 calls @ 1134us
+
+[02:52:16] EvaluateSplits: 0.000319s, 6 calls @ 319us
+
+[02:52:16] InitData: 1.9e-05s, 1 calls @ 19us
+
+[02:52:16] InitRoot: 0.000251s, 1 calls @ 251us
+
+[02:52:16] LeafPartition: 0s, 1 calls @ 0us
+
+[02:52:16] UpdatePosition: 0.000145s, 6 calls @ 145us
+
+[02:52:16] UpdatePredictionCache: 1.7e-05s, 1 calls @ 17us
+
+[02:52:16] UpdateTree: 0.001884s, 1 calls @ 1884us
+
+[02:52:16] DEBUG: /workspace/src/gbm/gbtree.cc:130: Using tree method: 0
+generating user slates from qlearning policy...
+qlearning_model auc 0.654320987654321
+qlearning_policy play_rate, avg_impressions: (0.68, 28.42)
+{'budget : 100.0, discount_factor : 0.2,\n        num_users : 150, num_docs : 142998,\n        slate_size : 30, epsilon : 0.1, seed : 0': [(0.26, 4.78)], 'budget : 100.0, discount_factor : 0.4,\n        num_users : 150, num_docs : 142998,\n        slate_size : 30, epsilon : 0.1, seed : 0': [(0.38, 9.126667)], 'budget : 100.0, discount_factor : 0.6,\n        num_users : 150, num_docs : 142998,\n        slate_size : 30, epsilon : 0.1, seed : 0': [(0.56, 8.606667)], 'budget : 100.0, discount_factor : 0.8,\n        num_users : 150, num_docs : 142998,\n        slate_size : 30, epsilon : 0.1, seed : 0': [(0.6266666666666667, 12.626667)], 'budget : 100.0, discount_factor : 1.0,\n        num_users : 150, num_docs : 142998,\n        slate_size : 30, epsilon : 0.1, seed : 0': [(0.49333333333333335, 9.06)], 'budget : 150.0, discount_factor : 0.2,\n        num_users : 150, num_docs : 142998,\n        slate_size : 30, epsilon : 0.1, seed : 0': [(0.7466666666666667, 25.626667)], 'budget : 150.0, discount_factor : 0.4,\n        num_users : 150, num_docs : 142998,\n        slate_size : 30, epsilon : 0.1, seed : 0': [(0.7733333333333333, 26.413334)], 'budget : 150.0, discount_factor : 0.6,\n        num_users : 150, num_docs : 142998,\n        slate_size : 30, epsilon : 0.1, seed : 0': [(0.8466666666666667, 29.766666)], 'budget : 150.0, discount_factor : 0.8,\n        num_users : 150, num_docs : 142998,\n        slate_size : 30, epsilon : 0.1, seed : 0': [(0.7466666666666667, 26.993334)], 'budget : 150.0, discount_factor : 1.0,\n        num_users : 150, num_docs : 142998,\n        slate_size : 30, epsilon : 0.1, seed : 0': [(0.7466666666666667, 27.48)], 'budget : 200.0, discount_factor : 0.2,\n        num_users : 150, num_docs : 142998,\n        slate_size : 30, epsilon : 0.1, seed : 0': [(0.7533333333333333, 4.846667)], 'budget : 200.0, discount_factor : 0.4,\n        num_users : 150, num_docs : 142998,\n        slate_size : 30, epsilon : 0.1, seed : 0': [(0.7666666666666667, 6.0933332)], 'budget : 200.0, discount_factor : 0.6,\n        num_users : 150, num_docs : 142998,\n        slate_size : 30, epsilon : 0.1, seed : 0': [(0.9466666666666667, 17.226667)], 'budget : 200.0, discount_factor : 0.8,\n        num_users : 150, num_docs : 142998,\n        slate_size : 30, epsilon : 0.1, seed : 0': [(0.9466666666666667, 11.406667)], 'budget : 200.0, discount_factor : 1.0,\n        num_users : 150, num_docs : 142998,\n        slate_size : 30, epsilon : 0.1, seed : 0': [(0.94, 11.326667)], 'budget : 250.0, discount_factor : 0.2,\n        num_users : 150, num_docs : 142998,\n        slate_size : 30, epsilon : 0.1, seed : 0': [(0.68, 28.42)]}
+generating simulated data 
+behavior_policy play_rate, avg_impressions: (0.28, 5.74)
+avg impressions, 5.74
+[02:56:00] ======== Monitor (0): HostSketchContainer ========
+[02:56:00] AllReduce: 0.000587s, 1 calls @ 587us
+
+[02:56:00] MakeCuts: 0.000701s, 1 calls @ 701us
+
+[02:56:00] DEBUG: /workspace/src/gbm/gbtree.cc:130: Using tree method: 0
+[02:56:00] ======== Monitor (0): Learner ========
+[02:56:00] Configure: 0.000515s, 1 calls @ 515us
+
+[02:56:00] EvalOneIter: 1.1e-05s, 1 calls @ 11us
+
+[02:56:00] GetGradient: 2.4e-05s, 1 calls @ 24us
+
+[02:56:00] PredictRaw: 3e-06s, 1 calls @ 3us
+
+[02:56:00] UpdateOneIter: 0.001747s, 1 calls @ 1747us
+
+[02:56:00] ======== Monitor (0): GBTree ========
+[02:56:00] BoostNewTrees: 0.001104s, 1 calls @ 1104us
+
+[02:56:00] CommitModel: 0s, 1 calls @ 0us
+
+[02:56:00] ======== Monitor (0): HistUpdater ========
+[02:56:00] BuildHistogram: 0.000431s, 5 calls @ 431us
+
+[02:56:00] EvaluateSplits: 0.000245s, 6 calls @ 245us
+
+[02:56:00] InitData: 1.7e-05s, 1 calls @ 17us
+
+[02:56:00] InitRoot: 0.000223s, 1 calls @ 223us
+
+[02:56:00] LeafPartition: 0s, 1 calls @ 0us
+
+[02:56:00] UpdatePosition: 0.000118s, 6 calls @ 118us
+
+[02:56:00] UpdatePredictionCache: 1.5e-05s, 1 calls @ 15us
+
+[02:56:00] UpdateTree: 0.001056s, 1 calls @ 1056us
+
+[02:56:00] DEBUG: /workspace/src/gbm/gbtree.cc:130: Using tree method: 0
+generating user slates from qlearning policy...
+qlearning_model auc 0.691358024691358
+qlearning_policy play_rate, avg_impressions: (0.7266666666666667, 27.693333)
+{'budget : 100.0, discount_factor : 0.2,\n        num_users : 150, num_docs : 142998,\n        slate_size : 30, epsilon : 0.1, seed : 0': [(0.26, 4.78)], 'budget : 100.0, discount_factor : 0.4,\n        num_users : 150, num_docs : 142998,\n        slate_size : 30, epsilon : 0.1, seed : 0': [(0.38, 9.126667)], 'budget : 100.0, discount_factor : 0.6,\n        num_users : 150, num_docs : 142998,\n        slate_size : 30, epsilon : 0.1, seed : 0': [(0.56, 8.606667)], 'budget : 100.0, discount_factor : 0.8,\n        num_users : 150, num_docs : 142998,\n        slate_size : 30, epsilon : 0.1, seed : 0': [(0.6266666666666667, 12.626667)], 'budget : 100.0, discount_factor : 1.0,\n        num_users : 150, num_docs : 142998,\n        slate_size : 30, epsilon : 0.1, seed : 0': [(0.49333333333333335, 9.06)], 'budget : 150.0, discount_factor : 0.2,\n        num_users : 150, num_docs : 142998,\n        slate_size : 30, epsilon : 0.1, seed : 0': [(0.7466666666666667, 25.626667)], 'budget : 150.0, discount_factor : 0.4,\n        num_users : 150, num_docs : 142998,\n        slate_size : 30, epsilon : 0.1, seed : 0': [(0.7733333333333333, 26.413334)], 'budget : 150.0, discount_factor : 0.6,\n        num_users : 150, num_docs : 142998,\n        slate_size : 30, epsilon : 0.1, seed : 0': [(0.8466666666666667, 29.766666)], 'budget : 150.0, discount_factor : 0.8,\n        num_users : 150, num_docs : 142998,\n        slate_size : 30, epsilon : 0.1, seed : 0': [(0.7466666666666667, 26.993334)], 'budget : 150.0, discount_factor : 1.0,\n        num_users : 150, num_docs : 142998,\n        slate_size : 30, epsilon : 0.1, seed : 0': [(0.7466666666666667, 27.48)], 'budget : 200.0, discount_factor : 0.2,\n        num_users : 150, num_docs : 142998,\n        slate_size : 30, epsilon : 0.1, seed : 0': [(0.7533333333333333, 4.846667)], 'budget : 200.0, discount_factor : 0.4,\n        num_users : 150, num_docs : 142998,\n        slate_size : 30, epsilon : 0.1, seed : 0': [(0.7666666666666667, 6.0933332)], 'budget : 200.0, discount_factor : 0.6,\n        num_users : 150, num_docs : 142998,\n        slate_size : 30, epsilon : 0.1, seed : 0': [(0.9466666666666667, 17.226667)], 'budget : 200.0, discount_factor : 0.8,\n        num_users : 150, num_docs : 142998,\n        slate_size : 30, epsilon : 0.1, seed : 0': [(0.9466666666666667, 11.406667)], 'budget : 200.0, discount_factor : 1.0,\n        num_users : 150, num_docs : 142998,\n        slate_size : 30, epsilon : 0.1, seed : 0': [(0.94, 11.326667)], 'budget : 250.0, discount_factor : 0.2,\n        num_users : 150, num_docs : 142998,\n        slate_size : 30, epsilon : 0.1, seed : 0': [(0.68, 28.42)], 'budget : 250.0, discount_factor : 0.4,\n        num_users : 150, num_docs : 142998,\n        slate_size : 30, epsilon : 0.1, seed : 0': [(0.7266666666666667, 27.693333)]}
+generating simulated data 
+behavior_policy play_rate, avg_impressions: (0.28, 5.74)
+avg impressions, 5.74
+[02:59:43] ======== Monitor (0): HostSketchContainer ========
+[02:59:43] AllReduce: 0.000883s, 1 calls @ 883us
+
+[02:59:43] MakeCuts: 0.00103s, 1 calls @ 1030us
+
+[02:59:43] DEBUG: /workspace/src/gbm/gbtree.cc:130: Using tree method: 0
+[02:59:43] ======== Monitor (0): Learner ========
+[02:59:43] Configure: 0.000481s, 1 calls @ 481us
+
+[02:59:43] EvalOneIter: 1.2e-05s, 1 calls @ 12us
+
+[02:59:43] GetGradient: 2.5e-05s, 1 calls @ 25us
+
+[02:59:43] PredictRaw: 3e-06s, 1 calls @ 3us
+
+[02:59:43] UpdateOneIter: 0.002072s, 1 calls @ 2072us
+
+[02:59:43] ======== Monitor (0): GBTree ========
+[02:59:43] BoostNewTrees: 0.001456s, 1 calls @ 1456us
+
+[02:59:43] CommitModel: 1e-06s, 1 calls @ 1us
+
+[02:59:43] ======== Monitor (0): HistUpdater ========
+[02:59:43] BuildHistogram: 0.000745s, 5 calls @ 745us
+
+[02:59:43] EvaluateSplits: 0.000255s, 6 calls @ 255us
+
+[02:59:43] InitData: 2.4e-05s, 1 calls @ 24us
+
+[02:59:43] InitRoot: 0.00026s, 1 calls @ 260us
+
+[02:59:43] LeafPartition: 0s, 1 calls @ 0us
+
+[02:59:43] UpdatePosition: 0.00012s, 6 calls @ 120us
+
+[02:59:43] UpdatePredictionCache: 1.3e-05s, 1 calls @ 13us
+
+[02:59:43] UpdateTree: 0.001413s, 1 calls @ 1413us
+
+[02:59:43] DEBUG: /workspace/src/gbm/gbtree.cc:130: Using tree method: 0
+generating user slates from qlearning policy...
+qlearning_model auc 0.7283950617283951
+qlearning_policy play_rate, avg_impressions: (0.7333333333333333, 27.5)
+{'budget : 100.0, discount_factor : 0.2,\n        num_users : 150, num_docs : 142998,\n        slate_size : 30, epsilon : 0.1, seed : 0': [(0.26, 4.78)], 'budget : 100.0, discount_factor : 0.4,\n        num_users : 150, num_docs : 142998,\n        slate_size : 30, epsilon : 0.1, seed : 0': [(0.38, 9.126667)], 'budget : 100.0, discount_factor : 0.6,\n        num_users : 150, num_docs : 142998,\n        slate_size : 30, epsilon : 0.1, seed : 0': [(0.56, 8.606667)], 'budget : 100.0, discount_factor : 0.8,\n        num_users : 150, num_docs : 142998,\n        slate_size : 30, epsilon : 0.1, seed : 0': [(0.6266666666666667, 12.626667)], 'budget : 100.0, discount_factor : 1.0,\n        num_users : 150, num_docs : 142998,\n        slate_size : 30, epsilon : 0.1, seed : 0': [(0.49333333333333335, 9.06)], 'budget : 150.0, discount_factor : 0.2,\n        num_users : 150, num_docs : 142998,\n        slate_size : 30, epsilon : 0.1, seed : 0': [(0.7466666666666667, 25.626667)], 'budget : 150.0, discount_factor : 0.4,\n        num_users : 150, num_docs : 142998,\n        slate_size : 30, epsilon : 0.1, seed : 0': [(0.7733333333333333, 26.413334)], 'budget : 150.0, discount_factor : 0.6,\n        num_users : 150, num_docs : 142998,\n        slate_size : 30, epsilon : 0.1, seed : 0': [(0.8466666666666667, 29.766666)], 'budget : 150.0, discount_factor : 0.8,\n        num_users : 150, num_docs : 142998,\n        slate_size : 30, epsilon : 0.1, seed : 0': [(0.7466666666666667, 26.993334)], 'budget : 150.0, discount_factor : 1.0,\n        num_users : 150, num_docs : 142998,\n        slate_size : 30, epsilon : 0.1, seed : 0': [(0.7466666666666667, 27.48)], 'budget : 200.0, discount_factor : 0.2,\n        num_users : 150, num_docs : 142998,\n        slate_size : 30, epsilon : 0.1, seed : 0': [(0.7533333333333333, 4.846667)], 'budget : 200.0, discount_factor : 0.4,\n        num_users : 150, num_docs : 142998,\n        slate_size : 30, epsilon : 0.1, seed : 0': [(0.7666666666666667, 6.0933332)], 'budget : 200.0, discount_factor : 0.6,\n        num_users : 150, num_docs : 142998,\n        slate_size : 30, epsilon : 0.1, seed : 0': [(0.9466666666666667, 17.226667)], 'budget : 200.0, discount_factor : 0.8,\n        num_users : 150, num_docs : 142998,\n        slate_size : 30, epsilon : 0.1, seed : 0': [(0.9466666666666667, 11.406667)], 'budget : 200.0, discount_factor : 1.0,\n        num_users : 150, num_docs : 142998,\n        slate_size : 30, epsilon : 0.1, seed : 0': [(0.94, 11.326667)], 'budget : 250.0, discount_factor : 0.2,\n        num_users : 150, num_docs : 142998,\n        slate_size : 30, epsilon : 0.1, seed : 0': [(0.68, 28.42)], 'budget : 250.0, discount_factor : 0.4,\n        num_users : 150, num_docs : 142998,\n        slate_size : 30, epsilon : 0.1, seed : 0': [(0.7266666666666667, 27.693333)], 'budget : 250.0, discount_factor : 0.6,\n        num_users : 150, num_docs : 142998,\n        slate_size : 30, epsilon : 0.1, seed : 0': [(0.7333333333333333, 27.5)]}
+generating simulated data 
+behavior_policy play_rate, avg_impressions: (0.28, 5.74)
+avg impressions, 5.74
+[03:03:30] ======== Monitor (0): HostSketchContainer ========
+[03:03:30] AllReduce: 0.001307s, 1 calls @ 1307us
+
+[03:03:30] MakeCuts: 0.001531s, 1 calls @ 1531us
+
+[03:03:30] DEBUG: /workspace/src/gbm/gbtree.cc:130: Using tree method: 0
+[03:03:30] ======== Monitor (0): Learner ========
+[03:03:30] Configure: 0.000811s, 1 calls @ 811us
+
+[03:03:30] EvalOneIter: 1.3e-05s, 1 calls @ 13us
+
+[03:03:30] GetGradient: 3.1e-05s, 1 calls @ 31us
+
+[03:03:30] PredictRaw: 3e-06s, 1 calls @ 3us
+
+[03:03:30] UpdateOneIter: 0.004606s, 1 calls @ 4606us
+
+[03:03:30] ======== Monitor (0): GBTree ========
+[03:03:30] BoostNewTrees: 0.003631s, 1 calls @ 3631us
+
+[03:03:30] CommitModel: 1e-06s, 1 calls @ 1us
+
+[03:03:30] ======== Monitor (0): HistUpdater ========
+[03:03:30] BuildHistogram: 0.002618s, 5 calls @ 2618us
+
+[03:03:30] EvaluateSplits: 0.000492s, 6 calls @ 492us
+
+[03:03:30] InitData: 2e-05s, 1 calls @ 20us
+
+[03:03:30] InitRoot: 0.000251s, 1 calls @ 251us
+
+[03:03:30] LeafPartition: 0s, 1 calls @ 0us
+
+[03:03:30] UpdatePosition: 0.000149s, 6 calls @ 149us
+
+[03:03:30] UpdatePredictionCache: 1.7e-05s, 1 calls @ 17us
+
+[03:03:30] UpdateTree: 0.00356s, 1 calls @ 3560us
+
+[03:03:30] DEBUG: /workspace/src/gbm/gbtree.cc:130: Using tree method: 0
+generating user slates from qlearning policy...
+qlearning_model auc 0.7530864197530864
+qlearning_policy play_rate, avg_impressions: (0.7066666666666667, 28.466667)
+{'budget : 100.0, discount_factor : 0.2,\n        num_users : 150, num_docs : 142998,\n        slate_size : 30, epsilon : 0.1, seed : 0': [(0.26, 4.78)], 'budget : 100.0, discount_factor : 0.4,\n        num_users : 150, num_docs : 142998,\n        slate_size : 30, epsilon : 0.1, seed : 0': [(0.38, 9.126667)], 'budget : 100.0, discount_factor : 0.6,\n        num_users : 150, num_docs : 142998,\n        slate_size : 30, epsilon : 0.1, seed : 0': [(0.56, 8.606667)], 'budget : 100.0, discount_factor : 0.8,\n        num_users : 150, num_docs : 142998,\n        slate_size : 30, epsilon : 0.1, seed : 0': [(0.6266666666666667, 12.626667)], 'budget : 100.0, discount_factor : 1.0,\n        num_users : 150, num_docs : 142998,\n        slate_size : 30, epsilon : 0.1, seed : 0': [(0.49333333333333335, 9.06)], 'budget : 150.0, discount_factor : 0.2,\n        num_users : 150, num_docs : 142998,\n        slate_size : 30, epsilon : 0.1, seed : 0': [(0.7466666666666667, 25.626667)], 'budget : 150.0, discount_factor : 0.4,\n        num_users : 150, num_docs : 142998,\n        slate_size : 30, epsilon : 0.1, seed : 0': [(0.7733333333333333, 26.413334)], 'budget : 150.0, discount_factor : 0.6,\n        num_users : 150, num_docs : 142998,\n        slate_size : 30, epsilon : 0.1, seed : 0': [(0.8466666666666667, 29.766666)], 'budget : 150.0, discount_factor : 0.8,\n        num_users : 150, num_docs : 142998,\n        slate_size : 30, epsilon : 0.1, seed : 0': [(0.7466666666666667, 26.993334)], 'budget : 150.0, discount_factor : 1.0,\n        num_users : 150, num_docs : 142998,\n        slate_size : 30, epsilon : 0.1, seed : 0': [(0.7466666666666667, 27.48)], 'budget : 200.0, discount_factor : 0.2,\n        num_users : 150, num_docs : 142998,\n        slate_size : 30, epsilon : 0.1, seed : 0': [(0.7533333333333333, 4.846667)], 'budget : 200.0, discount_factor : 0.4,\n        num_users : 150, num_docs : 142998,\n        slate_size : 30, epsilon : 0.1, seed : 0': [(0.7666666666666667, 6.0933332)], 'budget : 200.0, discount_factor : 0.6,\n        num_users : 150, num_docs : 142998,\n        slate_size : 30, epsilon : 0.1, seed : 0': [(0.9466666666666667, 17.226667)], 'budget : 200.0, discount_factor : 0.8,\n        num_users : 150, num_docs : 142998,\n        slate_size : 30, epsilon : 0.1, seed : 0': [(0.9466666666666667, 11.406667)], 'budget : 200.0, discount_factor : 1.0,\n        num_users : 150, num_docs : 142998,\n        slate_size : 30, epsilon : 0.1, seed : 0': [(0.94, 11.326667)], 'budget : 250.0, discount_factor : 0.2,\n        num_users : 150, num_docs : 142998,\n        slate_size : 30, epsilon : 0.1, seed : 0': [(0.68, 28.42)], 'budget : 250.0, discount_factor : 0.4,\n        num_users : 150, num_docs : 142998,\n        slate_size : 30, epsilon : 0.1, seed : 0': [(0.7266666666666667, 27.693333)], 'budget : 250.0, discount_factor : 0.6,\n        num_users : 150, num_docs : 142998,\n        slate_size : 30, epsilon : 0.1, seed : 0': [(0.7333333333333333, 27.5)], 'budget : 250.0, discount_factor : 0.8,\n        num_users : 150, num_docs : 142998,\n        slate_size : 30, epsilon : 0.1, seed : 0': [(0.7066666666666667, 28.466667)]}
+generating simulated data 
+behavior_policy play_rate, avg_impressions: (0.28, 5.74)
+avg impressions, 5.74
+[03:07:20] ======== Monitor (0): HostSketchContainer ========
+[03:07:20] AllReduce: 0.000492s, 1 calls @ 492us
+
+[03:07:20] MakeCuts: 0.000582s, 1 calls @ 582us
+
+[03:07:20] DEBUG: /workspace/src/gbm/gbtree.cc:130: Using tree method: 0
+[03:07:20] ======== Monitor (0): Learner ========
+[03:07:20] Configure: 0.000529s, 1 calls @ 529us
+
+[03:07:20] EvalOneIter: 1.1e-05s, 1 calls @ 11us
+
+[03:07:20] GetGradient: 2.5e-05s, 1 calls @ 25us
+
+[03:07:20] PredictRaw: 3e-06s, 1 calls @ 3us
+
+[03:07:20] UpdateOneIter: 0.001733s, 1 calls @ 1733us
+
+[03:07:20] ======== Monitor (0): GBTree ========
+[03:07:20] BoostNewTrees: 0.001059s, 1 calls @ 1059us
+
+[03:07:20] CommitModel: 1e-06s, 1 calls @ 1us
+
+[03:07:20] ======== Monitor (0): HistUpdater ========
+[03:07:20] BuildHistogram: 0.000486s, 5 calls @ 486us
+
+[03:07:20] EvaluateSplits: 0.000226s, 6 calls @ 226us
+
+[03:07:20] InitData: 2.4e-05s, 1 calls @ 24us
+
+[03:07:20] InitRoot: 0.000153s, 1 calls @ 153us
+
+[03:07:20] LeafPartition: 0s, 1 calls @ 0us
+
+[03:07:20] UpdatePosition: 0.000115s, 6 calls @ 115us
+
+[03:07:20] UpdatePredictionCache: 1.3e-05s, 1 calls @ 13us
+
+[03:07:20] UpdateTree: 0.001015s, 1 calls @ 1015us
+
+[03:07:20] DEBUG: /workspace/src/gbm/gbtree.cc:130: Using tree method: 0
+generating user slates from qlearning policy...
+qlearning_model auc 0.7407407407407407
+qlearning_policy play_rate, avg_impressions: (0.84, 29.893333)
+{'budget : 100.0, discount_factor : 0.2,\n        num_users : 150, num_docs : 142998,\n        slate_size : 30, epsilon : 0.1, seed : 0': [(0.26, 4.78)], 'budget : 100.0, discount_factor : 0.4,\n        num_users : 150, num_docs : 142998,\n        slate_size : 30, epsilon : 0.1, seed : 0': [(0.38, 9.126667)], 'budget : 100.0, discount_factor : 0.6,\n        num_users : 150, num_docs : 142998,\n        slate_size : 30, epsilon : 0.1, seed : 0': [(0.56, 8.606667)], 'budget : 100.0, discount_factor : 0.8,\n        num_users : 150, num_docs : 142998,\n        slate_size : 30, epsilon : 0.1, seed : 0': [(0.6266666666666667, 12.626667)], 'budget : 100.0, discount_factor : 1.0,\n        num_users : 150, num_docs : 142998,\n        slate_size : 30, epsilon : 0.1, seed : 0': [(0.49333333333333335, 9.06)], 'budget : 150.0, discount_factor : 0.2,\n        num_users : 150, num_docs : 142998,\n        slate_size : 30, epsilon : 0.1, seed : 0': [(0.7466666666666667, 25.626667)], 'budget : 150.0, discount_factor : 0.4,\n        num_users : 150, num_docs : 142998,\n        slate_size : 30, epsilon : 0.1, seed : 0': [(0.7733333333333333, 26.413334)], 'budget : 150.0, discount_factor : 0.6,\n        num_users : 150, num_docs : 142998,\n        slate_size : 30, epsilon : 0.1, seed : 0': [(0.8466666666666667, 29.766666)], 'budget : 150.0, discount_factor : 0.8,\n        num_users : 150, num_docs : 142998,\n        slate_size : 30, epsilon : 0.1, seed : 0': [(0.7466666666666667, 26.993334)], 'budget : 150.0, discount_factor : 1.0,\n        num_users : 150, num_docs : 142998,\n        slate_size : 30, epsilon : 0.1, seed : 0': [(0.7466666666666667, 27.48)], 'budget : 200.0, discount_factor : 0.2,\n        num_users : 150, num_docs : 142998,\n        slate_size : 30, epsilon : 0.1, seed : 0': [(0.7533333333333333, 4.846667)], 'budget : 200.0, discount_factor : 0.4,\n        num_users : 150, num_docs : 142998,\n        slate_size : 30, epsilon : 0.1, seed : 0': [(0.7666666666666667, 6.0933332)], 'budget : 200.0, discount_factor : 0.6,\n        num_users : 150, num_docs : 142998,\n        slate_size : 30, epsilon : 0.1, seed : 0': [(0.9466666666666667, 17.226667)], 'budget : 200.0, discount_factor : 0.8,\n        num_users : 150, num_docs : 142998,\n        slate_size : 30, epsilon : 0.1, seed : 0': [(0.9466666666666667, 11.406667)], 'budget : 200.0, discount_factor : 1.0,\n        num_users : 150, num_docs : 142998,\n        slate_size : 30, epsilon : 0.1, seed : 0': [(0.94, 11.326667)], 'budget : 250.0, discount_factor : 0.2,\n        num_users : 150, num_docs : 142998,\n        slate_size : 30, epsilon : 0.1, seed : 0': [(0.68, 28.42)], 'budget : 250.0, discount_factor : 0.4,\n        num_users : 150, num_docs : 142998,\n        slate_size : 30, epsilon : 0.1, seed : 0': [(0.7266666666666667, 27.693333)], 'budget : 250.0, discount_factor : 0.6,\n        num_users : 150, num_docs : 142998,\n        slate_size : 30, epsilon : 0.1, seed : 0': [(0.7333333333333333, 27.5)], 'budget : 250.0, discount_factor : 0.8,\n        num_users : 150, num_docs : 142998,\n        slate_size : 30, epsilon : 0.1, seed : 0': [(0.7066666666666667, 28.466667)], 'budget : 250.0, discount_factor : 1.0,\n        num_users : 150, num_docs : 142998,\n        slate_size : 30, epsilon : 0.1, seed : 0': [(0.84, 29.893333)]}
+generating simulated data 
+behavior_policy play_rate, avg_impressions: (0.30666666666666664, 6.96)
+avg impressions, 6.96
+[03:11:05] ======== Monitor (0): HostSketchContainer ========
+[03:11:05] AllReduce: 0.000753s, 1 calls @ 753us
+
+[03:11:05] MakeCuts: 0.000926s, 1 calls @ 926us
+
+[03:11:05] DEBUG: /workspace/src/gbm/gbtree.cc:130: Using tree method: 0
+[03:11:05] ======== Monitor (0): Learner ========
+[03:11:05] Configure: 0.000581s, 1 calls @ 581us
+
+[03:11:05] EvalOneIter: 1.3e-05s, 1 calls @ 13us
+
+[03:11:05] GetGradient: 3e-05s, 1 calls @ 30us
+
+[03:11:05] PredictRaw: 4e-06s, 1 calls @ 4us
+
+[03:11:05] UpdateOneIter: 0.002183s, 1 calls @ 2183us
+
+[03:11:05] ======== Monitor (0): GBTree ========
+[03:11:05] BoostNewTrees: 0.001454s, 1 calls @ 1454us
+
+[03:11:05] CommitModel: 1e-06s, 1 calls @ 1us
+
+[03:11:05] ======== Monitor (0): HistUpdater ========
+[03:11:05] BuildHistogram: 0.000519s, 5 calls @ 519us
+
+[03:11:05] EvaluateSplits: 0.000325s, 6 calls @ 325us
+
+[03:11:05] InitData: 2.1e-05s, 1 calls @ 21us
+
+[03:11:05] InitRoot: 0.000364s, 1 calls @ 364us
+
+[03:11:05] LeafPartition: 0s, 1 calls @ 0us
+
+[03:11:05] UpdatePosition: 0.000171s, 6 calls @ 171us
+
+[03:11:05] UpdatePredictionCache: 1.6e-05s, 1 calls @ 16us
+
+[03:11:05] UpdateTree: 0.001404s, 1 calls @ 1404us
+
+[03:11:05] DEBUG: /workspace/src/gbm/gbtree.cc:130: Using tree method: 0
+generating user slates from qlearning policy...
+qlearning_model auc 0.6299999999999999
+qlearning_policy play_rate, avg_impressions: (0.8866666666666667, 10.486667)
+{'budget : 100.0, discount_factor : 0.2,\n        num_users : 150, num_docs : 142998,\n        slate_size : 30, epsilon : 0.1, seed : 0': [(0.26, 4.78)], 'budget : 100.0, discount_factor : 0.4,\n        num_users : 150, num_docs : 142998,\n        slate_size : 30, epsilon : 0.1, seed : 0': [(0.38, 9.126667)], 'budget : 100.0, discount_factor : 0.6,\n        num_users : 150, num_docs : 142998,\n        slate_size : 30, epsilon : 0.1, seed : 0': [(0.56, 8.606667)], 'budget : 100.0, discount_factor : 0.8,\n        num_users : 150, num_docs : 142998,\n        slate_size : 30, epsilon : 0.1, seed : 0': [(0.6266666666666667, 12.626667)], 'budget : 100.0, discount_factor : 1.0,\n        num_users : 150, num_docs : 142998,\n        slate_size : 30, epsilon : 0.1, seed : 0': [(0.49333333333333335, 9.06)], 'budget : 150.0, discount_factor : 0.2,\n        num_users : 150, num_docs : 142998,\n        slate_size : 30, epsilon : 0.1, seed : 0': [(0.7466666666666667, 25.626667)], 'budget : 150.0, discount_factor : 0.4,\n        num_users : 150, num_docs : 142998,\n        slate_size : 30, epsilon : 0.1, seed : 0': [(0.7733333333333333, 26.413334)], 'budget : 150.0, discount_factor : 0.6,\n        num_users : 150, num_docs : 142998,\n        slate_size : 30, epsilon : 0.1, seed : 0': [(0.8466666666666667, 29.766666)], 'budget : 150.0, discount_factor : 0.8,\n        num_users : 150, num_docs : 142998,\n        slate_size : 30, epsilon : 0.1, seed : 0': [(0.7466666666666667, 26.993334)], 'budget : 150.0, discount_factor : 1.0,\n        num_users : 150, num_docs : 142998,\n        slate_size : 30, epsilon : 0.1, seed : 0': [(0.7466666666666667, 27.48)], 'budget : 200.0, discount_factor : 0.2,\n        num_users : 150, num_docs : 142998,\n        slate_size : 30, epsilon : 0.1, seed : 0': [(0.7533333333333333, 4.846667)], 'budget : 200.0, discount_factor : 0.4,\n        num_users : 150, num_docs : 142998,\n        slate_size : 30, epsilon : 0.1, seed : 0': [(0.7666666666666667, 6.0933332)], 'budget : 200.0, discount_factor : 0.6,\n        num_users : 150, num_docs : 142998,\n        slate_size : 30, epsilon : 0.1, seed : 0': [(0.9466666666666667, 17.226667)], 'budget : 200.0, discount_factor : 0.8,\n        num_users : 150, num_docs : 142998,\n        slate_size : 30, epsilon : 0.1, seed : 0': [(0.9466666666666667, 11.406667)], 'budget : 200.0, discount_factor : 1.0,\n        num_users : 150, num_docs : 142998,\n        slate_size : 30, epsilon : 0.1, seed : 0': [(0.94, 11.326667)], 'budget : 250.0, discount_factor : 0.2,\n        num_users : 150, num_docs : 142998,\n        slate_size : 30, epsilon : 0.1, seed : 0': [(0.68, 28.42)], 'budget : 250.0, discount_factor : 0.4,\n        num_users : 150, num_docs : 142998,\n        slate_size : 30, epsilon : 0.1, seed : 0': [(0.7266666666666667, 27.693333)], 'budget : 250.0, discount_factor : 0.6,\n        num_users : 150, num_docs : 142998,\n        slate_size : 30, epsilon : 0.1, seed : 0': [(0.7333333333333333, 27.5)], 'budget : 250.0, discount_factor : 0.8,\n        num_users : 150, num_docs : 142998,\n        slate_size : 30, epsilon : 0.1, seed : 0': [(0.7066666666666667, 28.466667)], 'budget : 250.0, discount_factor : 1.0,\n        num_users : 150, num_docs : 142998,\n        slate_size : 30, epsilon : 0.1, seed : 0': [(0.84, 29.893333)], 'budget : 300.0, discount_factor : 0.2,\n        num_users : 150, num_docs : 142998,\n        slate_size : 30, epsilon : 0.1, seed : 0': [(0.8866666666666667, 10.486667)]}
+generating simulated data 
+behavior_policy play_rate, avg_impressions: (0.30666666666666664, 6.96)
+avg impressions, 6.96
+[03:15:12] ======== Monitor (0): HostSketchContainer ========
+[03:15:12] AllReduce: 0.000891s, 1 calls @ 891us
+
+[03:15:12] MakeCuts: 0.001108s, 1 calls @ 1108us
+
+[03:15:12] DEBUG: /workspace/src/gbm/gbtree.cc:130: Using tree method: 0
+[03:15:12] ======== Monitor (0): Learner ========
+[03:15:12] Configure: 0.001055s, 1 calls @ 1055us
+
+[03:15:12] EvalOneIter: 1.7e-05s, 1 calls @ 17us
+
+[03:15:12] GetGradient: 3.4e-05s, 1 calls @ 34us
+
+[03:15:12] PredictRaw: 5e-06s, 1 calls @ 5us
+
+[03:15:12] UpdateOneIter: 0.004153s, 1 calls @ 4153us
+
+[03:15:12] ======== Monitor (0): GBTree ========
+[03:15:12] BoostNewTrees: 0.002843s, 1 calls @ 2843us
+
+[03:15:12] CommitModel: 2e-06s, 1 calls @ 2us
+
+[03:15:12] ======== Monitor (0): HistUpdater ========
+[03:15:12] BuildHistogram: 0.001725s, 5 calls @ 1725us
+
+[03:15:12] EvaluateSplits: 0.000428s, 6 calls @ 428us
+
+[03:15:12] InitData: 2.7e-05s, 1 calls @ 27us
+
+[03:15:12] InitRoot: 0.00027s, 1 calls @ 270us
+
+[03:15:12] LeafPartition: 0s, 1 calls @ 0us
+
+[03:15:12] UpdatePosition: 0.000227s, 6 calls @ 227us
+
+[03:15:12] UpdatePredictionCache: 2.2e-05s, 1 calls @ 22us
+
+[03:15:12] UpdateTree: 0.002746s, 1 calls @ 2746us
+
+[03:15:12] DEBUG: /workspace/src/gbm/gbtree.cc:130: Using tree method: 0
+generating user slates from qlearning policy...
+qlearning_model auc 0.62
+qlearning_policy play_rate, avg_impressions: (0.9, 11.44)
+{'budget : 100.0, discount_factor : 0.2,\n        num_users : 150, num_docs : 142998,\n        slate_size : 30, epsilon : 0.1, seed : 0': [(0.26, 4.78)], 'budget : 100.0, discount_factor : 0.4,\n        num_users : 150, num_docs : 142998,\n        slate_size : 30, epsilon : 0.1, seed : 0': [(0.38, 9.126667)], 'budget : 100.0, discount_factor : 0.6,\n        num_users : 150, num_docs : 142998,\n        slate_size : 30, epsilon : 0.1, seed : 0': [(0.56, 8.606667)], 'budget : 100.0, discount_factor : 0.8,\n        num_users : 150, num_docs : 142998,\n        slate_size : 30, epsilon : 0.1, seed : 0': [(0.6266666666666667, 12.626667)], 'budget : 100.0, discount_factor : 1.0,\n        num_users : 150, num_docs : 142998,\n        slate_size : 30, epsilon : 0.1, seed : 0': [(0.49333333333333335, 9.06)], 'budget : 150.0, discount_factor : 0.2,\n        num_users : 150, num_docs : 142998,\n        slate_size : 30, epsilon : 0.1, seed : 0': [(0.7466666666666667, 25.626667)], 'budget : 150.0, discount_factor : 0.4,\n        num_users : 150, num_docs : 142998,\n        slate_size : 30, epsilon : 0.1, seed : 0': [(0.7733333333333333, 26.413334)], 'budget : 150.0, discount_factor : 0.6,\n        num_users : 150, num_docs : 142998,\n        slate_size : 30, epsilon : 0.1, seed : 0': [(0.8466666666666667, 29.766666)], 'budget : 150.0, discount_factor : 0.8,\n        num_users : 150, num_docs : 142998,\n        slate_size : 30, epsilon : 0.1, seed : 0': [(0.7466666666666667, 26.993334)], 'budget : 150.0, discount_factor : 1.0,\n        num_users : 150, num_docs : 142998,\n        slate_size : 30, epsilon : 0.1, seed : 0': [(0.7466666666666667, 27.48)], 'budget : 200.0, discount_factor : 0.2,\n        num_users : 150, num_docs : 142998,\n        slate_size : 30, epsilon : 0.1, seed : 0': [(0.7533333333333333, 4.846667)], 'budget : 200.0, discount_factor : 0.4,\n        num_users : 150, num_docs : 142998,\n        slate_size : 30, epsilon : 0.1, seed : 0': [(0.7666666666666667, 6.0933332)], 'budget : 200.0, discount_factor : 0.6,\n        num_users : 150, num_docs : 142998,\n        slate_size : 30, epsilon : 0.1, seed : 0': [(0.9466666666666667, 17.226667)], 'budget : 200.0, discount_factor : 0.8,\n        num_users : 150, num_docs : 142998,\n        slate_size : 30, epsilon : 0.1, seed : 0': [(0.9466666666666667, 11.406667)], 'budget : 200.0, discount_factor : 1.0,\n        num_users : 150, num_docs : 142998,\n        slate_size : 30, epsilon : 0.1, seed : 0': [(0.94, 11.326667)], 'budget : 250.0, discount_factor : 0.2,\n        num_users : 150, num_docs : 142998,\n        slate_size : 30, epsilon : 0.1, seed : 0': [(0.68, 28.42)], 'budget : 250.0, discount_factor : 0.4,\n        num_users : 150, num_docs : 142998,\n        slate_size : 30, epsilon : 0.1, seed : 0': [(0.7266666666666667, 27.693333)], 'budget : 250.0, discount_factor : 0.6,\n        num_users : 150, num_docs : 142998,\n        slate_size : 30, epsilon : 0.1, seed : 0': [(0.7333333333333333, 27.5)], 'budget : 250.0, discount_factor : 0.8,\n        num_users : 150, num_docs : 142998,\n        slate_size : 30, epsilon : 0.1, seed : 0': [(0.7066666666666667, 28.466667)], 'budget : 250.0, discount_factor : 1.0,\n        num_users : 150, num_docs : 142998,\n        slate_size : 30, epsilon : 0.1, seed : 0': [(0.84, 29.893333)], 'budget : 300.0, discount_factor : 0.2,\n        num_users : 150, num_docs : 142998,\n        slate_size : 30, epsilon : 0.1, seed : 0': [(0.8866666666666667, 10.486667)], 'budget : 300.0, discount_factor : 0.4,\n        num_users : 150, num_docs : 142998,\n        slate_size : 30, epsilon : 0.1, seed : 0': [(0.9, 11.44)]}
+generating simulated data 
+behavior_policy play_rate, avg_impressions: (0.30666666666666664, 6.96)
+avg impressions, 6.96
+[03:19:17] ======== Monitor (0): HostSketchContainer ========
+[03:19:17] AllReduce: 0.001392s, 1 calls @ 1392us
+
+[03:19:17] MakeCuts: 0.001504s, 1 calls @ 1504us
+
+[03:19:17] DEBUG: /workspace/src/gbm/gbtree.cc:130: Using tree method: 0
+[03:19:17] ======== Monitor (0): Learner ========
+[03:19:17] Configure: 0.000519s, 1 calls @ 519us
+
+[03:19:17] EvalOneIter: 1.3e-05s, 1 calls @ 13us
+
+[03:19:17] GetGradient: 2.8e-05s, 1 calls @ 28us
+
+[03:19:17] PredictRaw: 3e-06s, 1 calls @ 3us
+
+[03:19:17] UpdateOneIter: 0.002376s, 1 calls @ 2376us
+
+[03:19:17] ======== Monitor (0): GBTree ========
+[03:19:17] BoostNewTrees: 0.001708s, 1 calls @ 1708us
+
+[03:19:17] CommitModel: 1e-06s, 1 calls @ 1us
+
+[03:19:17] ======== Monitor (0): HistUpdater ========
+[03:19:17] BuildHistogram: 0.000865s, 5 calls @ 865us
+
+[03:19:17] EvaluateSplits: 0.000326s, 6 calls @ 326us
+
+[03:19:17] InitData: 1.8e-05s, 1 calls @ 18us
+
+[03:19:17] InitRoot: 0.000266s, 1 calls @ 266us
+
+[03:19:17] LeafPartition: 0s, 1 calls @ 0us
+
+[03:19:17] UpdatePosition: 0.000169s, 6 calls @ 169us
+
+[03:19:17] UpdatePredictionCache: 1.7e-05s, 1 calls @ 17us
+
+[03:19:17] UpdateTree: 0.001657s, 1 calls @ 1657us
+
+[03:19:17] DEBUG: /workspace/src/gbm/gbtree.cc:130: Using tree method: 0
+generating user slates from qlearning policy...
+qlearning_model auc 0.5800000000000001
+qlearning_policy play_rate, avg_impressions: (0.9533333333333334, 14.28)
+{'budget : 100.0, discount_factor : 0.2,\n        num_users : 150, num_docs : 142998,\n        slate_size : 30, epsilon : 0.1, seed : 0': [(0.26, 4.78)], 'budget : 100.0, discount_factor : 0.4,\n        num_users : 150, num_docs : 142998,\n        slate_size : 30, epsilon : 0.1, seed : 0': [(0.38, 9.126667)], 'budget : 100.0, discount_factor : 0.6,\n        num_users : 150, num_docs : 142998,\n        slate_size : 30, epsilon : 0.1, seed : 0': [(0.56, 8.606667)], 'budget : 100.0, discount_factor : 0.8,\n        num_users : 150, num_docs : 142998,\n        slate_size : 30, epsilon : 0.1, seed : 0': [(0.6266666666666667, 12.626667)], 'budget : 100.0, discount_factor : 1.0,\n        num_users : 150, num_docs : 142998,\n        slate_size : 30, epsilon : 0.1, seed : 0': [(0.49333333333333335, 9.06)], 'budget : 150.0, discount_factor : 0.2,\n        num_users : 150, num_docs : 142998,\n        slate_size : 30, epsilon : 0.1, seed : 0': [(0.7466666666666667, 25.626667)], 'budget : 150.0, discount_factor : 0.4,\n        num_users : 150, num_docs : 142998,\n        slate_size : 30, epsilon : 0.1, seed : 0': [(0.7733333333333333, 26.413334)], 'budget : 150.0, discount_factor : 0.6,\n        num_users : 150, num_docs : 142998,\n        slate_size : 30, epsilon : 0.1, seed : 0': [(0.8466666666666667, 29.766666)], 'budget : 150.0, discount_factor : 0.8,\n        num_users : 150, num_docs : 142998,\n        slate_size : 30, epsilon : 0.1, seed : 0': [(0.7466666666666667, 26.993334)], 'budget : 150.0, discount_factor : 1.0,\n        num_users : 150, num_docs : 142998,\n        slate_size : 30, epsilon : 0.1, seed : 0': [(0.7466666666666667, 27.48)], 'budget : 200.0, discount_factor : 0.2,\n        num_users : 150, num_docs : 142998,\n        slate_size : 30, epsilon : 0.1, seed : 0': [(0.7533333333333333, 4.846667)], 'budget : 200.0, discount_factor : 0.4,\n        num_users : 150, num_docs : 142998,\n        slate_size : 30, epsilon : 0.1, seed : 0': [(0.7666666666666667, 6.0933332)], 'budget : 200.0, discount_factor : 0.6,\n        num_users : 150, num_docs : 142998,\n        slate_size : 30, epsilon : 0.1, seed : 0': [(0.9466666666666667, 17.226667)], 'budget : 200.0, discount_factor : 0.8,\n        num_users : 150, num_docs : 142998,\n        slate_size : 30, epsilon : 0.1, seed : 0': [(0.9466666666666667, 11.406667)], 'budget : 200.0, discount_factor : 1.0,\n        num_users : 150, num_docs : 142998,\n        slate_size : 30, epsilon : 0.1, seed : 0': [(0.94, 11.326667)], 'budget : 250.0, discount_factor : 0.2,\n        num_users : 150, num_docs : 142998,\n        slate_size : 30, epsilon : 0.1, seed : 0': [(0.68, 28.42)], 'budget : 250.0, discount_factor : 0.4,\n        num_users : 150, num_docs : 142998,\n        slate_size : 30, epsilon : 0.1, seed : 0': [(0.7266666666666667, 27.693333)], 'budget : 250.0, discount_factor : 0.6,\n        num_users : 150, num_docs : 142998,\n        slate_size : 30, epsilon : 0.1, seed : 0': [(0.7333333333333333, 27.5)], 'budget : 250.0, discount_factor : 0.8,\n        num_users : 150, num_docs : 142998,\n        slate_size : 30, epsilon : 0.1, seed : 0': [(0.7066666666666667, 28.466667)], 'budget : 250.0, discount_factor : 1.0,\n        num_users : 150, num_docs : 142998,\n        slate_size : 30, epsilon : 0.1, seed : 0': [(0.84, 29.893333)], 'budget : 300.0, discount_factor : 0.2,\n        num_users : 150, num_docs : 142998,\n        slate_size : 30, epsilon : 0.1, seed : 0': [(0.8866666666666667, 10.486667)], 'budget : 300.0, discount_factor : 0.4,\n        num_users : 150, num_docs : 142998,\n        slate_size : 30, epsilon : 0.1, seed : 0': [(0.9, 11.44)], 'budget : 300.0, discount_factor : 0.6,\n        num_users : 150, num_docs : 142998,\n        slate_size : 30, epsilon : 0.1, seed : 0': [(0.9533333333333334, 14.28)]}
+generating simulated data 
+behavior_policy play_rate, avg_impressions: (0.30666666666666664, 6.96)
+avg impressions, 6.96
+[03:23:18] ======== Monitor (0): HostSketchContainer ========
+[03:23:18] AllReduce: 0.00075s, 1 calls @ 750us
+
+[03:23:18] MakeCuts: 0.00083s, 1 calls @ 830us
+
+[03:23:18] DEBUG: /workspace/src/gbm/gbtree.cc:130: Using tree method: 0
+[03:23:18] ======== Monitor (0): Learner ========
+[03:23:18] Configure: 0.001033s, 1 calls @ 1033us
+
+[03:23:18] EvalOneIter: 5.6e-05s, 1 calls @ 56us
+
+[03:23:18] GetGradient: 2.8e-05s, 1 calls @ 28us
+
+[03:23:18] PredictRaw: 3e-06s, 1 calls @ 3us
+
+[03:23:18] UpdateOneIter: 0.004006s, 1 calls @ 4006us
+
+[03:23:18] ======== Monitor (0): GBTree ========
+[03:23:18] BoostNewTrees: 0.002797s, 1 calls @ 2797us
+
+[03:23:18] CommitModel: 0s, 1 calls @ 0us
+
+[03:23:18] ======== Monitor (0): HistUpdater ========
+[03:23:18] BuildHistogram: 0.001775s, 5 calls @ 1775us
+
+[03:23:18] EvaluateSplits: 0.000316s, 6 calls @ 316us
+
+[03:23:18] InitData: 2.5e-05s, 1 calls @ 25us
+
+[03:23:18] InitRoot: 0.000322s, 1 calls @ 322us
+
+[03:23:18] LeafPartition: 0s, 1 calls @ 0us
+
+[03:23:18] UpdatePosition: 0.000238s, 6 calls @ 238us
+
+[03:23:18] UpdatePredictionCache: 1.8e-05s, 1 calls @ 18us
+
+[03:23:18] UpdateTree: 0.002717s, 1 calls @ 2717us
+
+[03:23:18] DEBUG: /workspace/src/gbm/gbtree.cc:130: Using tree method: 0
+generating user slates from qlearning policy...
+qlearning_model auc 0.56
+qlearning_policy play_rate, avg_impressions: (0.9666666666666667, 22.313334)
+{'budget : 100.0, discount_factor : 0.2,\n        num_users : 150, num_docs : 142998,\n        slate_size : 30, epsilon : 0.1, seed : 0': [(0.26, 4.78)], 'budget : 100.0, discount_factor : 0.4,\n        num_users : 150, num_docs : 142998,\n        slate_size : 30, epsilon : 0.1, seed : 0': [(0.38, 9.126667)], 'budget : 100.0, discount_factor : 0.6,\n        num_users : 150, num_docs : 142998,\n        slate_size : 30, epsilon : 0.1, seed : 0': [(0.56, 8.606667)], 'budget : 100.0, discount_factor : 0.8,\n        num_users : 150, num_docs : 142998,\n        slate_size : 30, epsilon : 0.1, seed : 0': [(0.6266666666666667, 12.626667)], 'budget : 100.0, discount_factor : 1.0,\n        num_users : 150, num_docs : 142998,\n        slate_size : 30, epsilon : 0.1, seed : 0': [(0.49333333333333335, 9.06)], 'budget : 150.0, discount_factor : 0.2,\n        num_users : 150, num_docs : 142998,\n        slate_size : 30, epsilon : 0.1, seed : 0': [(0.7466666666666667, 25.626667)], 'budget : 150.0, discount_factor : 0.4,\n        num_users : 150, num_docs : 142998,\n        slate_size : 30, epsilon : 0.1, seed : 0': [(0.7733333333333333, 26.413334)], 'budget : 150.0, discount_factor : 0.6,\n        num_users : 150, num_docs : 142998,\n        slate_size : 30, epsilon : 0.1, seed : 0': [(0.8466666666666667, 29.766666)], 'budget : 150.0, discount_factor : 0.8,\n        num_users : 150, num_docs : 142998,\n        slate_size : 30, epsilon : 0.1, seed : 0': [(0.7466666666666667, 26.993334)], 'budget : 150.0, discount_factor : 1.0,\n        num_users : 150, num_docs : 142998,\n        slate_size : 30, epsilon : 0.1, seed : 0': [(0.7466666666666667, 27.48)], 'budget : 200.0, discount_factor : 0.2,\n        num_users : 150, num_docs : 142998,\n        slate_size : 30, epsilon : 0.1, seed : 0': [(0.7533333333333333, 4.846667)], 'budget : 200.0, discount_factor : 0.4,\n        num_users : 150, num_docs : 142998,\n        slate_size : 30, epsilon : 0.1, seed : 0': [(0.7666666666666667, 6.0933332)], 'budget : 200.0, discount_factor : 0.6,\n        num_users : 150, num_docs : 142998,\n        slate_size : 30, epsilon : 0.1, seed : 0': [(0.9466666666666667, 17.226667)], 'budget : 200.0, discount_factor : 0.8,\n        num_users : 150, num_docs : 142998,\n        slate_size : 30, epsilon : 0.1, seed : 0': [(0.9466666666666667, 11.406667)], 'budget : 200.0, discount_factor : 1.0,\n        num_users : 150, num_docs : 142998,\n        slate_size : 30, epsilon : 0.1, seed : 0': [(0.94, 11.326667)], 'budget : 250.0, discount_factor : 0.2,\n        num_users : 150, num_docs : 142998,\n        slate_size : 30, epsilon : 0.1, seed : 0': [(0.68, 28.42)], 'budget : 250.0, discount_factor : 0.4,\n        num_users : 150, num_docs : 142998,\n        slate_size : 30, epsilon : 0.1, seed : 0': [(0.7266666666666667, 27.693333)], 'budget : 250.0, discount_factor : 0.6,\n        num_users : 150, num_docs : 142998,\n        slate_size : 30, epsilon : 0.1, seed : 0': [(0.7333333333333333, 27.5)], 'budget : 250.0, discount_factor : 0.8,\n        num_users : 150, num_docs : 142998,\n        slate_size : 30, epsilon : 0.1, seed : 0': [(0.7066666666666667, 28.466667)], 'budget : 250.0, discount_factor : 1.0,\n        num_users : 150, num_docs : 142998,\n        slate_size : 30, epsilon : 0.1, seed : 0': [(0.84, 29.893333)], 'budget : 300.0, discount_factor : 0.2,\n        num_users : 150, num_docs : 142998,\n        slate_size : 30, epsilon : 0.1, seed : 0': [(0.8866666666666667, 10.486667)], 'budget : 300.0, discount_factor : 0.4,\n        num_users : 150, num_docs : 142998,\n        slate_size : 30, epsilon : 0.1, seed : 0': [(0.9, 11.44)], 'budget : 300.0, discount_factor : 0.6,\n        num_users : 150, num_docs : 142998,\n        slate_size : 30, epsilon : 0.1, seed : 0': [(0.9533333333333334, 14.28)], 'budget : 300.0, discount_factor : 0.8,\n        num_users : 150, num_docs : 142998,\n        slate_size : 30, epsilon : 0.1, seed : 0': [(0.9666666666666667, 22.313334)]}
+generating simulated data 
+behavior_policy play_rate, avg_impressions: (0.30666666666666664, 6.96)
+avg impressions, 6.96
+[03:27:15] ======== Monitor (0): HostSketchContainer ========
+[03:27:15] AllReduce: 0.001571s, 1 calls @ 1571us
+
+[03:27:15] MakeCuts: 0.001716s, 1 calls @ 1716us
+
+[03:27:15] DEBUG: /workspace/src/gbm/gbtree.cc:130: Using tree method: 0
+[03:27:15] ======== Monitor (0): Learner ========
+[03:27:15] Configure: 0.000694s, 1 calls @ 694us
+
+[03:27:15] EvalOneIter: 1.3e-05s, 1 calls @ 13us
+
+[03:27:15] GetGradient: 2.5e-05s, 1 calls @ 25us
+
+[03:27:15] PredictRaw: 3e-06s, 1 calls @ 3us
+
+[03:27:15] UpdateOneIter: 0.002363s, 1 calls @ 2363us
+
+[03:27:15] ======== Monitor (0): GBTree ========
+[03:27:15] BoostNewTrees: 0.001517s, 1 calls @ 1517us
+
+[03:27:15] CommitModel: 1e-06s, 1 calls @ 1us
+
+[03:27:15] ======== Monitor (0): HistUpdater ========
+[03:27:15] BuildHistogram: 0.000709s, 5 calls @ 709us
+
+[03:27:15] EvaluateSplits: 0.000268s, 6 calls @ 268us
+
+[03:27:15] InitData: 1.8e-05s, 1 calls @ 18us
+
+[03:27:15] InitRoot: 0.000275s, 1 calls @ 275us
+
+[03:27:15] LeafPartition: 0s, 1 calls @ 0us
+
+[03:27:15] UpdatePosition: 0.000178s, 6 calls @ 178us
+
+[03:27:15] UpdatePredictionCache: 1.6e-05s, 1 calls @ 16us
+
+[03:27:15] UpdateTree: 0.001459s, 1 calls @ 1459us
+
+[03:27:15] DEBUG: /workspace/src/gbm/gbtree.cc:130: Using tree method: 0
+generating user slates from qlearning policy...
+qlearning_model auc 0.54
+qlearning_policy play_rate, avg_impressions: (0.96, 16.506666)
+{'budget : 100.0, discount_factor : 0.2,\n        num_users : 150, num_docs : 142998,\n        slate_size : 30, epsilon : 0.1, seed : 0': [(0.26, 4.78)], 'budget : 100.0, discount_factor : 0.4,\n        num_users : 150, num_docs : 142998,\n        slate_size : 30, epsilon : 0.1, seed : 0': [(0.38, 9.126667)], 'budget : 100.0, discount_factor : 0.6,\n        num_users : 150, num_docs : 142998,\n        slate_size : 30, epsilon : 0.1, seed : 0': [(0.56, 8.606667)], 'budget : 100.0, discount_factor : 0.8,\n        num_users : 150, num_docs : 142998,\n        slate_size : 30, epsilon : 0.1, seed : 0': [(0.6266666666666667, 12.626667)], 'budget : 100.0, discount_factor : 1.0,\n        num_users : 150, num_docs : 142998,\n        slate_size : 30, epsilon : 0.1, seed : 0': [(0.49333333333333335, 9.06)], 'budget : 150.0, discount_factor : 0.2,\n        num_users : 150, num_docs : 142998,\n        slate_size : 30, epsilon : 0.1, seed : 0': [(0.7466666666666667, 25.626667)], 'budget : 150.0, discount_factor : 0.4,\n        num_users : 150, num_docs : 142998,\n        slate_size : 30, epsilon : 0.1, seed : 0': [(0.7733333333333333, 26.413334)], 'budget : 150.0, discount_factor : 0.6,\n        num_users : 150, num_docs : 142998,\n        slate_size : 30, epsilon : 0.1, seed : 0': [(0.8466666666666667, 29.766666)], 'budget : 150.0, discount_factor : 0.8,\n        num_users : 150, num_docs : 142998,\n        slate_size : 30, epsilon : 0.1, seed : 0': [(0.7466666666666667, 26.993334)], 'budget : 150.0, discount_factor : 1.0,\n        num_users : 150, num_docs : 142998,\n        slate_size : 30, epsilon : 0.1, seed : 0': [(0.7466666666666667, 27.48)], 'budget : 200.0, discount_factor : 0.2,\n        num_users : 150, num_docs : 142998,\n        slate_size : 30, epsilon : 0.1, seed : 0': [(0.7533333333333333, 4.846667)], 'budget : 200.0, discount_factor : 0.4,\n        num_users : 150, num_docs : 142998,\n        slate_size : 30, epsilon : 0.1, seed : 0': [(0.7666666666666667, 6.0933332)], 'budget : 200.0, discount_factor : 0.6,\n        num_users : 150, num_docs : 142998,\n        slate_size : 30, epsilon : 0.1, seed : 0': [(0.9466666666666667, 17.226667)], 'budget : 200.0, discount_factor : 0.8,\n        num_users : 150, num_docs : 142998,\n        slate_size : 30, epsilon : 0.1, seed : 0': [(0.9466666666666667, 11.406667)], 'budget : 200.0, discount_factor : 1.0,\n        num_users : 150, num_docs : 142998,\n        slate_size : 30, epsilon : 0.1, seed : 0': [(0.94, 11.326667)], 'budget : 250.0, discount_factor : 0.2,\n        num_users : 150, num_docs : 142998,\n        slate_size : 30, epsilon : 0.1, seed : 0': [(0.68, 28.42)], 'budget : 250.0, discount_factor : 0.4,\n        num_users : 150, num_docs : 142998,\n        slate_size : 30, epsilon : 0.1, seed : 0': [(0.7266666666666667, 27.693333)], 'budget : 250.0, discount_factor : 0.6,\n        num_users : 150, num_docs : 142998,\n        slate_size : 30, epsilon : 0.1, seed : 0': [(0.7333333333333333, 27.5)], 'budget : 250.0, discount_factor : 0.8,\n        num_users : 150, num_docs : 142998,\n        slate_size : 30, epsilon : 0.1, seed : 0': [(0.7066666666666667, 28.466667)], 'budget : 250.0, discount_factor : 1.0,\n        num_users : 150, num_docs : 142998,\n        slate_size : 30, epsilon : 0.1, seed : 0': [(0.84, 29.893333)], 'budget : 300.0, discount_factor : 0.2,\n        num_users : 150, num_docs : 142998,\n        slate_size : 30, epsilon : 0.1, seed : 0': [(0.8866666666666667, 10.486667)], 'budget : 300.0, discount_factor : 0.4,\n        num_users : 150, num_docs : 142998,\n        slate_size : 30, epsilon : 0.1, seed : 0': [(0.9, 11.44)], 'budget : 300.0, discount_factor : 0.6,\n        num_users : 150, num_docs : 142998,\n        slate_size : 30, epsilon : 0.1, seed : 0': [(0.9533333333333334, 14.28)], 'budget : 300.0, discount_factor : 0.8,\n        num_users : 150, num_docs : 142998,\n        slate_size : 30, epsilon : 0.1, seed : 0': [(0.9666666666666667, 22.313334)], 'budget : 300.0, discount_factor : 1.0,\n        num_users : 150, num_docs : 142998,\n        slate_size : 30, epsilon : 0.1, seed : 0': [(0.96, 16.506666)]}
+generating simulated data 
+behavior_policy play_rate, avg_impressions: (0.3933333333333333, 9.433333)
+avg impressions, 9.433333
+[03:31:15] ======== Monitor (0): HostSketchContainer ========
+[03:31:15] AllReduce: 0.001485s, 1 calls @ 1485us
+
+[03:31:15] MakeCuts: 0.001572s, 1 calls @ 1572us
+
+[03:31:15] DEBUG: /workspace/src/gbm/gbtree.cc:130: Using tree method: 0
+[03:31:15] ======== Monitor (0): Learner ========
+[03:31:15] Configure: 0.000576s, 1 calls @ 576us
+
+[03:31:15] EvalOneIter: 1.4e-05s, 1 calls @ 14us
+
+[03:31:15] GetGradient: 3.8e-05s, 1 calls @ 38us
+
+[03:31:15] PredictRaw: 4e-06s, 1 calls @ 4us
+
+[03:31:15] UpdateOneIter: 0.002464s, 1 calls @ 2464us
+
+[03:31:15] ======== Monitor (0): GBTree ========
+[03:31:15] BoostNewTrees: 0.001711s, 1 calls @ 1711us
+
+[03:31:15] CommitModel: 1e-06s, 1 calls @ 1us
+
+[03:31:15] ======== Monitor (0): HistUpdater ========
+[03:31:15] BuildHistogram: 0.000759s, 5 calls @ 759us
+
+[03:31:15] EvaluateSplits: 0.000254s, 6 calls @ 254us
+
+[03:31:15] InitData: 2.3e-05s, 1 calls @ 23us
+
+[03:31:15] InitRoot: 0.000333s, 1 calls @ 333us
+
+[03:31:15] LeafPartition: 0s, 1 calls @ 0us
+
+[03:31:15] UpdatePosition: 0.000241s, 6 calls @ 241us
+
+[03:31:15] UpdatePredictionCache: 2e-05s, 1 calls @ 20us
+
+[03:31:15] UpdateTree: 0.001653s, 1 calls @ 1653us
+
+[03:31:15] DEBUG: /workspace/src/gbm/gbtree.cc:130: Using tree method: 0
+generating user slates from qlearning policy...
+qlearning_model auc 0.5277777777777778
+qlearning_policy play_rate, avg_impressions: (0.98, 9.073334)
+{'budget : 100.0, discount_factor : 0.2,\n        num_users : 150, num_docs : 142998,\n        slate_size : 30, epsilon : 0.1, seed : 0': [(0.26, 4.78)], 'budget : 100.0, discount_factor : 0.4,\n        num_users : 150, num_docs : 142998,\n        slate_size : 30, epsilon : 0.1, seed : 0': [(0.38, 9.126667)], 'budget : 100.0, discount_factor : 0.6,\n        num_users : 150, num_docs : 142998,\n        slate_size : 30, epsilon : 0.1, seed : 0': [(0.56, 8.606667)], 'budget : 100.0, discount_factor : 0.8,\n        num_users : 150, num_docs : 142998,\n        slate_size : 30, epsilon : 0.1, seed : 0': [(0.6266666666666667, 12.626667)], 'budget : 100.0, discount_factor : 1.0,\n        num_users : 150, num_docs : 142998,\n        slate_size : 30, epsilon : 0.1, seed : 0': [(0.49333333333333335, 9.06)], 'budget : 150.0, discount_factor : 0.2,\n        num_users : 150, num_docs : 142998,\n        slate_size : 30, epsilon : 0.1, seed : 0': [(0.7466666666666667, 25.626667)], 'budget : 150.0, discount_factor : 0.4,\n        num_users : 150, num_docs : 142998,\n        slate_size : 30, epsilon : 0.1, seed : 0': [(0.7733333333333333, 26.413334)], 'budget : 150.0, discount_factor : 0.6,\n        num_users : 150, num_docs : 142998,\n        slate_size : 30, epsilon : 0.1, seed : 0': [(0.8466666666666667, 29.766666)], 'budget : 150.0, discount_factor : 0.8,\n        num_users : 150, num_docs : 142998,\n        slate_size : 30, epsilon : 0.1, seed : 0': [(0.7466666666666667, 26.993334)], 'budget : 150.0, discount_factor : 1.0,\n        num_users : 150, num_docs : 142998,\n        slate_size : 30, epsilon : 0.1, seed : 0': [(0.7466666666666667, 27.48)], 'budget : 200.0, discount_factor : 0.2,\n        num_users : 150, num_docs : 142998,\n        slate_size : 30, epsilon : 0.1, seed : 0': [(0.7533333333333333, 4.846667)], 'budget : 200.0, discount_factor : 0.4,\n        num_users : 150, num_docs : 142998,\n        slate_size : 30, epsilon : 0.1, seed : 0': [(0.7666666666666667, 6.0933332)], 'budget : 200.0, discount_factor : 0.6,\n        num_users : 150, num_docs : 142998,\n        slate_size : 30, epsilon : 0.1, seed : 0': [(0.9466666666666667, 17.226667)], 'budget : 200.0, discount_factor : 0.8,\n        num_users : 150, num_docs : 142998,\n        slate_size : 30, epsilon : 0.1, seed : 0': [(0.9466666666666667, 11.406667)], 'budget : 200.0, discount_factor : 1.0,\n        num_users : 150, num_docs : 142998,\n        slate_size : 30, epsilon : 0.1, seed : 0': [(0.94, 11.326667)], 'budget : 250.0, discount_factor : 0.2,\n        num_users : 150, num_docs : 142998,\n        slate_size : 30, epsilon : 0.1, seed : 0': [(0.68, 28.42)], 'budget : 250.0, discount_factor : 0.4,\n        num_users : 150, num_docs : 142998,\n        slate_size : 30, epsilon : 0.1, seed : 0': [(0.7266666666666667, 27.693333)], 'budget : 250.0, discount_factor : 0.6,\n        num_users : 150, num_docs : 142998,\n        slate_size : 30, epsilon : 0.1, seed : 0': [(0.7333333333333333, 27.5)], 'budget : 250.0, discount_factor : 0.8,\n        num_users : 150, num_docs : 142998,\n        slate_size : 30, epsilon : 0.1, seed : 0': [(0.7066666666666667, 28.466667)], 'budget : 250.0, discount_factor : 1.0,\n        num_users : 150, num_docs : 142998,\n        slate_size : 30, epsilon : 0.1, seed : 0': [(0.84, 29.893333)], 'budget : 300.0, discount_factor : 0.2,\n        num_users : 150, num_docs : 142998,\n        slate_size : 30, epsilon : 0.1, seed : 0': [(0.8866666666666667, 10.486667)], 'budget : 300.0, discount_factor : 0.4,\n        num_users : 150, num_docs : 142998,\n        slate_size : 30, epsilon : 0.1, seed : 0': [(0.9, 11.44)], 'budget : 300.0, discount_factor : 0.6,\n        num_users : 150, num_docs : 142998,\n        slate_size : 30, epsilon : 0.1, seed : 0': [(0.9533333333333334, 14.28)], 'budget : 300.0, discount_factor : 0.8,\n        num_users : 150, num_docs : 142998,\n        slate_size : 30, epsilon : 0.1, seed : 0': [(0.9666666666666667, 22.313334)], 'budget : 300.0, discount_factor : 1.0,\n        num_users : 150, num_docs : 142998,\n        slate_size : 30, epsilon : 0.1, seed : 0': [(0.96, 16.506666)], 'budget : 400.0, discount_factor : 0.2,\n        num_users : 150, num_docs : 142998,\n        slate_size : 30, epsilon : 0.1, seed : 0': [(0.98, 9.073334)]}
+generating simulated data 
+behavior_policy play_rate, avg_impressions: (0.3933333333333333, 9.433333)
+avg impressions, 9.433333
+[03:36:35] ======== Monitor (0): HostSketchContainer ========
+[03:36:35] AllReduce: 0.000931s, 1 calls @ 931us
+
+[03:36:35] MakeCuts: 0.001004s, 1 calls @ 1004us
+
+[03:36:35] DEBUG: /workspace/src/gbm/gbtree.cc:130: Using tree method: 0
+[03:36:35] ======== Monitor (0): Learner ========
+[03:36:35] Configure: 0.000683s, 1 calls @ 683us
+
+[03:36:35] EvalOneIter: 4.8e-05s, 1 calls @ 48us
+
+[03:36:35] GetGradient: 3.5e-05s, 1 calls @ 35us
+
+[03:36:35] PredictRaw: 4e-06s, 1 calls @ 4us
+
+[03:36:35] UpdateOneIter: 0.002858s, 1 calls @ 2858us
+
+[03:36:35] ======== Monitor (0): GBTree ========
+[03:36:35] BoostNewTrees: 0.001977s, 1 calls @ 1977us
+
+[03:36:35] CommitModel: 1e-06s, 1 calls @ 1us
+
+[03:36:35] ======== Monitor (0): HistUpdater ========
+[03:36:35] BuildHistogram: 0.00112s, 5 calls @ 1120us
+
+[03:36:35] EvaluateSplits: 0.000278s, 6 calls @ 278us
+
+[03:36:35] InitData: 1.8e-05s, 1 calls @ 18us
+
+[03:36:35] InitRoot: 0.000234s, 1 calls @ 234us
+
+[03:36:35] LeafPartition: 0s, 1 calls @ 0us
+
+[03:36:35] UpdatePosition: 0.000238s, 6 calls @ 238us
+
+[03:36:35] UpdatePredictionCache: 1.9e-05s, 1 calls @ 19us
+
+[03:36:35] UpdateTree: 0.001925s, 1 calls @ 1925us
+
+[03:36:35] DEBUG: /workspace/src/gbm/gbtree.cc:130: Using tree method: 0
+generating user slates from qlearning policy...
+qlearning_model auc 0.5555555555555556
+qlearning_policy play_rate, avg_impressions: (0.9866666666666667, 18.633333)
+{'budget : 100.0, discount_factor : 0.2,\n        num_users : 150, num_docs : 142998,\n        slate_size : 30, epsilon : 0.1, seed : 0': [(0.26, 4.78)], 'budget : 100.0, discount_factor : 0.4,\n        num_users : 150, num_docs : 142998,\n        slate_size : 30, epsilon : 0.1, seed : 0': [(0.38, 9.126667)], 'budget : 100.0, discount_factor : 0.6,\n        num_users : 150, num_docs : 142998,\n        slate_size : 30, epsilon : 0.1, seed : 0': [(0.56, 8.606667)], 'budget : 100.0, discount_factor : 0.8,\n        num_users : 150, num_docs : 142998,\n        slate_size : 30, epsilon : 0.1, seed : 0': [(0.6266666666666667, 12.626667)], 'budget : 100.0, discount_factor : 1.0,\n        num_users : 150, num_docs : 142998,\n        slate_size : 30, epsilon : 0.1, seed : 0': [(0.49333333333333335, 9.06)], 'budget : 150.0, discount_factor : 0.2,\n        num_users : 150, num_docs : 142998,\n        slate_size : 30, epsilon : 0.1, seed : 0': [(0.7466666666666667, 25.626667)], 'budget : 150.0, discount_factor : 0.4,\n        num_users : 150, num_docs : 142998,\n        slate_size : 30, epsilon : 0.1, seed : 0': [(0.7733333333333333, 26.413334)], 'budget : 150.0, discount_factor : 0.6,\n        num_users : 150, num_docs : 142998,\n        slate_size : 30, epsilon : 0.1, seed : 0': [(0.8466666666666667, 29.766666)], 'budget : 150.0, discount_factor : 0.8,\n        num_users : 150, num_docs : 142998,\n        slate_size : 30, epsilon : 0.1, seed : 0': [(0.7466666666666667, 26.993334)], 'budget : 150.0, discount_factor : 1.0,\n        num_users : 150, num_docs : 142998,\n        slate_size : 30, epsilon : 0.1, seed : 0': [(0.7466666666666667, 27.48)], 'budget : 200.0, discount_factor : 0.2,\n        num_users : 150, num_docs : 142998,\n        slate_size : 30, epsilon : 0.1, seed : 0': [(0.7533333333333333, 4.846667)], 'budget : 200.0, discount_factor : 0.4,\n        num_users : 150, num_docs : 142998,\n        slate_size : 30, epsilon : 0.1, seed : 0': [(0.7666666666666667, 6.0933332)], 'budget : 200.0, discount_factor : 0.6,\n        num_users : 150, num_docs : 142998,\n        slate_size : 30, epsilon : 0.1, seed : 0': [(0.9466666666666667, 17.226667)], 'budget : 200.0, discount_factor : 0.8,\n        num_users : 150, num_docs : 142998,\n        slate_size : 30, epsilon : 0.1, seed : 0': [(0.9466666666666667, 11.406667)], 'budget : 200.0, discount_factor : 1.0,\n        num_users : 150, num_docs : 142998,\n        slate_size : 30, epsilon : 0.1, seed : 0': [(0.94, 11.326667)], 'budget : 250.0, discount_factor : 0.2,\n        num_users : 150, num_docs : 142998,\n        slate_size : 30, epsilon : 0.1, seed : 0': [(0.68, 28.42)], 'budget : 250.0, discount_factor : 0.4,\n        num_users : 150, num_docs : 142998,\n        slate_size : 30, epsilon : 0.1, seed : 0': [(0.7266666666666667, 27.693333)], 'budget : 250.0, discount_factor : 0.6,\n        num_users : 150, num_docs : 142998,\n        slate_size : 30, epsilon : 0.1, seed : 0': [(0.7333333333333333, 27.5)], 'budget : 250.0, discount_factor : 0.8,\n        num_users : 150, num_docs : 142998,\n        slate_size : 30, epsilon : 0.1, seed : 0': [(0.7066666666666667, 28.466667)], 'budget : 250.0, discount_factor : 1.0,\n        num_users : 150, num_docs : 142998,\n        slate_size : 30, epsilon : 0.1, seed : 0': [(0.84, 29.893333)], 'budget : 300.0, discount_factor : 0.2,\n        num_users : 150, num_docs : 142998,\n        slate_size : 30, epsilon : 0.1, seed : 0': [(0.8866666666666667, 10.486667)], 'budget : 300.0, discount_factor : 0.4,\n        num_users : 150, num_docs : 142998,\n        slate_size : 30, epsilon : 0.1, seed : 0': [(0.9, 11.44)], 'budget : 300.0, discount_factor : 0.6,\n        num_users : 150, num_docs : 142998,\n        slate_size : 30, epsilon : 0.1, seed : 0': [(0.9533333333333334, 14.28)], 'budget : 300.0, discount_factor : 0.8,\n        num_users : 150, num_docs : 142998,\n        slate_size : 30, epsilon : 0.1, seed : 0': [(0.9666666666666667, 22.313334)], 'budget : 300.0, discount_factor : 1.0,\n        num_users : 150, num_docs : 142998,\n        slate_size : 30, epsilon : 0.1, seed : 0': [(0.96, 16.506666)], 'budget : 400.0, discount_factor : 0.2,\n        num_users : 150, num_docs : 142998,\n        slate_size : 30, epsilon : 0.1, seed : 0': [(0.98, 9.073334)], 'budget : 400.0, discount_factor : 0.4,\n        num_users : 150, num_docs : 142998,\n        slate_size : 30, epsilon : 0.1, seed : 0': [(0.9866666666666667, 18.633333)]}
+generating simulated data 
+behavior_policy play_rate, avg_impressions: (0.3933333333333333, 9.433333)
+avg impressions, 9.433333
+[03:41:26] ======== Monitor (0): HostSketchContainer ========
+[03:41:26] AllReduce: 0.000786s, 1 calls @ 786us
+
+[03:41:26] MakeCuts: 0.000896s, 1 calls @ 896us
+
+[03:41:26] DEBUG: /workspace/src/gbm/gbtree.cc:130: Using tree method: 0
+[03:41:26] ======== Monitor (0): Learner ========
+[03:41:26] Configure: 0.000506s, 1 calls @ 506us
+
+[03:41:26] EvalOneIter: 1.2e-05s, 1 calls @ 12us
+
+[03:41:26] GetGradient: 3e-05s, 1 calls @ 30us
+
+[03:41:26] PredictRaw: 3e-06s, 1 calls @ 3us
+
+[03:41:26] UpdateOneIter: 0.00191s, 1 calls @ 1910us
+
+[03:41:26] ======== Monitor (0): GBTree ========
+[03:41:26] BoostNewTrees: 0.001255s, 1 calls @ 1255us
+
+[03:41:26] CommitModel: 0s, 1 calls @ 0us
+
+[03:41:26] ======== Monitor (0): HistUpdater ========
+[03:41:26] BuildHistogram: 0.000483s, 5 calls @ 483us
+
+[03:41:26] EvaluateSplits: 0.000282s, 6 calls @ 282us
+
+[03:41:26] InitData: 1.9e-05s, 1 calls @ 19us
+
+[03:41:26] InitRoot: 0.000289s, 1 calls @ 289us
+
+[03:41:26] LeafPartition: 0s, 1 calls @ 0us
+
+[03:41:26] UpdatePosition: 0.000133s, 6 calls @ 133us
+
+[03:41:26] UpdatePredictionCache: 1.8e-05s, 1 calls @ 18us
+
+[03:41:26] UpdateTree: 0.001202s, 1 calls @ 1202us
+
+[03:41:26] DEBUG: /workspace/src/gbm/gbtree.cc:130: Using tree method: 0
+generating user slates from qlearning policy...
+qlearning_model auc 0.5347222222222222
+qlearning_policy play_rate, avg_impressions: (0.98, 20.74)
+{'budget : 100.0, discount_factor : 0.2,\n        num_users : 150, num_docs : 142998,\n        slate_size : 30, epsilon : 0.1, seed : 0': [(0.26, 4.78)], 'budget : 100.0, discount_factor : 0.4,\n        num_users : 150, num_docs : 142998,\n        slate_size : 30, epsilon : 0.1, seed : 0': [(0.38, 9.126667)], 'budget : 100.0, discount_factor : 0.6,\n        num_users : 150, num_docs : 142998,\n        slate_size : 30, epsilon : 0.1, seed : 0': [(0.56, 8.606667)], 'budget : 100.0, discount_factor : 0.8,\n        num_users : 150, num_docs : 142998,\n        slate_size : 30, epsilon : 0.1, seed : 0': [(0.6266666666666667, 12.626667)], 'budget : 100.0, discount_factor : 1.0,\n        num_users : 150, num_docs : 142998,\n        slate_size : 30, epsilon : 0.1, seed : 0': [(0.49333333333333335, 9.06)], 'budget : 150.0, discount_factor : 0.2,\n        num_users : 150, num_docs : 142998,\n        slate_size : 30, epsilon : 0.1, seed : 0': [(0.7466666666666667, 25.626667)], 'budget : 150.0, discount_factor : 0.4,\n        num_users : 150, num_docs : 142998,\n        slate_size : 30, epsilon : 0.1, seed : 0': [(0.7733333333333333, 26.413334)], 'budget : 150.0, discount_factor : 0.6,\n        num_users : 150, num_docs : 142998,\n        slate_size : 30, epsilon : 0.1, seed : 0': [(0.8466666666666667, 29.766666)], 'budget : 150.0, discount_factor : 0.8,\n        num_users : 150, num_docs : 142998,\n        slate_size : 30, epsilon : 0.1, seed : 0': [(0.7466666666666667, 26.993334)], 'budget : 150.0, discount_factor : 1.0,\n        num_users : 150, num_docs : 142998,\n        slate_size : 30, epsilon : 0.1, seed : 0': [(0.7466666666666667, 27.48)], 'budget : 200.0, discount_factor : 0.2,\n        num_users : 150, num_docs : 142998,\n        slate_size : 30, epsilon : 0.1, seed : 0': [(0.7533333333333333, 4.846667)], 'budget : 200.0, discount_factor : 0.4,\n        num_users : 150, num_docs : 142998,\n        slate_size : 30, epsilon : 0.1, seed : 0': [(0.7666666666666667, 6.0933332)], 'budget : 200.0, discount_factor : 0.6,\n        num_users : 150, num_docs : 142998,\n        slate_size : 30, epsilon : 0.1, seed : 0': [(0.9466666666666667, 17.226667)], 'budget : 200.0, discount_factor : 0.8,\n        num_users : 150, num_docs : 142998,\n        slate_size : 30, epsilon : 0.1, seed : 0': [(0.9466666666666667, 11.406667)], 'budget : 200.0, discount_factor : 1.0,\n        num_users : 150, num_docs : 142998,\n        slate_size : 30, epsilon : 0.1, seed : 0': [(0.94, 11.326667)], 'budget : 250.0, discount_factor : 0.2,\n        num_users : 150, num_docs : 142998,\n        slate_size : 30, epsilon : 0.1, seed : 0': [(0.68, 28.42)], 'budget : 250.0, discount_factor : 0.4,\n        num_users : 150, num_docs : 142998,\n        slate_size : 30, epsilon : 0.1, seed : 0': [(0.7266666666666667, 27.693333)], 'budget : 250.0, discount_factor : 0.6,\n        num_users : 150, num_docs : 142998,\n        slate_size : 30, epsilon : 0.1, seed : 0': [(0.7333333333333333, 27.5)], 'budget : 250.0, discount_factor : 0.8,\n        num_users : 150, num_docs : 142998,\n        slate_size : 30, epsilon : 0.1, seed : 0': [(0.7066666666666667, 28.466667)], 'budget : 250.0, discount_factor : 1.0,\n        num_users : 150, num_docs : 142998,\n        slate_size : 30, epsilon : 0.1, seed : 0': [(0.84, 29.893333)], 'budget : 300.0, discount_factor : 0.2,\n        num_users : 150, num_docs : 142998,\n        slate_size : 30, epsilon : 0.1, seed : 0': [(0.8866666666666667, 10.486667)], 'budget : 300.0, discount_factor : 0.4,\n        num_users : 150, num_docs : 142998,\n        slate_size : 30, epsilon : 0.1, seed : 0': [(0.9, 11.44)], 'budget : 300.0, discount_factor : 0.6,\n        num_users : 150, num_docs : 142998,\n        slate_size : 30, epsilon : 0.1, seed : 0': [(0.9533333333333334, 14.28)], 'budget : 300.0, discount_factor : 0.8,\n        num_users : 150, num_docs : 142998,\n        slate_size : 30, epsilon : 0.1, seed : 0': [(0.9666666666666667, 22.313334)], 'budget : 300.0, discount_factor : 1.0,\n        num_users : 150, num_docs : 142998,\n        slate_size : 30, epsilon : 0.1, seed : 0': [(0.96, 16.506666)], 'budget : 400.0, discount_factor : 0.2,\n        num_users : 150, num_docs : 142998,\n        slate_size : 30, epsilon : 0.1, seed : 0': [(0.98, 9.073334)], 'budget : 400.0, discount_factor : 0.4,\n        num_users : 150, num_docs : 142998,\n        slate_size : 30, epsilon : 0.1, seed : 0': [(0.9866666666666667, 18.633333)], 'budget : 400.0, discount_factor : 0.6,\n        num_users : 150, num_docs : 142998,\n        slate_size : 30, epsilon : 0.1, seed : 0': [(0.98, 20.74)]}
+generating simulated data 
+behavior_policy play_rate, avg_impressions: (0.3933333333333333, 9.433333)
+avg impressions, 9.433333
+[03:45:56] ======== Monitor (0): HostSketchContainer ========
+[03:45:56] AllReduce: 0.000748s, 1 calls @ 748us
+
+[03:45:56] MakeCuts: 0.002184s, 1 calls @ 2184us
+
+[03:45:56] DEBUG: /workspace/src/gbm/gbtree.cc:130: Using tree method: 0
+[03:45:56] ======== Monitor (0): Learner ========
+[03:45:56] Configure: 0.000486s, 1 calls @ 486us
+
+[03:45:56] EvalOneIter: 1.2e-05s, 1 calls @ 12us
+
+[03:45:56] GetGradient: 3.2e-05s, 1 calls @ 32us
+
+[03:45:56] PredictRaw: 3e-06s, 1 calls @ 3us
+
+[03:45:56] UpdateOneIter: 0.002135s, 1 calls @ 2135us
+
+[03:45:56] ======== Monitor (0): GBTree ========
+[03:45:56] BoostNewTrees: 0.001488s, 1 calls @ 1488us
+
+[03:45:56] CommitModel: 1e-06s, 1 calls @ 1us
+
+[03:45:56] ======== Monitor (0): HistUpdater ========
+[03:45:56] BuildHistogram: 0.000657s, 5 calls @ 657us
+
+[03:45:56] EvaluateSplits: 0.000307s, 6 calls @ 307us
+
+[03:45:56] InitData: 1.6e-05s, 1 calls @ 16us
+
+[03:45:56] InitRoot: 0.000313s, 1 calls @ 313us
+
+[03:45:56] LeafPartition: 0s, 1 calls @ 0us
+
+[03:45:56] UpdatePosition: 0.000144s, 6 calls @ 144us
+
+[03:45:56] UpdatePredictionCache: 2e-05s, 1 calls @ 20us
+
+[03:45:56] UpdateTree: 0.001436s, 1 calls @ 1436us
+
+[03:45:56] DEBUG: /workspace/src/gbm/gbtree.cc:130: Using tree method: 0
+generating user slates from qlearning policy...
+qlearning_model auc 0.5069444444444444
+qlearning_policy play_rate, avg_impressions: (0.9733333333333334, 17.88)
+{'budget : 100.0, discount_factor : 0.2,\n        num_users : 150, num_docs : 142998,\n        slate_size : 30, epsilon : 0.1, seed : 0': [(0.26, 4.78)], 'budget : 100.0, discount_factor : 0.4,\n        num_users : 150, num_docs : 142998,\n        slate_size : 30, epsilon : 0.1, seed : 0': [(0.38, 9.126667)], 'budget : 100.0, discount_factor : 0.6,\n        num_users : 150, num_docs : 142998,\n        slate_size : 30, epsilon : 0.1, seed : 0': [(0.56, 8.606667)], 'budget : 100.0, discount_factor : 0.8,\n        num_users : 150, num_docs : 142998,\n        slate_size : 30, epsilon : 0.1, seed : 0': [(0.6266666666666667, 12.626667)], 'budget : 100.0, discount_factor : 1.0,\n        num_users : 150, num_docs : 142998,\n        slate_size : 30, epsilon : 0.1, seed : 0': [(0.49333333333333335, 9.06)], 'budget : 150.0, discount_factor : 0.2,\n        num_users : 150, num_docs : 142998,\n        slate_size : 30, epsilon : 0.1, seed : 0': [(0.7466666666666667, 25.626667)], 'budget : 150.0, discount_factor : 0.4,\n        num_users : 150, num_docs : 142998,\n        slate_size : 30, epsilon : 0.1, seed : 0': [(0.7733333333333333, 26.413334)], 'budget : 150.0, discount_factor : 0.6,\n        num_users : 150, num_docs : 142998,\n        slate_size : 30, epsilon : 0.1, seed : 0': [(0.8466666666666667, 29.766666)], 'budget : 150.0, discount_factor : 0.8,\n        num_users : 150, num_docs : 142998,\n        slate_size : 30, epsilon : 0.1, seed : 0': [(0.7466666666666667, 26.993334)], 'budget : 150.0, discount_factor : 1.0,\n        num_users : 150, num_docs : 142998,\n        slate_size : 30, epsilon : 0.1, seed : 0': [(0.7466666666666667, 27.48)], 'budget : 200.0, discount_factor : 0.2,\n        num_users : 150, num_docs : 142998,\n        slate_size : 30, epsilon : 0.1, seed : 0': [(0.7533333333333333, 4.846667)], 'budget : 200.0, discount_factor : 0.4,\n        num_users : 150, num_docs : 142998,\n        slate_size : 30, epsilon : 0.1, seed : 0': [(0.7666666666666667, 6.0933332)], 'budget : 200.0, discount_factor : 0.6,\n        num_users : 150, num_docs : 142998,\n        slate_size : 30, epsilon : 0.1, seed : 0': [(0.9466666666666667, 17.226667)], 'budget : 200.0, discount_factor : 0.8,\n        num_users : 150, num_docs : 142998,\n        slate_size : 30, epsilon : 0.1, seed : 0': [(0.9466666666666667, 11.406667)], 'budget : 200.0, discount_factor : 1.0,\n        num_users : 150, num_docs : 142998,\n        slate_size : 30, epsilon : 0.1, seed : 0': [(0.94, 11.326667)], 'budget : 250.0, discount_factor : 0.2,\n        num_users : 150, num_docs : 142998,\n        slate_size : 30, epsilon : 0.1, seed : 0': [(0.68, 28.42)], 'budget : 250.0, discount_factor : 0.4,\n        num_users : 150, num_docs : 142998,\n        slate_size : 30, epsilon : 0.1, seed : 0': [(0.7266666666666667, 27.693333)], 'budget : 250.0, discount_factor : 0.6,\n        num_users : 150, num_docs : 142998,\n        slate_size : 30, epsilon : 0.1, seed : 0': [(0.7333333333333333, 27.5)], 'budget : 250.0, discount_factor : 0.8,\n        num_users : 150, num_docs : 142998,\n        slate_size : 30, epsilon : 0.1, seed : 0': [(0.7066666666666667, 28.466667)], 'budget : 250.0, discount_factor : 1.0,\n        num_users : 150, num_docs : 142998,\n        slate_size : 30, epsilon : 0.1, seed : 0': [(0.84, 29.893333)], 'budget : 300.0, discount_factor : 0.2,\n        num_users : 150, num_docs : 142998,\n        slate_size : 30, epsilon : 0.1, seed : 0': [(0.8866666666666667, 10.486667)], 'budget : 300.0, discount_factor : 0.4,\n        num_users : 150, num_docs : 142998,\n        slate_size : 30, epsilon : 0.1, seed : 0': [(0.9, 11.44)], 'budget : 300.0, discount_factor : 0.6,\n        num_users : 150, num_docs : 142998,\n        slate_size : 30, epsilon : 0.1, seed : 0': [(0.9533333333333334, 14.28)], 'budget : 300.0, discount_factor : 0.8,\n        num_users : 150, num_docs : 142998,\n        slate_size : 30, epsilon : 0.1, seed : 0': [(0.9666666666666667, 22.313334)], 'budget : 300.0, discount_factor : 1.0,\n        num_users : 150, num_docs : 142998,\n        slate_size : 30, epsilon : 0.1, seed : 0': [(0.96, 16.506666)], 'budget : 400.0, discount_factor : 0.2,\n        num_users : 150, num_docs : 142998,\n        slate_size : 30, epsilon : 0.1, seed : 0': [(0.98, 9.073334)], 'budget : 400.0, discount_factor : 0.4,\n        num_users : 150, num_docs : 142998,\n        slate_size : 30, epsilon : 0.1, seed : 0': [(0.9866666666666667, 18.633333)], 'budget : 400.0, discount_factor : 0.6,\n        num_users : 150, num_docs : 142998,\n        slate_size : 30, epsilon : 0.1, seed : 0': [(0.98, 20.74)], 'budget : 400.0, discount_factor : 0.8,\n        num_users : 150, num_docs : 142998,\n        slate_size : 30, epsilon : 0.1, seed : 0': [(0.9733333333333334, 17.88)]}
+generating simulated data 
+behavior_policy play_rate, avg_impressions: (0.3933333333333333, 9.433333)
+avg impressions, 9.433333
+[03:50:26] ======== Monitor (0): HostSketchContainer ========
+[03:50:26] AllReduce: 0.000895s, 1 calls @ 895us
+
+[03:50:26] MakeCuts: 0.001072s, 1 calls @ 1072us
+
+[03:50:26] DEBUG: /workspace/src/gbm/gbtree.cc:130: Using tree method: 0
+[03:50:26] ======== Monitor (0): Learner ========
+[03:50:26] Configure: 0.001032s, 1 calls @ 1032us
+
+[03:50:26] EvalOneIter: 1.4e-05s, 1 calls @ 14us
+
+[03:50:26] GetGradient: 3.6e-05s, 1 calls @ 36us
+
+[03:50:26] PredictRaw: 4e-06s, 1 calls @ 4us
+
+[03:50:26] UpdateOneIter: 0.003332s, 1 calls @ 3332us
+
+[03:50:26] ======== Monitor (0): GBTree ========
+[03:50:26] BoostNewTrees: 0.00212s, 1 calls @ 2120us
+
+[03:50:26] CommitModel: 1e-06s, 1 calls @ 1us
+
+[03:50:26] ======== Monitor (0): HistUpdater ========
+[03:50:26] BuildHistogram: 0.001225s, 5 calls @ 1225us
+
+[03:50:26] EvaluateSplits: 0.000302s, 6 calls @ 302us
+
+[03:50:26] InitData: 4.2e-05s, 1 calls @ 42us
+
+[03:50:26] InitRoot: 0.000316s, 1 calls @ 316us
+
+[03:50:26] LeafPartition: 0s, 1 calls @ 0us
+
+[03:50:26] UpdatePosition: 0.000171s, 6 calls @ 171us
+
+[03:50:26] UpdatePredictionCache: 1.8e-05s, 1 calls @ 18us
+
+[03:50:26] UpdateTree: 0.002069s, 1 calls @ 2069us
+
+[03:50:26] DEBUG: /workspace/src/gbm/gbtree.cc:130: Using tree method: 0
+generating user slates from qlearning policy...
+qlearning_model auc 0.5347222222222222
+qlearning_policy play_rate, avg_impressions: (0.9733333333333334, 20.486666)
+{'budget : 100.0, discount_factor : 0.2,\n        num_users : 150, num_docs : 142998,\n        slate_size : 30, epsilon : 0.1, seed : 0': [(0.26, 4.78)], 'budget : 100.0, discount_factor : 0.4,\n        num_users : 150, num_docs : 142998,\n        slate_size : 30, epsilon : 0.1, seed : 0': [(0.38, 9.126667)], 'budget : 100.0, discount_factor : 0.6,\n        num_users : 150, num_docs : 142998,\n        slate_size : 30, epsilon : 0.1, seed : 0': [(0.56, 8.606667)], 'budget : 100.0, discount_factor : 0.8,\n        num_users : 150, num_docs : 142998,\n        slate_size : 30, epsilon : 0.1, seed : 0': [(0.6266666666666667, 12.626667)], 'budget : 100.0, discount_factor : 1.0,\n        num_users : 150, num_docs : 142998,\n        slate_size : 30, epsilon : 0.1, seed : 0': [(0.49333333333333335, 9.06)], 'budget : 150.0, discount_factor : 0.2,\n        num_users : 150, num_docs : 142998,\n        slate_size : 30, epsilon : 0.1, seed : 0': [(0.7466666666666667, 25.626667)], 'budget : 150.0, discount_factor : 0.4,\n        num_users : 150, num_docs : 142998,\n        slate_size : 30, epsilon : 0.1, seed : 0': [(0.7733333333333333, 26.413334)], 'budget : 150.0, discount_factor : 0.6,\n        num_users : 150, num_docs : 142998,\n        slate_size : 30, epsilon : 0.1, seed : 0': [(0.8466666666666667, 29.766666)], 'budget : 150.0, discount_factor : 0.8,\n        num_users : 150, num_docs : 142998,\n        slate_size : 30, epsilon : 0.1, seed : 0': [(0.7466666666666667, 26.993334)], 'budget : 150.0, discount_factor : 1.0,\n        num_users : 150, num_docs : 142998,\n        slate_size : 30, epsilon : 0.1, seed : 0': [(0.7466666666666667, 27.48)], 'budget : 200.0, discount_factor : 0.2,\n        num_users : 150, num_docs : 142998,\n        slate_size : 30, epsilon : 0.1, seed : 0': [(0.7533333333333333, 4.846667)], 'budget : 200.0, discount_factor : 0.4,\n        num_users : 150, num_docs : 142998,\n        slate_size : 30, epsilon : 0.1, seed : 0': [(0.7666666666666667, 6.0933332)], 'budget : 200.0, discount_factor : 0.6,\n        num_users : 150, num_docs : 142998,\n        slate_size : 30, epsilon : 0.1, seed : 0': [(0.9466666666666667, 17.226667)], 'budget : 200.0, discount_factor : 0.8,\n        num_users : 150, num_docs : 142998,\n        slate_size : 30, epsilon : 0.1, seed : 0': [(0.9466666666666667, 11.406667)], 'budget : 200.0, discount_factor : 1.0,\n        num_users : 150, num_docs : 142998,\n        slate_size : 30, epsilon : 0.1, seed : 0': [(0.94, 11.326667)], 'budget : 250.0, discount_factor : 0.2,\n        num_users : 150, num_docs : 142998,\n        slate_size : 30, epsilon : 0.1, seed : 0': [(0.68, 28.42)], 'budget : 250.0, discount_factor : 0.4,\n        num_users : 150, num_docs : 142998,\n        slate_size : 30, epsilon : 0.1, seed : 0': [(0.7266666666666667, 27.693333)], 'budget : 250.0, discount_factor : 0.6,\n        num_users : 150, num_docs : 142998,\n        slate_size : 30, epsilon : 0.1, seed : 0': [(0.7333333333333333, 27.5)], 'budget : 250.0, discount_factor : 0.8,\n        num_users : 150, num_docs : 142998,\n        slate_size : 30, epsilon : 0.1, seed : 0': [(0.7066666666666667, 28.466667)], 'budget : 250.0, discount_factor : 1.0,\n        num_users : 150, num_docs : 142998,\n        slate_size : 30, epsilon : 0.1, seed : 0': [(0.84, 29.893333)], 'budget : 300.0, discount_factor : 0.2,\n        num_users : 150, num_docs : 142998,\n        slate_size : 30, epsilon : 0.1, seed : 0': [(0.8866666666666667, 10.486667)], 'budget : 300.0, discount_factor : 0.4,\n        num_users : 150, num_docs : 142998,\n        slate_size : 30, epsilon : 0.1, seed : 0': [(0.9, 11.44)], 'budget : 300.0, discount_factor : 0.6,\n        num_users : 150, num_docs : 142998,\n        slate_size : 30, epsilon : 0.1, seed : 0': [(0.9533333333333334, 14.28)], 'budget : 300.0, discount_factor : 0.8,\n        num_users : 150, num_docs : 142998,\n        slate_size : 30, epsilon : 0.1, seed : 0': [(0.9666666666666667, 22.313334)], 'budget : 300.0, discount_factor : 1.0,\n        num_users : 150, num_docs : 142998,\n        slate_size : 30, epsilon : 0.1, seed : 0': [(0.96, 16.506666)], 'budget : 400.0, discount_factor : 0.2,\n        num_users : 150, num_docs : 142998,\n        slate_size : 30, epsilon : 0.1, seed : 0': [(0.98, 9.073334)], 'budget : 400.0, discount_factor : 0.4,\n        num_users : 150, num_docs : 142998,\n        slate_size : 30, epsilon : 0.1, seed : 0': [(0.9866666666666667, 18.633333)], 'budget : 400.0, discount_factor : 0.6,\n        num_users : 150, num_docs : 142998,\n        slate_size : 30, epsilon : 0.1, seed : 0': [(0.98, 20.74)], 'budget : 400.0, discount_factor : 0.8,\n        num_users : 150, num_docs : 142998,\n        slate_size : 30, epsilon : 0.1, seed : 0': [(0.9733333333333334, 17.88)], 'budget : 400.0, discount_factor : 1.0,\n        num_users : 150, num_docs : 142998,\n        slate_size : 30, epsilon : 0.1, seed : 0': [(0.9733333333333334, 20.486666)]}
+generating simulated data 
+behavior_policy play_rate, avg_impressions: (0.48, 11.76)
+avg impressions, 11.76
+[03:55:06] ======== Monitor (0): HostSketchContainer ========
+[03:55:06] AllReduce: 0.000919s, 1 calls @ 919us
+
+[03:55:06] MakeCuts: 0.001049s, 1 calls @ 1049us
+
+[03:55:06] DEBUG: /workspace/src/gbm/gbtree.cc:130: Using tree method: 0
+[03:55:06] ======== Monitor (0): Learner ========
+[03:55:06] Configure: 0.000813s, 1 calls @ 813us
+
+[03:55:06] EvalOneIter: 1.4e-05s, 1 calls @ 14us
+
+[03:55:06] GetGradient: 4.4e-05s, 1 calls @ 44us
+
+[03:55:06] PredictRaw: 4e-06s, 1 calls @ 4us
+
+[03:55:06] UpdateOneIter: 0.00274s, 1 calls @ 2740us
+
+[03:55:06] ======== Monitor (0): GBTree ========
+[03:55:06] BoostNewTrees: 0.001695s, 1 calls @ 1695us
+
+[03:55:06] CommitModel: 1e-06s, 1 calls @ 1us
+
+[03:55:06] ======== Monitor (0): HistUpdater ========
+[03:55:06] BuildHistogram: 0.000587s, 5 calls @ 587us
+
+[03:55:06] EvaluateSplits: 0.000411s, 6 calls @ 411us
+
+[03:55:06] InitData: 6e-05s, 1 calls @ 60us
+
+[03:55:06] InitRoot: 0.000304s, 1 calls @ 304us
+
+[03:55:06] LeafPartition: 0s, 1 calls @ 0us
+
+[03:55:06] UpdatePosition: 0.000223s, 6 calls @ 223us
+
+[03:55:06] UpdatePredictionCache: 2.2e-05s, 1 calls @ 22us
+
+[03:55:06] UpdateTree: 0.001641s, 1 calls @ 1641us
+
+[03:55:06] DEBUG: /workspace/src/gbm/gbtree.cc:130: Using tree method: 0
+generating user slates from qlearning policy...
+qlearning_model auc 0.5866666666666667
+qlearning_policy play_rate, avg_impressions: (0.96, 9.3)
+{'budget : 100.0, discount_factor : 0.2,\n        num_users : 150, num_docs : 142998,\n        slate_size : 30, epsilon : 0.1, seed : 0': [(0.26, 4.78)], 'budget : 100.0, discount_factor : 0.4,\n        num_users : 150, num_docs : 142998,\n        slate_size : 30, epsilon : 0.1, seed : 0': [(0.38, 9.126667)], 'budget : 100.0, discount_factor : 0.6,\n        num_users : 150, num_docs : 142998,\n        slate_size : 30, epsilon : 0.1, seed : 0': [(0.56, 8.606667)], 'budget : 100.0, discount_factor : 0.8,\n        num_users : 150, num_docs : 142998,\n        slate_size : 30, epsilon : 0.1, seed : 0': [(0.6266666666666667, 12.626667)], 'budget : 100.0, discount_factor : 1.0,\n        num_users : 150, num_docs : 142998,\n        slate_size : 30, epsilon : 0.1, seed : 0': [(0.49333333333333335, 9.06)], 'budget : 150.0, discount_factor : 0.2,\n        num_users : 150, num_docs : 142998,\n        slate_size : 30, epsilon : 0.1, seed : 0': [(0.7466666666666667, 25.626667)], 'budget : 150.0, discount_factor : 0.4,\n        num_users : 150, num_docs : 142998,\n        slate_size : 30, epsilon : 0.1, seed : 0': [(0.7733333333333333, 26.413334)], 'budget : 150.0, discount_factor : 0.6,\n        num_users : 150, num_docs : 142998,\n        slate_size : 30, epsilon : 0.1, seed : 0': [(0.8466666666666667, 29.766666)], 'budget : 150.0, discount_factor : 0.8,\n        num_users : 150, num_docs : 142998,\n        slate_size : 30, epsilon : 0.1, seed : 0': [(0.7466666666666667, 26.993334)], 'budget : 150.0, discount_factor : 1.0,\n        num_users : 150, num_docs : 142998,\n        slate_size : 30, epsilon : 0.1, seed : 0': [(0.7466666666666667, 27.48)], 'budget : 200.0, discount_factor : 0.2,\n        num_users : 150, num_docs : 142998,\n        slate_size : 30, epsilon : 0.1, seed : 0': [(0.7533333333333333, 4.846667)], 'budget : 200.0, discount_factor : 0.4,\n        num_users : 150, num_docs : 142998,\n        slate_size : 30, epsilon : 0.1, seed : 0': [(0.7666666666666667, 6.0933332)], 'budget : 200.0, discount_factor : 0.6,\n        num_users : 150, num_docs : 142998,\n        slate_size : 30, epsilon : 0.1, seed : 0': [(0.9466666666666667, 17.226667)], 'budget : 200.0, discount_factor : 0.8,\n        num_users : 150, num_docs : 142998,\n        slate_size : 30, epsilon : 0.1, seed : 0': [(0.9466666666666667, 11.406667)], 'budget : 200.0, discount_factor : 1.0,\n        num_users : 150, num_docs : 142998,\n        slate_size : 30, epsilon : 0.1, seed : 0': [(0.94, 11.326667)], 'budget : 250.0, discount_factor : 0.2,\n        num_users : 150, num_docs : 142998,\n        slate_size : 30, epsilon : 0.1, seed : 0': [(0.68, 28.42)], 'budget : 250.0, discount_factor : 0.4,\n        num_users : 150, num_docs : 142998,\n        slate_size : 30, epsilon : 0.1, seed : 0': [(0.7266666666666667, 27.693333)], 'budget : 250.0, discount_factor : 0.6,\n        num_users : 150, num_docs : 142998,\n        slate_size : 30, epsilon : 0.1, seed : 0': [(0.7333333333333333, 27.5)], 'budget : 250.0, discount_factor : 0.8,\n        num_users : 150, num_docs : 142998,\n        slate_size : 30, epsilon : 0.1, seed : 0': [(0.7066666666666667, 28.466667)], 'budget : 250.0, discount_factor : 1.0,\n        num_users : 150, num_docs : 142998,\n        slate_size : 30, epsilon : 0.1, seed : 0': [(0.84, 29.893333)], 'budget : 300.0, discount_factor : 0.2,\n        num_users : 150, num_docs : 142998,\n        slate_size : 30, epsilon : 0.1, seed : 0': [(0.8866666666666667, 10.486667)], 'budget : 300.0, discount_factor : 0.4,\n        num_users : 150, num_docs : 142998,\n        slate_size : 30, epsilon : 0.1, seed : 0': [(0.9, 11.44)], 'budget : 300.0, discount_factor : 0.6,\n        num_users : 150, num_docs : 142998,\n        slate_size : 30, epsilon : 0.1, seed : 0': [(0.9533333333333334, 14.28)], 'budget : 300.0, discount_factor : 0.8,\n        num_users : 150, num_docs : 142998,\n        slate_size : 30, epsilon : 0.1, seed : 0': [(0.9666666666666667, 22.313334)], 'budget : 300.0, discount_factor : 1.0,\n        num_users : 150, num_docs : 142998,\n        slate_size : 30, epsilon : 0.1, seed : 0': [(0.96, 16.506666)], 'budget : 400.0, discount_factor : 0.2,\n        num_users : 150, num_docs : 142998,\n        slate_size : 30, epsilon : 0.1, seed : 0': [(0.98, 9.073334)], 'budget : 400.0, discount_factor : 0.4,\n        num_users : 150, num_docs : 142998,\n        slate_size : 30, epsilon : 0.1, seed : 0': [(0.9866666666666667, 18.633333)], 'budget : 400.0, discount_factor : 0.6,\n        num_users : 150, num_docs : 142998,\n        slate_size : 30, epsilon : 0.1, seed : 0': [(0.98, 20.74)], 'budget : 400.0, discount_factor : 0.8,\n        num_users : 150, num_docs : 142998,\n        slate_size : 30, epsilon : 0.1, seed : 0': [(0.9733333333333334, 17.88)], 'budget : 400.0, discount_factor : 1.0,\n        num_users : 150, num_docs : 142998,\n        slate_size : 30, epsilon : 0.1, seed : 0': [(0.9733333333333334, 20.486666)], 'budget : 500.0, discount_factor : 0.2,\n        num_users : 150, num_docs : 142998,\n        slate_size : 30, epsilon : 0.1, seed : 0': [(0.96, 9.3)]}
+generating simulated data 
+behavior_policy play_rate, avg_impressions: (0.48, 11.76)
+avg impressions, 11.76
+[04:01:03] ======== Monitor (0): HostSketchContainer ========
+[04:01:03] AllReduce: 0.001098s, 1 calls @ 1098us
+
+[04:01:03] MakeCuts: 0.001184s, 1 calls @ 1184us
+
+[04:01:03] DEBUG: /workspace/src/gbm/gbtree.cc:130: Using tree method: 0
+[04:01:03] ======== Monitor (0): Learner ========
+[04:01:03] Configure: 0.000969s, 1 calls @ 969us
+
+[04:01:03] EvalOneIter: 4.5e-05s, 1 calls @ 45us
+
+[04:01:03] GetGradient: 5.4e-05s, 1 calls @ 54us
+
+[04:01:03] PredictRaw: 5e-06s, 1 calls @ 5us
+
+[04:01:03] UpdateOneIter: 0.003369s, 1 calls @ 3369us
+
+[04:01:03] ======== Monitor (0): GBTree ========
+[04:01:03] BoostNewTrees: 0.002193s, 1 calls @ 2193us
+
+[04:01:03] CommitModel: 1e-06s, 1 calls @ 1us
+
+[04:01:03] ======== Monitor (0): HistUpdater ========
+[04:01:03] BuildHistogram: 0.001069s, 5 calls @ 1069us
+
+[04:01:03] EvaluateSplits: 0.000442s, 6 calls @ 442us
+
+[04:01:03] InitData: 1.9e-05s, 1 calls @ 19us
+
+[04:01:03] InitRoot: 0.000332s, 1 calls @ 332us
+
+[04:01:03] LeafPartition: 0s, 1 calls @ 0us
+
+[04:01:03] UpdatePosition: 0.00024s, 6 calls @ 240us
+
+[04:01:03] UpdatePredictionCache: 2.2e-05s, 1 calls @ 22us
+
+[04:01:03] UpdateTree: 0.00212s, 1 calls @ 2120us
+
+[04:01:03] DEBUG: /workspace/src/gbm/gbtree.cc:130: Using tree method: 0
+generating user slates from qlearning policy...
+qlearning_model auc 0.5466666666666666
+qlearning_policy play_rate, avg_impressions: (0.9333333333333333, 10.36)
+{'budget : 100.0, discount_factor : 0.2,\n        num_users : 150, num_docs : 142998,\n        slate_size : 30, epsilon : 0.1, seed : 0': [(0.26, 4.78)], 'budget : 100.0, discount_factor : 0.4,\n        num_users : 150, num_docs : 142998,\n        slate_size : 30, epsilon : 0.1, seed : 0': [(0.38, 9.126667)], 'budget : 100.0, discount_factor : 0.6,\n        num_users : 150, num_docs : 142998,\n        slate_size : 30, epsilon : 0.1, seed : 0': [(0.56, 8.606667)], 'budget : 100.0, discount_factor : 0.8,\n        num_users : 150, num_docs : 142998,\n        slate_size : 30, epsilon : 0.1, seed : 0': [(0.6266666666666667, 12.626667)], 'budget : 100.0, discount_factor : 1.0,\n        num_users : 150, num_docs : 142998,\n        slate_size : 30, epsilon : 0.1, seed : 0': [(0.49333333333333335, 9.06)], 'budget : 150.0, discount_factor : 0.2,\n        num_users : 150, num_docs : 142998,\n        slate_size : 30, epsilon : 0.1, seed : 0': [(0.7466666666666667, 25.626667)], 'budget : 150.0, discount_factor : 0.4,\n        num_users : 150, num_docs : 142998,\n        slate_size : 30, epsilon : 0.1, seed : 0': [(0.7733333333333333, 26.413334)], 'budget : 150.0, discount_factor : 0.6,\n        num_users : 150, num_docs : 142998,\n        slate_size : 30, epsilon : 0.1, seed : 0': [(0.8466666666666667, 29.766666)], 'budget : 150.0, discount_factor : 0.8,\n        num_users : 150, num_docs : 142998,\n        slate_size : 30, epsilon : 0.1, seed : 0': [(0.7466666666666667, 26.993334)], 'budget : 150.0, discount_factor : 1.0,\n        num_users : 150, num_docs : 142998,\n        slate_size : 30, epsilon : 0.1, seed : 0': [(0.7466666666666667, 27.48)], 'budget : 200.0, discount_factor : 0.2,\n        num_users : 150, num_docs : 142998,\n        slate_size : 30, epsilon : 0.1, seed : 0': [(0.7533333333333333, 4.846667)], 'budget : 200.0, discount_factor : 0.4,\n        num_users : 150, num_docs : 142998,\n        slate_size : 30, epsilon : 0.1, seed : 0': [(0.7666666666666667, 6.0933332)], 'budget : 200.0, discount_factor : 0.6,\n        num_users : 150, num_docs : 142998,\n        slate_size : 30, epsilon : 0.1, seed : 0': [(0.9466666666666667, 17.226667)], 'budget : 200.0, discount_factor : 0.8,\n        num_users : 150, num_docs : 142998,\n        slate_size : 30, epsilon : 0.1, seed : 0': [(0.9466666666666667, 11.406667)], 'budget : 200.0, discount_factor : 1.0,\n        num_users : 150, num_docs : 142998,\n        slate_size : 30, epsilon : 0.1, seed : 0': [(0.94, 11.326667)], 'budget : 250.0, discount_factor : 0.2,\n        num_users : 150, num_docs : 142998,\n        slate_size : 30, epsilon : 0.1, seed : 0': [(0.68, 28.42)], 'budget : 250.0, discount_factor : 0.4,\n        num_users : 150, num_docs : 142998,\n        slate_size : 30, epsilon : 0.1, seed : 0': [(0.7266666666666667, 27.693333)], 'budget : 250.0, discount_factor : 0.6,\n        num_users : 150, num_docs : 142998,\n        slate_size : 30, epsilon : 0.1, seed : 0': [(0.7333333333333333, 27.5)], 'budget : 250.0, discount_factor : 0.8,\n        num_users : 150, num_docs : 142998,\n        slate_size : 30, epsilon : 0.1, seed : 0': [(0.7066666666666667, 28.466667)], 'budget : 250.0, discount_factor : 1.0,\n        num_users : 150, num_docs : 142998,\n        slate_size : 30, epsilon : 0.1, seed : 0': [(0.84, 29.893333)], 'budget : 300.0, discount_factor : 0.2,\n        num_users : 150, num_docs : 142998,\n        slate_size : 30, epsilon : 0.1, seed : 0': [(0.8866666666666667, 10.486667)], 'budget : 300.0, discount_factor : 0.4,\n        num_users : 150, num_docs : 142998,\n        slate_size : 30, epsilon : 0.1, seed : 0': [(0.9, 11.44)], 'budget : 300.0, discount_factor : 0.6,\n        num_users : 150, num_docs : 142998,\n        slate_size : 30, epsilon : 0.1, seed : 0': [(0.9533333333333334, 14.28)], 'budget : 300.0, discount_factor : 0.8,\n        num_users : 150, num_docs : 142998,\n        slate_size : 30, epsilon : 0.1, seed : 0': [(0.9666666666666667, 22.313334)], 'budget : 300.0, discount_factor : 1.0,\n        num_users : 150, num_docs : 142998,\n        slate_size : 30, epsilon : 0.1, seed : 0': [(0.96, 16.506666)], 'budget : 400.0, discount_factor : 0.2,\n        num_users : 150, num_docs : 142998,\n        slate_size : 30, epsilon : 0.1, seed : 0': [(0.98, 9.073334)], 'budget : 400.0, discount_factor : 0.4,\n        num_users : 150, num_docs : 142998,\n        slate_size : 30, epsilon : 0.1, seed : 0': [(0.9866666666666667, 18.633333)], 'budget : 400.0, discount_factor : 0.6,\n        num_users : 150, num_docs : 142998,\n        slate_size : 30, epsilon : 0.1, seed : 0': [(0.98, 20.74)], 'budget : 400.0, discount_factor : 0.8,\n        num_users : 150, num_docs : 142998,\n        slate_size : 30, epsilon : 0.1, seed : 0': [(0.9733333333333334, 17.88)], 'budget : 400.0, discount_factor : 1.0,\n        num_users : 150, num_docs : 142998,\n        slate_size : 30, epsilon : 0.1, seed : 0': [(0.9733333333333334, 20.486666)], 'budget : 500.0, discount_factor : 0.2,\n        num_users : 150, num_docs : 142998,\n        slate_size : 30, epsilon : 0.1, seed : 0': [(0.96, 9.3)], 'budget : 500.0, discount_factor : 0.4,\n        num_users : 150, num_docs : 142998,\n        slate_size : 30, epsilon : 0.1, seed : 0': [(0.9333333333333333, 10.36)]}
+generating simulated data 
+behavior_policy play_rate, avg_impressions: (0.48, 11.76)
+avg impressions, 11.76
+[04:06:38] ======== Monitor (0): HostSketchContainer ========
+[04:06:38] AllReduce: 0.001648s, 1 calls @ 1648us
+
+[04:06:38] MakeCuts: 0.001853s, 1 calls @ 1853us
+
+[04:06:38] DEBUG: /workspace/src/gbm/gbtree.cc:130: Using tree method: 0
+[04:06:38] ======== Monitor (0): Learner ========
+[04:06:38] Configure: 0.000556s, 1 calls @ 556us
+
+[04:06:38] EvalOneIter: 1.2e-05s, 1 calls @ 12us
+
+[04:06:38] GetGradient: 3.6e-05s, 1 calls @ 36us
+
+[04:06:38] PredictRaw: 4e-06s, 1 calls @ 4us
+
+[04:06:38] UpdateOneIter: 0.002803s, 1 calls @ 2803us
+
+[04:06:38] ======== Monitor (0): GBTree ========
+[04:06:38] BoostNewTrees: 0.002074s, 1 calls @ 2074us
+
+[04:06:38] CommitModel: 0s, 1 calls @ 0us
+
+[04:06:38] ======== Monitor (0): HistUpdater ========
+[04:06:38] BuildHistogram: 0.001092s, 5 calls @ 1092us
+
+[04:06:38] EvaluateSplits: 0.000282s, 6 calls @ 282us
+
+[04:06:38] InitData: 2e-05s, 1 calls @ 20us
+
+[04:06:38] InitRoot: 0.00039s, 1 calls @ 390us
+
+[04:06:38] LeafPartition: 0s, 1 calls @ 0us
+
+[04:06:38] UpdatePosition: 0.000213s, 6 calls @ 213us
+
+[04:06:38] UpdatePredictionCache: 1.9e-05s, 1 calls @ 19us
+
+[04:06:38] UpdateTree: 0.002027s, 1 calls @ 2027us
+
+[04:06:38] DEBUG: /workspace/src/gbm/gbtree.cc:130: Using tree method: 0
+generating user slates from qlearning policy...
+/home/scp6004/anaconda3/envs/poe/lib/python3.11/site-packages/joblib/externals/loky/process_executor.py:752: UserWarning: A worker stopped while some jobs were given to the executor. This can be caused by a too short worker timeout or by a memory leak.
+  warnings.warn(
+qlearning_model auc 0.5244444444444445
+qlearning_policy play_rate, avg_impressions: (0.9733333333333334, 8.96)
+{'budget : 100.0, discount_factor : 0.2,\n        num_users : 150, num_docs : 142998,\n        slate_size : 30, epsilon : 0.1, seed : 0': [(0.26, 4.78)], 'budget : 100.0, discount_factor : 0.4,\n        num_users : 150, num_docs : 142998,\n        slate_size : 30, epsilon : 0.1, seed : 0': [(0.38, 9.126667)], 'budget : 100.0, discount_factor : 0.6,\n        num_users : 150, num_docs : 142998,\n        slate_size : 30, epsilon : 0.1, seed : 0': [(0.56, 8.606667)], 'budget : 100.0, discount_factor : 0.8,\n        num_users : 150, num_docs : 142998,\n        slate_size : 30, epsilon : 0.1, seed : 0': [(0.6266666666666667, 12.626667)], 'budget : 100.0, discount_factor : 1.0,\n        num_users : 150, num_docs : 142998,\n        slate_size : 30, epsilon : 0.1, seed : 0': [(0.49333333333333335, 9.06)], 'budget : 150.0, discount_factor : 0.2,\n        num_users : 150, num_docs : 142998,\n        slate_size : 30, epsilon : 0.1, seed : 0': [(0.7466666666666667, 25.626667)], 'budget : 150.0, discount_factor : 0.4,\n        num_users : 150, num_docs : 142998,\n        slate_size : 30, epsilon : 0.1, seed : 0': [(0.7733333333333333, 26.413334)], 'budget : 150.0, discount_factor : 0.6,\n        num_users : 150, num_docs : 142998,\n        slate_size : 30, epsilon : 0.1, seed : 0': [(0.8466666666666667, 29.766666)], 'budget : 150.0, discount_factor : 0.8,\n        num_users : 150, num_docs : 142998,\n        slate_size : 30, epsilon : 0.1, seed : 0': [(0.7466666666666667, 26.993334)], 'budget : 150.0, discount_factor : 1.0,\n        num_users : 150, num_docs : 142998,\n        slate_size : 30, epsilon : 0.1, seed : 0': [(0.7466666666666667, 27.48)], 'budget : 200.0, discount_factor : 0.2,\n        num_users : 150, num_docs : 142998,\n        slate_size : 30, epsilon : 0.1, seed : 0': [(0.7533333333333333, 4.846667)], 'budget : 200.0, discount_factor : 0.4,\n        num_users : 150, num_docs : 142998,\n        slate_size : 30, epsilon : 0.1, seed : 0': [(0.7666666666666667, 6.0933332)], 'budget : 200.0, discount_factor : 0.6,\n        num_users : 150, num_docs : 142998,\n        slate_size : 30, epsilon : 0.1, seed : 0': [(0.9466666666666667, 17.226667)], 'budget : 200.0, discount_factor : 0.8,\n        num_users : 150, num_docs : 142998,\n        slate_size : 30, epsilon : 0.1, seed : 0': [(0.9466666666666667, 11.406667)], 'budget : 200.0, discount_factor : 1.0,\n        num_users : 150, num_docs : 142998,\n        slate_size : 30, epsilon : 0.1, seed : 0': [(0.94, 11.326667)], 'budget : 250.0, discount_factor : 0.2,\n        num_users : 150, num_docs : 142998,\n        slate_size : 30, epsilon : 0.1, seed : 0': [(0.68, 28.42)], 'budget : 250.0, discount_factor : 0.4,\n        num_users : 150, num_docs : 142998,\n        slate_size : 30, epsilon : 0.1, seed : 0': [(0.7266666666666667, 27.693333)], 'budget : 250.0, discount_factor : 0.6,\n        num_users : 150, num_docs : 142998,\n        slate_size : 30, epsilon : 0.1, seed : 0': [(0.7333333333333333, 27.5)], 'budget : 250.0, discount_factor : 0.8,\n        num_users : 150, num_docs : 142998,\n        slate_size : 30, epsilon : 0.1, seed : 0': [(0.7066666666666667, 28.466667)], 'budget : 250.0, discount_factor : 1.0,\n        num_users : 150, num_docs : 142998,\n        slate_size : 30, epsilon : 0.1, seed : 0': [(0.84, 29.893333)], 'budget : 300.0, discount_factor : 0.2,\n        num_users : 150, num_docs : 142998,\n        slate_size : 30, epsilon : 0.1, seed : 0': [(0.8866666666666667, 10.486667)], 'budget : 300.0, discount_factor : 0.4,\n        num_users : 150, num_docs : 142998,\n        slate_size : 30, epsilon : 0.1, seed : 0': [(0.9, 11.44)], 'budget : 300.0, discount_factor : 0.6,\n        num_users : 150, num_docs : 142998,\n        slate_size : 30, epsilon : 0.1, seed : 0': [(0.9533333333333334, 14.28)], 'budget : 300.0, discount_factor : 0.8,\n        num_users : 150, num_docs : 142998,\n        slate_size : 30, epsilon : 0.1, seed : 0': [(0.9666666666666667, 22.313334)], 'budget : 300.0, discount_factor : 1.0,\n        num_users : 150, num_docs : 142998,\n        slate_size : 30, epsilon : 0.1, seed : 0': [(0.96, 16.506666)], 'budget : 400.0, discount_factor : 0.2,\n        num_users : 150, num_docs : 142998,\n        slate_size : 30, epsilon : 0.1, seed : 0': [(0.98, 9.073334)], 'budget : 400.0, discount_factor : 0.4,\n        num_users : 150, num_docs : 142998,\n        slate_size : 30, epsilon : 0.1, seed : 0': [(0.9866666666666667, 18.633333)], 'budget : 400.0, discount_factor : 0.6,\n        num_users : 150, num_docs : 142998,\n        slate_size : 30, epsilon : 0.1, seed : 0': [(0.98, 20.74)], 'budget : 400.0, discount_factor : 0.8,\n        num_users : 150, num_docs : 142998,\n        slate_size : 30, epsilon : 0.1, seed : 0': [(0.9733333333333334, 17.88)], 'budget : 400.0, discount_factor : 1.0,\n        num_users : 150, num_docs : 142998,\n        slate_size : 30, epsilon : 0.1, seed : 0': [(0.9733333333333334, 20.486666)], 'budget : 500.0, discount_factor : 0.2,\n        num_users : 150, num_docs : 142998,\n        slate_size : 30, epsilon : 0.1, seed : 0': [(0.96, 9.3)], 'budget : 500.0, discount_factor : 0.4,\n        num_users : 150, num_docs : 142998,\n        slate_size : 30, epsilon : 0.1, seed : 0': [(0.9333333333333333, 10.36)], 'budget : 500.0, discount_factor : 0.6,\n        num_users : 150, num_docs : 142998,\n        slate_size : 30, epsilon : 0.1, seed : 0': [(0.9733333333333334, 8.96)]}
+generating simulated data 
+behavior_policy play_rate, avg_impressions: (0.48, 11.76)
+avg impressions, 11.76
+[04:12:01] ======== Monitor (0): HostSketchContainer ========
+[04:12:01] AllReduce: 0.001072s, 1 calls @ 1072us
+
+[04:12:01] MakeCuts: 0.001213s, 1 calls @ 1213us
+
+[04:12:01] DEBUG: /workspace/src/gbm/gbtree.cc:130: Using tree method: 0
+[04:12:01] ======== Monitor (0): Learner ========
+[04:12:01] Configure: 0.000621s, 1 calls @ 621us
+
+[04:12:01] EvalOneIter: 1.3e-05s, 1 calls @ 13us
+
+[04:12:01] GetGradient: 4.3e-05s, 1 calls @ 43us
+
+[04:12:01] PredictRaw: 5e-06s, 1 calls @ 5us
+
+[04:12:01] UpdateOneIter: 0.002707s, 1 calls @ 2707us
+
+[04:12:01] ======== Monitor (0): GBTree ========
+[04:12:01] BoostNewTrees: 0.001888s, 1 calls @ 1888us
+
+[04:12:01] CommitModel: 1e-06s, 1 calls @ 1us
+
+[04:12:01] ======== Monitor (0): HistUpdater ========
+[04:12:01] BuildHistogram: 0.000836s, 5 calls @ 836us
+
+[04:12:01] EvaluateSplits: 0.00031s, 6 calls @ 310us
+
+[04:12:01] InitData: 2.3e-05s, 1 calls @ 23us
+
+[04:12:01] InitRoot: 0.000409s, 1 calls @ 409us
+
+[04:12:01] LeafPartition: 0s, 1 calls @ 0us
+
+[04:12:01] UpdatePosition: 0.00022s, 6 calls @ 220us
+
+[04:12:01] UpdatePredictionCache: 2.3e-05s, 1 calls @ 23us
+
+[04:12:01] UpdateTree: 0.001827s, 1 calls @ 1827us
+
+[04:12:01] DEBUG: /workspace/src/gbm/gbtree.cc:130: Using tree method: 0
+generating user slates from qlearning policy...
+qlearning_model auc 0.5244444444444445
+qlearning_policy play_rate, avg_impressions: (0.9466666666666667, 9.42)
+{'budget : 100.0, discount_factor : 0.2,\n        num_users : 150, num_docs : 142998,\n        slate_size : 30, epsilon : 0.1, seed : 0': [(0.26, 4.78)], 'budget : 100.0, discount_factor : 0.4,\n        num_users : 150, num_docs : 142998,\n        slate_size : 30, epsilon : 0.1, seed : 0': [(0.38, 9.126667)], 'budget : 100.0, discount_factor : 0.6,\n        num_users : 150, num_docs : 142998,\n        slate_size : 30, epsilon : 0.1, seed : 0': [(0.56, 8.606667)], 'budget : 100.0, discount_factor : 0.8,\n        num_users : 150, num_docs : 142998,\n        slate_size : 30, epsilon : 0.1, seed : 0': [(0.6266666666666667, 12.626667)], 'budget : 100.0, discount_factor : 1.0,\n        num_users : 150, num_docs : 142998,\n        slate_size : 30, epsilon : 0.1, seed : 0': [(0.49333333333333335, 9.06)], 'budget : 150.0, discount_factor : 0.2,\n        num_users : 150, num_docs : 142998,\n        slate_size : 30, epsilon : 0.1, seed : 0': [(0.7466666666666667, 25.626667)], 'budget : 150.0, discount_factor : 0.4,\n        num_users : 150, num_docs : 142998,\n        slate_size : 30, epsilon : 0.1, seed : 0': [(0.7733333333333333, 26.413334)], 'budget : 150.0, discount_factor : 0.6,\n        num_users : 150, num_docs : 142998,\n        slate_size : 30, epsilon : 0.1, seed : 0': [(0.8466666666666667, 29.766666)], 'budget : 150.0, discount_factor : 0.8,\n        num_users : 150, num_docs : 142998,\n        slate_size : 30, epsilon : 0.1, seed : 0': [(0.7466666666666667, 26.993334)], 'budget : 150.0, discount_factor : 1.0,\n        num_users : 150, num_docs : 142998,\n        slate_size : 30, epsilon : 0.1, seed : 0': [(0.7466666666666667, 27.48)], 'budget : 200.0, discount_factor : 0.2,\n        num_users : 150, num_docs : 142998,\n        slate_size : 30, epsilon : 0.1, seed : 0': [(0.7533333333333333, 4.846667)], 'budget : 200.0, discount_factor : 0.4,\n        num_users : 150, num_docs : 142998,\n        slate_size : 30, epsilon : 0.1, seed : 0': [(0.7666666666666667, 6.0933332)], 'budget : 200.0, discount_factor : 0.6,\n        num_users : 150, num_docs : 142998,\n        slate_size : 30, epsilon : 0.1, seed : 0': [(0.9466666666666667, 17.226667)], 'budget : 200.0, discount_factor : 0.8,\n        num_users : 150, num_docs : 142998,\n        slate_size : 30, epsilon : 0.1, seed : 0': [(0.9466666666666667, 11.406667)], 'budget : 200.0, discount_factor : 1.0,\n        num_users : 150, num_docs : 142998,\n        slate_size : 30, epsilon : 0.1, seed : 0': [(0.94, 11.326667)], 'budget : 250.0, discount_factor : 0.2,\n        num_users : 150, num_docs : 142998,\n        slate_size : 30, epsilon : 0.1, seed : 0': [(0.68, 28.42)], 'budget : 250.0, discount_factor : 0.4,\n        num_users : 150, num_docs : 142998,\n        slate_size : 30, epsilon : 0.1, seed : 0': [(0.7266666666666667, 27.693333)], 'budget : 250.0, discount_factor : 0.6,\n        num_users : 150, num_docs : 142998,\n        slate_size : 30, epsilon : 0.1, seed : 0': [(0.7333333333333333, 27.5)], 'budget : 250.0, discount_factor : 0.8,\n        num_users : 150, num_docs : 142998,\n        slate_size : 30, epsilon : 0.1, seed : 0': [(0.7066666666666667, 28.466667)], 'budget : 250.0, discount_factor : 1.0,\n        num_users : 150, num_docs : 142998,\n        slate_size : 30, epsilon : 0.1, seed : 0': [(0.84, 29.893333)], 'budget : 300.0, discount_factor : 0.2,\n        num_users : 150, num_docs : 142998,\n        slate_size : 30, epsilon : 0.1, seed : 0': [(0.8866666666666667, 10.486667)], 'budget : 300.0, discount_factor : 0.4,\n        num_users : 150, num_docs : 142998,\n        slate_size : 30, epsilon : 0.1, seed : 0': [(0.9, 11.44)], 'budget : 300.0, discount_factor : 0.6,\n        num_users : 150, num_docs : 142998,\n        slate_size : 30, epsilon : 0.1, seed : 0': [(0.9533333333333334, 14.28)], 'budget : 300.0, discount_factor : 0.8,\n        num_users : 150, num_docs : 142998,\n        slate_size : 30, epsilon : 0.1, seed : 0': [(0.9666666666666667, 22.313334)], 'budget : 300.0, discount_factor : 1.0,\n        num_users : 150, num_docs : 142998,\n        slate_size : 30, epsilon : 0.1, seed : 0': [(0.96, 16.506666)], 'budget : 400.0, discount_factor : 0.2,\n        num_users : 150, num_docs : 142998,\n        slate_size : 30, epsilon : 0.1, seed : 0': [(0.98, 9.073334)], 'budget : 400.0, discount_factor : 0.4,\n        num_users : 150, num_docs : 142998,\n        slate_size : 30, epsilon : 0.1, seed : 0': [(0.9866666666666667, 18.633333)], 'budget : 400.0, discount_factor : 0.6,\n        num_users : 150, num_docs : 142998,\n        slate_size : 30, epsilon : 0.1, seed : 0': [(0.98, 20.74)], 'budget : 400.0, discount_factor : 0.8,\n        num_users : 150, num_docs : 142998,\n        slate_size : 30, epsilon : 0.1, seed : 0': [(0.9733333333333334, 17.88)], 'budget : 400.0, discount_factor : 1.0,\n        num_users : 150, num_docs : 142998,\n        slate_size : 30, epsilon : 0.1, seed : 0': [(0.9733333333333334, 20.486666)], 'budget : 500.0, discount_factor : 0.2,\n        num_users : 150, num_docs : 142998,\n        slate_size : 30, epsilon : 0.1, seed : 0': [(0.96, 9.3)], 'budget : 500.0, discount_factor : 0.4,\n        num_users : 150, num_docs : 142998,\n        slate_size : 30, epsilon : 0.1, seed : 0': [(0.9333333333333333, 10.36)], 'budget : 500.0, discount_factor : 0.6,\n        num_users : 150, num_docs : 142998,\n        slate_size : 30, epsilon : 0.1, seed : 0': [(0.9733333333333334, 8.96)], 'budget : 500.0, discount_factor : 0.8,\n        num_users : 150, num_docs : 142998,\n        slate_size : 30, epsilon : 0.1, seed : 0': [(0.9466666666666667, 9.42)]}
+generating simulated data 
+behavior_policy play_rate, avg_impressions: (0.48, 11.76)
+avg impressions, 11.76
+[04:17:30] ======== Monitor (0): HostSketchContainer ========
+[04:17:30] AllReduce: 0.001984s, 1 calls @ 1984us
+
+[04:17:30] MakeCuts: 0.002072s, 1 calls @ 2072us
+
+[04:17:30] DEBUG: /workspace/src/gbm/gbtree.cc:130: Using tree method: 0
+[04:17:30] ======== Monitor (0): Learner ========
+[04:17:30] Configure: 0.000491s, 1 calls @ 491us
+
+[04:17:30] EvalOneIter: 1.2e-05s, 1 calls @ 12us
+
+[04:17:30] GetGradient: 4.3e-05s, 1 calls @ 43us
+
+[04:17:30] PredictRaw: 4e-06s, 1 calls @ 4us
+
+[04:17:30] UpdateOneIter: 0.002601s, 1 calls @ 2601us
+
+[04:17:30] ======== Monitor (0): GBTree ========
+[04:17:30] BoostNewTrees: 0.001924s, 1 calls @ 1924us
+
+[04:17:30] CommitModel: 1e-06s, 1 calls @ 1us
+
+[04:17:30] ======== Monitor (0): HistUpdater ========
+[04:17:30] BuildHistogram: 0.001082s, 5 calls @ 1082us
+
+[04:17:30] EvaluateSplits: 0.000328s, 6 calls @ 328us
+
+[04:17:30] InitData: 1.7e-05s, 1 calls @ 17us
+
+[04:17:30] InitRoot: 0.000268s, 1 calls @ 268us
+
+[04:17:30] LeafPartition: 0s, 1 calls @ 0us
+
+[04:17:30] UpdatePosition: 0.000167s, 6 calls @ 167us
+
+[04:17:30] UpdatePredictionCache: 2.1e-05s, 1 calls @ 21us
+
+[04:17:30] UpdateTree: 0.001869s, 1 calls @ 1869us
+
+[04:17:30] DEBUG: /workspace/src/gbm/gbtree.cc:130: Using tree method: 0
+generating user slates from qlearning policy...
+qlearning_model auc 0.52
+qlearning_policy play_rate, avg_impressions: (0.98, 12.866667)
+{'budget : 100.0, discount_factor : 0.2,\n        num_users : 150, num_docs : 142998,\n        slate_size : 30, epsilon : 0.1, seed : 0': [(0.26, 4.78)], 'budget : 100.0, discount_factor : 0.4,\n        num_users : 150, num_docs : 142998,\n        slate_size : 30, epsilon : 0.1, seed : 0': [(0.38, 9.126667)], 'budget : 100.0, discount_factor : 0.6,\n        num_users : 150, num_docs : 142998,\n        slate_size : 30, epsilon : 0.1, seed : 0': [(0.56, 8.606667)], 'budget : 100.0, discount_factor : 0.8,\n        num_users : 150, num_docs : 142998,\n        slate_size : 30, epsilon : 0.1, seed : 0': [(0.6266666666666667, 12.626667)], 'budget : 100.0, discount_factor : 1.0,\n        num_users : 150, num_docs : 142998,\n        slate_size : 30, epsilon : 0.1, seed : 0': [(0.49333333333333335, 9.06)], 'budget : 150.0, discount_factor : 0.2,\n        num_users : 150, num_docs : 142998,\n        slate_size : 30, epsilon : 0.1, seed : 0': [(0.7466666666666667, 25.626667)], 'budget : 150.0, discount_factor : 0.4,\n        num_users : 150, num_docs : 142998,\n        slate_size : 30, epsilon : 0.1, seed : 0': [(0.7733333333333333, 26.413334)], 'budget : 150.0, discount_factor : 0.6,\n        num_users : 150, num_docs : 142998,\n        slate_size : 30, epsilon : 0.1, seed : 0': [(0.8466666666666667, 29.766666)], 'budget : 150.0, discount_factor : 0.8,\n        num_users : 150, num_docs : 142998,\n        slate_size : 30, epsilon : 0.1, seed : 0': [(0.7466666666666667, 26.993334)], 'budget : 150.0, discount_factor : 1.0,\n        num_users : 150, num_docs : 142998,\n        slate_size : 30, epsilon : 0.1, seed : 0': [(0.7466666666666667, 27.48)], 'budget : 200.0, discount_factor : 0.2,\n        num_users : 150, num_docs : 142998,\n        slate_size : 30, epsilon : 0.1, seed : 0': [(0.7533333333333333, 4.846667)], 'budget : 200.0, discount_factor : 0.4,\n        num_users : 150, num_docs : 142998,\n        slate_size : 30, epsilon : 0.1, seed : 0': [(0.7666666666666667, 6.0933332)], 'budget : 200.0, discount_factor : 0.6,\n        num_users : 150, num_docs : 142998,\n        slate_size : 30, epsilon : 0.1, seed : 0': [(0.9466666666666667, 17.226667)], 'budget : 200.0, discount_factor : 0.8,\n        num_users : 150, num_docs : 142998,\n        slate_size : 30, epsilon : 0.1, seed : 0': [(0.9466666666666667, 11.406667)], 'budget : 200.0, discount_factor : 1.0,\n        num_users : 150, num_docs : 142998,\n        slate_size : 30, epsilon : 0.1, seed : 0': [(0.94, 11.326667)], 'budget : 250.0, discount_factor : 0.2,\n        num_users : 150, num_docs : 142998,\n        slate_size : 30, epsilon : 0.1, seed : 0': [(0.68, 28.42)], 'budget : 250.0, discount_factor : 0.4,\n        num_users : 150, num_docs : 142998,\n        slate_size : 30, epsilon : 0.1, seed : 0': [(0.7266666666666667, 27.693333)], 'budget : 250.0, discount_factor : 0.6,\n        num_users : 150, num_docs : 142998,\n        slate_size : 30, epsilon : 0.1, seed : 0': [(0.7333333333333333, 27.5)], 'budget : 250.0, discount_factor : 0.8,\n        num_users : 150, num_docs : 142998,\n        slate_size : 30, epsilon : 0.1, seed : 0': [(0.7066666666666667, 28.466667)], 'budget : 250.0, discount_factor : 1.0,\n        num_users : 150, num_docs : 142998,\n        slate_size : 30, epsilon : 0.1, seed : 0': [(0.84, 29.893333)], 'budget : 300.0, discount_factor : 0.2,\n        num_users : 150, num_docs : 142998,\n        slate_size : 30, epsilon : 0.1, seed : 0': [(0.8866666666666667, 10.486667)], 'budget : 300.0, discount_factor : 0.4,\n        num_users : 150, num_docs : 142998,\n        slate_size : 30, epsilon : 0.1, seed : 0': [(0.9, 11.44)], 'budget : 300.0, discount_factor : 0.6,\n        num_users : 150, num_docs : 142998,\n        slate_size : 30, epsilon : 0.1, seed : 0': [(0.9533333333333334, 14.28)], 'budget : 300.0, discount_factor : 0.8,\n        num_users : 150, num_docs : 142998,\n        slate_size : 30, epsilon : 0.1, seed : 0': [(0.9666666666666667, 22.313334)], 'budget : 300.0, discount_factor : 1.0,\n        num_users : 150, num_docs : 142998,\n        slate_size : 30, epsilon : 0.1, seed : 0': [(0.96, 16.506666)], 'budget : 400.0, discount_factor : 0.2,\n        num_users : 150, num_docs : 142998,\n        slate_size : 30, epsilon : 0.1, seed : 0': [(0.98, 9.073334)], 'budget : 400.0, discount_factor : 0.4,\n        num_users : 150, num_docs : 142998,\n        slate_size : 30, epsilon : 0.1, seed : 0': [(0.9866666666666667, 18.633333)], 'budget : 400.0, discount_factor : 0.6,\n        num_users : 150, num_docs : 142998,\n        slate_size : 30, epsilon : 0.1, seed : 0': [(0.98, 20.74)], 'budget : 400.0, discount_factor : 0.8,\n        num_users : 150, num_docs : 142998,\n        slate_size : 30, epsilon : 0.1, seed : 0': [(0.9733333333333334, 17.88)], 'budget : 400.0, discount_factor : 1.0,\n        num_users : 150, num_docs : 142998,\n        slate_size : 30, epsilon : 0.1, seed : 0': [(0.9733333333333334, 20.486666)], 'budget : 500.0, discount_factor : 0.2,\n        num_users : 150, num_docs : 142998,\n        slate_size : 30, epsilon : 0.1, seed : 0': [(0.96, 9.3)], 'budget : 500.0, discount_factor : 0.4,\n        num_users : 150, num_docs : 142998,\n        slate_size : 30, epsilon : 0.1, seed : 0': [(0.9333333333333333, 10.36)], 'budget : 500.0, discount_factor : 0.6,\n        num_users : 150, num_docs : 142998,\n        slate_size : 30, epsilon : 0.1, seed : 0': [(0.9733333333333334, 8.96)], 'budget : 500.0, discount_factor : 0.8,\n        num_users : 150, num_docs : 142998,\n        slate_size : 30, epsilon : 0.1, seed : 0': [(0.9466666666666667, 9.42)], 'budget : 500.0, discount_factor : 1.0,\n        num_users : 150, num_docs : 142998,\n        slate_size : 30, epsilon : 0.1, seed : 0': [(0.98, 12.866667)]}
+Traceback (most recent call last):
+  File "/data/scp6004/netflix.py", line 1790, in txt_to_dataframe
+    data_dict = ast.literal_eval(content)
+                ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/scp6004/anaconda3/envs/poe/lib/python3.11/ast.py", line 64, in literal_eval
+    node_or_string = parse(node_or_string.lstrip(" \t"), mode='eval')
+                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/scp6004/anaconda3/envs/poe/lib/python3.11/ast.py", line 50, in parse
+    return compile(source, filename, mode, flags,
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "<unknown>", line 1
+    {"budget : 100.0, discount_factor : 0.2,\n        num_users : 150, num_docs : 142998,\n        slate_size : 30, epsilon : 0.1, seed : 0": [[0.26, 
+                                                                                                                                               ^
+SyntaxError: '[' was never closed
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/data/scp6004/netflix.py", line 1850, in <module>
+    df = txt_to_dataframe('results_qlearning.txt')
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/data/scp6004/netflix.py", line 1792, in txt_to_dataframe
+    raise ValueError("Error parsing the text file. Ensure it contains a valid dictionary.") from e
+ValueError: Error parsing the text file. Ensure it contains a valid dictionary.
