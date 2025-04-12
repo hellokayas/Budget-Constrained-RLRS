@@ -1,37 +1,110 @@
-
-
 import torch
 import torch.nn as nn
+import torch.nn.functional as F
 import torch.optim as optim
 from torch.utils.data import Dataset, DataLoader
 import pandas as pd
 import numpy as np
 from tqdm import tqdm
+import math
+import xxhash  # Make sure to install xxhash (e.g. pip install xxhash)
+
+# ---------------------------
+# Hashing Function for Categorical Features
+# ---------------------------
+def hash_feature(feature_value: str, feature_name: str):
+    """
+    Hashes a feature value using xxhash with the feature name as seed.
+    This ensures that two different features (even with the same value)
+    are hashed differently.
+    """
+    seed = xxhash.xxh32(feature_name, 0).intdigest()
+    return xxhash.xxh64(feature_value, seed).intdigest() - 2 ** 63
 
 # ---------------------------
 # Interaction Type Mapping
 # ---------------------------
-event_MAPPING = {
-    "view": 0,
-    "addtocart": 1,
-    "transaction": 2
+INTERACTION_TYPE_MAPPING = {
+    "pv": 0,
+    "buy": 1,
+    "cart": 2,
+    "fav": 3
 }
+
+# ---------------------------
+# KShiftEmbedding Module
+# ---------------------------
+class KShiftEmbedding(nn.Module):
+    def __init__(
+            self,
+            num_embeddings: int,
+            emb_dim: int,
+            num_shifts: int = 8,
+            normalize_output: bool = True,
+            sparse: bool = False,
+    ):
+        """
+        :param num_embeddings: Number of rows in the (hashed) embedding table.
+        :param emb_dim: Dimensionality of the embeddings.
+        :param num_shifts: Number of bit-shift operations (more shifts gives a richer combination).
+        :param normalize_output: If True, output embeddings are L2 normalized.
+        :param sparse: Whether to use sparse gradients.
+        """
+        super().__init__()
+        self.emb = nn.Embedding(num_embeddings, emb_dim, sparse=sparse)
+        self._num_embeddings = num_embeddings
+        self._num_shifts = num_shifts
+        self._num_bits = 64
+        self._normalize_output = normalize_output
+
+    def forward(self, id_: torch.LongTensor) -> torch.Tensor:
+        """
+        :param id_: A tensor of hashed IDs.
+        :return: The combined embedding for each hashed ID.
+        """
+        tensors = []
+        for col_idx in range(self._num_shifts):
+            idx = self.get_row_idx(id_, col_idx)
+            tensors.append(self.emb(idx))
+        x = torch.stack(tensors, dim=-1).sum(dim=-1)
+        if self._normalize_output:
+            x = F.normalize(x, p=2.0, dim=-1)
+        else:
+            x = x / math.sqrt(self._num_shifts)
+        return x
+
+    def get_row_idx(self, x: torch.LongTensor, col_idx: int):
+        if col_idx != 0:
+            # Perform bit-shift operations (similar to bit rotation)
+            x = (x << col_idx) | (x >> (self._num_bits - col_idx))
+        # Map to a valid index range using modulo operation
+        return torch.remainder(x, self._num_embeddings)
 
 # ---------------------------
 # Dataset and Sampling Methods
 # ---------------------------
 class InteractionDataset(Dataset):
     def __init__(self, data_path, mode="control", window_size=100, max_history=None, sliding_stride=1):
-        colnames = ["visitorid", "itemid", "event", "timestamp", "transactionid"]
-        self.df = pd.read_csv(data_path)
-        self.df.sort_values(["visitorid", "timestamp"], inplace=True)
+        colnames = ["user_id", "item_id", "category_id", "interaction_type", "timestamp"]
+        # Read the CSV file with specified column names
+        self.df = pd.read_csv(data_path, names=colnames, header=None)
+        self.df.sort_values(["user_id", "timestamp"], inplace=True)
+        print(len(self.df))
+        # **Step 1: Compute item interaction frequency**
+        item_counts = self.df["item_id"].value_counts()
+        # **Step 2: Remove infrequent items**
+        frequent_items = item_counts[item_counts >= 50].index  # Items with enough interactions
+        self.df = self.df[self.df["item_id"].isin(frequent_items)]
+        print(len(self.df))
+        # Create a mapping from raw item IDs to contiguous indices (0-indexed)
+        unique_items = sorted(self.df["item_id"].unique())
+        self.item2idx = {item: idx for idx, item in enumerate(unique_items)}
         
-        # Build sequences per user as (items, events)
         self.user_sequences = {}
-        for user, group in self.df.groupby("visitorid"):
+        for user, group in self.df.groupby("user_id"):
             group = group.sort_values("timestamp")
-            items = group["itemid"].tolist()
-            types = group["event"].map(lambda x: event_MAPPING.get(x, 0)).tolist()
+            items = group["item_id"].tolist()
+            types = group["interaction_type"].map(lambda x: INTERACTION_TYPE_MAPPING.get(x, 0)).tolist()
             self.user_sequences[user] = (items, types)
         
         self.mode = mode
@@ -68,20 +141,21 @@ class InteractionDataset(Dataset):
     
     def __getitem__(self, idx):
         user, item_seq, type_seq = self.samples[idx]
-        items = torch.tensor(item_seq, dtype=torch.long)
-        types = torch.tensor(type_seq, dtype=torch.long)
-        # Ensure that there is at least 2 elements to create input/target pairs
-        if len(items) < 2:
-            items = torch.cat([items, torch.tensor([0], dtype=torch.long)])
-            types = torch.cat([types, torch.tensor([0], dtype=torch.long)])
-        input_items = items[:-1]
-        target_items = items[1:]
-        input_types = types[:-1]
+        # ---- Apply hashing to each raw item_id for input features ----
+        hashed_item_seq = [hash_feature(str(item), "item_id") for item in item_seq]
+        # Use hashed IDs as inputs
+        input_items_full = torch.tensor(hashed_item_seq, dtype=torch.long)
+        # Ensure that the sequence length is at least 2; if not, pad with 0.
+        if len(input_items_full) < 2:
+            input_items_full = torch.cat([input_items_full, torch.tensor([0], dtype=torch.long)])
+            type_seq = type_seq + [0]
+        # Input sequence is all but the last element.
+        input_items = input_items_full[:-1]
+        # Convert target raw item IDs to contiguous indices using the mapping.
+        target_items = torch.tensor([self.item2idx[item] for item in item_seq[1:]], dtype=torch.long)
+        input_types = torch.tensor(type_seq[:-1], dtype=torch.long)
         return input_items, target_items, input_types
 
-# ---------------------------
-# Custom Collate Function for Padding
-# ---------------------------
 def pad_collate_fn(batch):
     """
     Custom collate function to pad sequences to the maximum length in the batch.
@@ -94,24 +168,32 @@ def pad_collate_fn(batch):
     return input_items_padded, target_items_padded, input_types_padded
 
 # ---------------------------
-# Model Definition: Gemma2 with Interaction Feature Embedding
+# Modified Model Definition: Gemma2 with K-Shift Item Embedding
 # ---------------------------
 class Gemma2(nn.Module):
-    def __init__(self, num_items, num_events=3, emb_dim=64, n_layers=2, n_heads=4, dropout=0.1, max_seq_len=100):
+    def __init__(self, num_items, num_interaction_types=4, emb_dim=64, n_layers=2, n_heads=4, dropout=0.1, max_seq_len=100):
         super(Gemma2, self).__init__()
-        self.item_embedding = nn.Embedding(num_items, emb_dim)
-        self.interaction_embedding = nn.Embedding(num_events, emb_dim)
+        # Instead of using nn.Embedding for items, we use KShiftEmbedding.
+        # We “expand” the number of embeddings slightly to allow hashing to be more expressive.
+        expansion_factor = 1.15
+        num_emb = int(expansion_factor * num_items)
+        self.item_embedding = KShiftEmbedding(num_embeddings=num_emb, emb_dim=emb_dim, num_shifts=8, normalize_output=True)
+        
+        # Interaction types are few so we keep the simple embedding.
+        self.interaction_embedding = nn.Embedding(num_interaction_types, emb_dim)
         self.position_embedding = nn.Embedding(max_seq_len, emb_dim)
         encoder_layer = nn.TransformerEncoderLayer(d_model=emb_dim, nhead=n_heads, dropout=dropout)
         self.transformer = nn.TransformerEncoder(encoder_layer, num_layers=n_layers)
+        # The output layer projects back to the target space (contiguous indices)
         self.output_layer = nn.Linear(emb_dim, num_items)
         self.max_seq_len = max_seq_len
 
-    def forward(self, x, events):
+    def forward(self, x, interaction_types):
         batch_size, seq_len = x.size()
         positions = torch.arange(0, seq_len, device=x.device).unsqueeze(0).expand(batch_size, seq_len)
+        # x contains hashed item IDs; the KShiftEmbedding will use these to fetch compressed embeddings.
         item_emb = self.item_embedding(x)
-        type_emb = self.interaction_embedding(events)
+        type_emb = self.interaction_embedding(interaction_types)
         pos_emb = self.position_embedding(positions)
         x = item_emb + type_emb + pos_emb
         x = x.transpose(0, 1)
@@ -136,7 +218,6 @@ def train_model(model, dataloader, num_epochs=10, lr=0.001, device='cpu'):
             input_items = input_items.to(device)
             target_items = target_items.to(device)
             input_types = input_types.to(device)
-            # print(input_items.shape)
             optimizer.zero_grad()
             logits = model(input_items, input_types)
             loss = criterion(logits.reshape(-1, logits.size(-1)), target_items.reshape(-1))
@@ -144,8 +225,8 @@ def train_model(model, dataloader, num_epochs=10, lr=0.001, device='cpu'):
             optimizer.step()
             epoch_loss += loss.item()
         print(f"Epoch {epoch + 1}/{num_epochs} Loss: {epoch_loss / len(dataloader):.4f}")
-        torch.save(model.state_dict(), "sliding500.pth")
-        print("Model saved as sliding500.pth")
+        torch.save(model.state_dict(), "taobaosliding1000.pth")
+        print("Model saved as taobaosliding1000.pth")
 
 def train_model_mixed(control_dataloader, sliding_dataloader, model, num_epochs=10, X=5, lr=0.001, device='cpu'):
     model.to(device)
@@ -173,118 +254,84 @@ def train_model_mixed(control_dataloader, sliding_dataloader, model, num_epochs=
             optimizer.step()
             epoch_loss += loss.item()
         print(f"Epoch {epoch + 1} Loss: {epoch_loss / len(dataloader):.4f}")
-        torch.save(model.state_dict(), "1000_mixed.pth")
-        print("Model saved as 1000_mixed.pth")
+        torch.save(model.state_dict(), "taobaomixed500.pth")
+        print("Model saved as taobaomixed500.pth")
 
 def evaluate_model(model, dataloader, device='cpu', top_k=10):
     """
     Evaluate the model by computing the average loss, perplexity, MRR, MAP, and Recall@top_k.
-    This version computes MAP as the mean of per-query Average Precision (AP).
-    If each query has only one ground-truth item, AP equals the reciprocal rank.
+    For each prediction (at each time step), we compute the rank of the ground truth item.
     """
     model.eval()
     total_loss = 0.0
     total_mrr = 0.0
-    total_ap = 0.0
-    total_queries = 0
-    criterion = torch.nn.CrossEntropyLoss()
+    total_recall = 0.0
+    total_count = 0
+    criterion = nn.CrossEntropyLoss()
     
-    # We'll accumulate loss and ranking metrics over each query (each time step)
     with torch.no_grad():
         for input_items, target_items, input_types in dataloader:
             input_items = input_items.to(device)
             target_items = target_items.to(device)
             input_types = input_types.to(device)
             logits = model(input_items, input_types)  # Shape: (batch, seq_len, num_items)
-            loss = criterion(logits.view(-1, logits.size(-1)), target_items.view(-1))
+            loss = criterion(logits.reshape(-1, logits.size(-1)), target_items.reshape(-1))
             total_loss += loss.item()
-            
+
             batch_size, seq_len, num_items = logits.shape
-            # Process each prediction (each time step) as a separate query
-            for b in range(batch_size):
-                for t in range(seq_len):
-                    # Get the scores for all items for this query
-                    scores = logits[b, t, :].cpu().numpy()
-                    # Here we assume target_items[b, t] is the ground truth.
-                    # If you have multiple relevant items, ensure that target_items[b, t]
-                    # is a list or array of relevant item ids. If it's a single item, we wrap it.
-                    gt = target_items[b, t].item()
-                    ground_truth = [gt] if not isinstance(gt, (list, np.ndarray)) else gt
-                    
-                    # Sort all items by descending score
-                    sorted_indices = np.argsort(-scores)
-                    
-                    # --- Compute Reciprocal Rank (for MRR) ---
-                    # Find the rank of the first relevant item.
-                    rank = np.where(np.isin(sorted_indices, ground_truth))[0][0] + 1
-                    total_mrr += 1.0 / rank
-                    
-                    # --- Compute Average Precision (AP) for this query ---
-                    hit_count = 0
-                    precision_accum = 0.0
-                    for i, idx in enumerate(sorted_indices, start=1):
-                        if idx in ground_truth:
-                            hit_count += 1
-                            precision_accum += hit_count / i
-                    # If no relevant item was found, AP is defined as 0.
-                    ap = precision_accum / hit_count if hit_count > 0 else 0.0
-                    total_ap += ap
-                    
-                    total_queries += 1
-    
-    avg_loss = total_loss / len(dataloader)
-    perplexity = np.exp(avg_loss)
-    mrr = total_mrr / total_queries
-    map_score = total_ap / total_queries
-    
-    # Compute Recall@top_k as before (per query)
-    total_recall = 0.0
-    total_count = 0
-    with torch.no_grad():
-        for input_items, target_items, input_types in dataloader:
-            input_items = input_items.to(device)
-            target_items = target_items.to(device)
-            input_types = input_types.to(device)
-            logits = model(input_items, input_types)
-            batch_size, seq_len, num_items = logits.shape
-            # For each query, check if a relevant item appears in the top_k predictions.
-            target_scores = logits.gather(dim=-1, index=target_items.unsqueeze(-1)).squeeze(-1)
-            ranks = (logits > target_scores.unsqueeze(-1)).sum(dim=-1) + 1
+            # Gather the logits corresponding to the ground truth items
+            target_scores = logits.gather(dim=-1, index=target_items.unsqueeze(-1)).squeeze(-1)  # (batch, seq_len)
+            # Calculate rank: number of items with a higher score than the target + 1
+            ranks = (logits > target_scores.unsqueeze(-1)).sum(dim=-1) + 1  # (batch, seq_len)
+            reciprocal_ranks = 1.0 / ranks.float()  # (batch, seq_len)
+            # For recall, check if the ground truth is within the top_k predictions
             recall_hits = (ranks <= top_k).float()
+
+            total_mrr += reciprocal_ranks.sum().item()
             total_recall += recall_hits.sum().item()
             total_count += batch_size * seq_len
+
+    avg_loss = total_loss / len(dataloader)
+    perplexity = np.exp(avg_loss)
+    mrr = total_mrr / total_count
+    map_score = mrr  # In this single-relevant-item setting, MAP is equivalent to MRR
     recall = total_recall / total_count
 
     print(f"Evaluation Loss: {avg_loss:.4f}, Perplexity: {perplexity:.4f}")
     print(f"MRR: {mrr:.4f}, MAP: {map_score:.4f}, Recall@{top_k}: {recall:.4f}")
-    
     return avg_loss, perplexity, mrr, map_score, recall
-
 
 # ---------------------------
 # Main Function: Putting It All Together
 # ---------------------------
 def main():
-    data_path = "events.csv"  # CSV file with columns: visitorid, itemid, timestamp, event
+    data_path = "UserBehavior.csv"  # CSV file with columns: user_id, item_id, category_id, interaction_type, timestamp
     mode = "sliding"  # Options: "control", "sliding", "mixed"
     window_size = 100
-    max_history = 500
+    max_history = 1000
     sliding_stride = 1
-    batch_size = 32  # Updated batch size
-    num_epochs = 10
-    control_epochs = 5
+    batch_size = 16
+    num_epochs = 5
+    control_epochs = 2
     lr = 0.001
     device = "cuda" if torch.cuda.is_available() else "cpu"
 
-    df = pd.read_csv(data_path)
-    num_items = df["itemid"].max() + 1
-    print(num_items)
+    colnames = ["user_id", "item_id", "category_id", "interaction_type", "timestamp"]
+    df = pd.read_csv(data_path, names=colnames, header=None)
+    
+    # **Step 1: Compute item interaction frequency**
+    item_counts = df["item_id"].value_counts()
+    frequent_items = item_counts[item_counts >= 50].index  # Items with enough interactions
+    df = df[df["item_id"].isin(frequent_items)]
+    # Use the number of unique items (after filtering) as the number of classes
+    num_items = df["item_id"].nunique()
+    print("Number of raw items:", num_items)
 
     if mode in ["control", "sliding"]:
         dataset = InteractionDataset(data_path, mode=mode, window_size=window_size,
                                      max_history=(max_history if mode=="sliding" else None),
                                      sliding_stride=sliding_stride)
-        print(len(dataset))
+        print("Number of samples in dataset:", len(dataset))
         dataloader = DataLoader(dataset, batch_size=batch_size, shuffle=True, collate_fn=pad_collate_fn)
     elif mode == "mixed":
         control_dataset = InteractionDataset(data_path, mode="control", window_size=window_size)
@@ -295,12 +342,11 @@ def main():
     else:
         raise ValueError("Invalid mode. Choose one of: 'control', 'sliding', 'mixed'.")
     
-    print("Dataset loaded")
+    print("Dataset loaded.")
 
-    model = Gemma2(num_items=num_items, num_events=len(event_MAPPING),
+    # The model's output dimension should match the number of unique (mapped) items.
+    model = Gemma2(num_items=num_items, num_interaction_types=len(INTERACTION_TYPE_MAPPING),
                    emb_dim=32, n_layers=2, n_heads=4, dropout=0.1, max_seq_len=window_size)
-    # model.load_state_dict(torch.load("500_mixed.pth", weights_only=True))
-    # model.to(device)
     
     def count_parameters(model):
         return sum(p.numel() for p in model.parameters() if p.requires_grad)
@@ -318,8 +364,5 @@ def main():
     else:
         evaluate_model(model, dataloader, device=device)
 
-    
-
 if __name__ == "__main__":
     main()
-
