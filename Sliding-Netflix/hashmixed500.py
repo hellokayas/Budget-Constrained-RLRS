@@ -227,8 +227,8 @@ def train_model(model, dataloader, num_epochs=10, lr=0.001, device='cpu'):
             optimizer.step()
             epoch_loss += loss.item()
         print(f"Epoch {epoch + 1}/{num_epochs} Loss: {epoch_loss / len(dataloader):.4f}")
-        torch.save(model.state_dict(), "taobaocontrol500.pth")
-        print("Model saved as taobaocontrol500.pth")
+        torch.save(model.state_dict(), "taobaocontrol.pth")
+        print("Model saved as taobaocontrol.pth")
 
 def train_model_mixed(control_dataloader, sliding_dataloader, model, num_epochs=10, X=5, lr=0.001, device='cpu'):
     model.to(device)
@@ -256,8 +256,8 @@ def train_model_mixed(control_dataloader, sliding_dataloader, model, num_epochs=
             optimizer.step()
             epoch_loss += loss.item()
         print(f"Epoch {epoch + 1} Loss: {epoch_loss / len(dataloader):.4f}")
-        torch.save(model.state_dict(), "taobaomixed1000.pth")
-        print("Model saved as taobaomixed1000.pth")
+        torch.save(model.state_dict(), "taobaomixed500.pth")
+        print("Model saved as taobaomixed500.pth")
 
 def evaluate_model(model, dataloader, device='cpu', top_k=10):
     """
@@ -308,9 +308,9 @@ def evaluate_model(model, dataloader, device='cpu', top_k=10):
 # ---------------------------
 def main():
     data_path = "UserBehavior.csv"  # CSV file with columns: user_id, item_id, category_id, interaction_type, timestamp
-    mode = "sliding"  # Options: "control", "sliding", "mixed"
+    mode = "mixed"  # Options: "control", "sliding", "mixed"
     window_size = 100
-    max_history = 1000
+    max_history = 500
     sliding_stride = 1
     batch_size = 16
     num_epochs = 5
@@ -351,18 +351,18 @@ def main():
     model = Gemma2(num_items=num_items, num_interaction_types=len(INTERACTION_TYPE_MAPPING),
                    emb_dim=32, n_layers=2, n_heads=4, dropout=0.1, max_seq_len=window_size)
     
-    model.load_state_dict(torch.load("taobaosliding1000.pth", map_location=device))
-    model.to(device)
+    # model.load_state_dict(torch.load("taobaosliding1000.pth", map_location=device))
+    # model.to(device)
     
     def count_parameters(model):
         return sum(p.numel() for p in model.parameters() if p.requires_grad)
     print("Number of trainable parameters:", count_parameters(model))
 
-    # if mode == "mixed":
-    #     train_model_mixed(control_dataloader, sliding_dataloader, model,
-    #                       num_epochs=num_epochs, X=control_epochs, lr=lr, device=device)
-    # else:
-    #     train_model(model, dataloader, num_epochs=num_epochs, lr=lr, device=device)
+    if mode == "mixed":
+        train_model_mixed(control_dataloader, sliding_dataloader, model,
+                          num_epochs=num_epochs, X=control_epochs, lr=lr, device=device)
+    else:
+        train_model(model, dataloader, num_epochs=num_epochs, lr=lr, device=device)
         
     print("Evaluating on sliding dataset:")
     if mode == "mixed":

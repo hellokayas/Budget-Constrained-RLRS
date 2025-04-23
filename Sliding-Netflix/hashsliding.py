@@ -1,3 +1,4 @@
+import random
 import torch
 import torch.nn as nn
 import torch.nn.functional as F
@@ -7,6 +8,7 @@ import pandas as pd
 import numpy as np
 from tqdm import tqdm
 import math
+from torch.utils.data import Subset
 import xxhash  # Make sure to install xxhash (e.g. pip install xxhash)
 
 # ---------------------------
@@ -225,8 +227,8 @@ def train_model(model, dataloader, num_epochs=10, lr=0.001, device='cpu'):
             optimizer.step()
             epoch_loss += loss.item()
         print(f"Epoch {epoch + 1}/{num_epochs} Loss: {epoch_loss / len(dataloader):.4f}")
-        torch.save(model.state_dict(), "taobaosliding1000.pth")
-        print("Model saved as taobaosliding1000.pth")
+        torch.save(model.state_dict(), "taobaocontrol500.pth")
+        print("Model saved as taobaocontrol500.pth")
 
 def train_model_mixed(control_dataloader, sliding_dataloader, model, num_epochs=10, X=5, lr=0.001, device='cpu'):
     model.to(device)
@@ -254,8 +256,8 @@ def train_model_mixed(control_dataloader, sliding_dataloader, model, num_epochs=
             optimizer.step()
             epoch_loss += loss.item()
         print(f"Epoch {epoch + 1} Loss: {epoch_loss / len(dataloader):.4f}")
-        torch.save(model.state_dict(), "taobaomixed500.pth")
-        print("Model saved as taobaomixed500.pth")
+        torch.save(model.state_dict(), "taobaomixed1000.pth")
+        print("Model saved as taobaomixed1000.pth")
 
 def evaluate_model(model, dataloader, device='cpu', top_k=10):
     """
@@ -270,7 +272,7 @@ def evaluate_model(model, dataloader, device='cpu', top_k=10):
     criterion = nn.CrossEntropyLoss()
     
     with torch.no_grad():
-        for input_items, target_items, input_types in dataloader:
+        for input_items, target_items, input_types in tqdm(dataloader):
             input_items = input_items.to(device)
             target_items = target_items.to(device)
             input_types = input_types.to(device)
@@ -306,7 +308,7 @@ def evaluate_model(model, dataloader, device='cpu', top_k=10):
 # ---------------------------
 def main():
     data_path = "UserBehavior.csv"  # CSV file with columns: user_id, item_id, category_id, interaction_type, timestamp
-    mode = "sliding"  # Options: "control", "sliding", "mixed"
+    mode = "mixed"  # Options: "control", "sliding", "mixed"
     window_size = 100
     max_history = 1000
     sliding_stride = 1
@@ -331,6 +333,7 @@ def main():
         dataset = InteractionDataset(data_path, mode=mode, window_size=window_size,
                                      max_history=(max_history if mode=="sliding" else None),
                                      sliding_stride=sliding_stride)
+
         print("Number of samples in dataset:", len(dataset))
         dataloader = DataLoader(dataset, batch_size=batch_size, shuffle=True, collate_fn=pad_collate_fn)
     elif mode == "mixed":
@@ -348,18 +351,21 @@ def main():
     model = Gemma2(num_items=num_items, num_interaction_types=len(INTERACTION_TYPE_MAPPING),
                    emb_dim=32, n_layers=2, n_heads=4, dropout=0.1, max_seq_len=window_size)
     
+    model.load_state_dict(torch.load("taobaomixed1000.pth", map_location=device))
+    model.to(device)
+    
     def count_parameters(model):
         return sum(p.numel() for p in model.parameters() if p.requires_grad)
     print("Number of trainable parameters:", count_parameters(model))
 
+    # if mode == "mixed":
+    #     train_model_mixed(control_dataloader, sliding_dataloader, model,
+    #                       num_epochs=num_epochs, X=control_epochs, lr=lr, device=device)
+    # else:
+    #     train_model(model, dataloader, num_epochs=num_epochs, lr=lr, device=device)
+        
+    print("Evaluating on sliding dataset:")
     if mode == "mixed":
-        train_model_mixed(control_dataloader, sliding_dataloader, model,
-                          num_epochs=num_epochs, X=control_epochs, lr=lr, device=device)
-    else:
-        train_model(model, dataloader, num_epochs=num_epochs, lr=lr, device=device)
-
-    if mode == "mixed":
-        print("Evaluating on sliding dataset:")
         evaluate_model(model, sliding_dataloader, device=device)
     else:
         evaluate_model(model, dataloader, device=device)
